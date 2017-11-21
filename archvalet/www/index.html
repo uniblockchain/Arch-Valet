@@ -53,15 +53,16 @@
  
   </head>
   <body ng-app="starter" ng-controller="allController">
-	<div id="splash-wrapper">
-		<div id="splash">
-			<img src="img/splash_logo.png">
-			<h2>The Valet Company</h2>
+	<!-- Splash Screen -->
+	<div class="splash_screen">
+		<div class="splash">
+			<img src="img/splash_logo.png" alt="Valet Tech">
 		</div>
+		<div class="title">
+			<h2>Valet Tech</h2>
+		</div>
+	</div>
 	
-		<div class="splash-section section-left"></div>
-		<div class="splash-section section-right"></div>
-  </div>
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
@@ -77,13 +78,6 @@
 </html>
 <script>
 	$(window).on('load', function() {
-	 $('#splash-wrapper').delay(3000).fadeOut('slow');
+	 $('.splash_screen').delay(2000).fadeOut('slow');
 	});
-	
-	$(document).ready(function() {
-	 setTimeout(function(){
-	  $('body').addClass('loaded');
-	  $('h1').css('color','#222222');
-	 }, 3000);
-	});  
 </script>

@@ -20,10 +20,11 @@
     font-weight: bold;
 }
 .header-logo{
-        margin-left: auto;
+	margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 92px;
+    width: 80px;
+	margin: 5px auto;
 }
 
 .tableheader{
@@ -141,10 +142,9 @@
 .notification-card{
     margin-top: 11px;
 }
-
 .logininputfield{
     width: 100%;
-    box-shadow: 0px 2px #999;
+    box-shadow: 0px 1px #999;
 
 }
 
@@ -196,8 +196,7 @@
 .inputcol2{
    padding-left: 0px;
    padding-right: 0px;
-   border-bottom: 1px solid #8C0C04;
-   padding-bottom: 15px;    
+   padding-bottom: 10px;    
    padding-top: 10px;
 }
 .logincol{
@@ -206,10 +205,10 @@
         
 }
 
-.loginContent{
+/*.loginContent{
     padding:6px;
     background: #CACACA;
-}
+}*/
 .login-btn{
     box-shadow: 0px 2px #999;
 }
@@ -294,20 +293,20 @@ margin-left: 8px;
 
 .addcarError {
     background: white none repeat scroll 0 0;
-    color: red;
+    color: #8e1009;
     margin-left: 2px;
 }
 .addcarError1 {
     background: white none repeat scroll 0 0;
-    color: red;
+    color: #8e1009;
     margin-left: 2px;
 }
 
 .col.col-50.vehi.slideTop-col{
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid #8e1009;
 }
 .col.col-50.geust.slideTop-col{
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid #8e1009;
 }
 
 .notiCount{
@@ -317,4 +316,26 @@ margin-left: 8px;
   float: left;
   left: 48%;
 
+}
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
+    color: #8e1009;
+}
+.loginContent {
+	height: 100% !important;
+}
+.loginContent .scroll{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) !important;
+}
+.btn-red{
+	background-color: #8e1009;
+	color: #fff;
+	border: none;
+	border-radius: 2px;
+}
+.cars_block img{
+	width: 50%;
 }

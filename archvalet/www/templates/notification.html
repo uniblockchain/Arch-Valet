@@ -8,7 +8,7 @@
   </div>
   <h1 class="title">Notification
 	  <!-- <img class="header-logo" src="img/logo.png"> -->
-	  <button style="margin:5px !important;float:right;" disabled="true" id="btndelnotifi" >Delete Notifications</button>
+	  <button style="margin:5px !important;float:right;" disabled="true" id="btndelnotifi" class="btn btn-red" >Delete Notifications</button>
   </h1>
   
 </ion-header-bar>
@@ -18,10 +18,10 @@
          <ion-refresher pulling-text="Refresh..." on-refresh="reloadNewNotification()"></ion-refresher>
       
   <div ng-repeat="notification in notifications" class="card notification-card" >
-  <div style="background:#F7F7F7" class="item item-text-wrap notificatio-wrap">
+  <div style="background:#ebebeb" class="item item-text-wrap notificatio-wrap">
       <div class="row">
           <div class="col col-100">
-              <p style="float:left;"><b>{{notification.title}}</b> <a ng-click="deleteNotifi(notification.id);"> <i style="color:#B86D68" class="ion-ios-trash-outline"></i></a> </p>
+              <p style="float:left;"><b class="notifi_title">{{notification.title}}</b> <a ng-click="deleteNotifi(notification.id);"> <i style="color:#B86D68; font-size:20px; margin-top: 5px;" class="ion-ios-trash-outline"></i></a> </p>
               <p style="float:right"><i style="color:#B86D68" class="ion-ios-clock-outline"></i> {{notification.date * 1000 | date:'MMM d, y, HH:mm a'}}</p>
           </div>
       </div>
