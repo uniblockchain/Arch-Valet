@@ -1,0 +1,31 @@
+<ion-view hide-nav-bar="true">
+       
+    <ion-content class="loginContent" has-header="false" >
+        <div class="row">
+            <div class="col"></div>
+            <div class="col col-80">
+             <h1 class="title"><img class="header-logo" src="img/logo.png"></h1>
+            </div>
+            <div class="col"></div>
+        </div>                
+        <div class="row tableheader">
+			<div class="col col-20">Building Name
+			</div>
+		</div>
+		<div ng-repeat="(key,building) in buildings" class="card cardetails" >
+			<div class="item item-text-wrap mens-product">
+				<div class="row">					
+					<div class="col col-100">{{building.building_name}}
+					</div>
+					<div class="col col-100">
+						<a style="background:#000;color:#fff;padding:5px;cursor:pointer;float:right" ng-click="loginprop(key,building.building_name)">Login</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+     
+    </ion-content>
+        
+       
+      </ion-view>

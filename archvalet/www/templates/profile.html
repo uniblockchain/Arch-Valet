@@ -1,0 +1,163 @@
+<ion-view view-title="ArchValet">
+
+    <ion-header-bar align-title="left" class="header-bar">
+ 
+          <div class="buttons">
+     <button ng-click="myGoBack()" class="button button-icon button-clear ion-chevron-left">
+        </button>
+  </div>
+  <h1 class="title">Profile<img class="header-logo" src="img/logo.png"></h1>
+  
+</ion-header-bar>
+  <ion-content style="background:white;" class="profile-content" scroll="false">
+<!--       <div class="row">
+          <div class="col col-100">
+              <button ng-click="edit_profile()" class="profileeditbtn">Edit a Profile</button>
+          </div>
+      </div> -->
+      
+      <div class="card profile-card" >
+  <div style="background:white" class="item item-text-wrap profile">
+     
+      <div style="padding-top:0px; padding-bottom: 0px;" class="row">
+          <div style="padding-top:0px; padding-bottom: 0px;" class="col col-100">
+              
+              <div style="padding-top: 5px; padding-bottom: 5px;" class="row">
+                  
+                  <div style="padding-top:12px; padding-bottom: 0px;" class="col col-20">
+                     <i style="font-size: 30px; color:#FF9D3C" class="ion-home"></i>
+                  </div>
+                  <div style="padding-top: 6px; padding-bottom: 5px; border-bottom: 1px solid #ccc;" class="col col-80">
+                      Unit No
+                      <p style="padding-top:0px; padding-bottom: 0px;">{{userdetail.unite_no}}</p>
+                  </div>
+
+              </div>
+              
+              <div style="padding-top: 5px; padding-bottom: 5px;" class="row">
+                  <div style="padding-top:15px; padding-bottom: 0px;" class="col col-20">
+                      <i style="font-size: 30px; color:#FF9D3C; margin-top: 10px!important;" class="ion-person"></i>
+                  </div>
+                  <div style="padding-top:6px; padding-bottom: 0px; padding-top:10px;" class="col col-80">
+                      Resident
+                     <p style="padding-top: 0px; padding-bottom: 0px;">{{userdetail.name}}</p>
+                  </div>
+              </div>
+              
+          </div>
+          
+      </div>
+      
+    
+            </div>
+</div>
+      <div class="card profile-card" >
+  <div style="background:white; padding-top:5px;" class="item item-text-wrap profile">
+     
+      <div style="padding-top:0px; padding-bottom: 0px;" class="row">
+          <div style="padding-top:0px; padding-bottom: 0px;" class="col col-100">
+              <div style="padding-top: 0px; padding-bottom: 0px;" class="row">
+                  <div style="padding-top:8px; padding-bottom: 0px;" class="col col-20">
+                     <i style="font-size: 30px; color:#FF9D3C" class="ion-ios-email"> </i>
+                  </div>
+                  <div style="padding-top: 0px; padding-bottom: 5px; border-bottom: 1px solid #ccc;" class="col col-80">
+                      Email Address
+                      <p style="padding-top:0px; padding-bottom: 0px;">{{userdetail.email}}</p>
+                  </div>
+              </div>
+              
+              <div class="row">
+                  <div style="padding-top: 15px; padding-bottom: 0px;" class="col col-20">
+                    <i style="font-size: 30px; color:#FF9D3C" class="ion-ios-telephone"></i>
+                  </div>
+                  <div style="padding-top:0px; padding-bottom: 0px; padding-top:10px;" class="col col-80">
+                     Contact No
+                     <p style="padding-top: 0px; padding-bottom: 0px;">{{userdetail.contact_no}}</p>
+                  </div>
+              </div>
+              
+          </div>
+          
+      </div>
+      
+    
+            </div>
+</div>
+      
+      
+      
+   
+      
+       <div class="row">
+          <div class="col col-100">
+              <button ng-click="logout()" class="logoutbtn">log out</button>
+          </div>
+      </div>
+  </ion-content>
+    
+    
+    
+    
+    <script id="editProfile.html" type="text/ng-template">
+        <ion-modal-view class="add-modal">
+        <ion-content class="add-content">
+
+        <div class="row regrow1">
+          <div class="col col-100">
+              <label>Full Name</label>
+              <input id="fullname" class="registerinput" placeholder="Full Name" value="{{userdetail.name}}" type="text">
+          </div>
+          
+      </div>
+       <p ng-show="email_error">This email is already used.</p>
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Email Address</label>
+              <input id="email" class="registerinput" placeholder="Email" value="{{userdetail.email}}" type="text">
+          </div>
+          
+      </div>
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Contact No</label>
+              <input id="contact" class="registerinput" placeholder="Contact No" value="{{userdetail.contact_no}}" type="text">
+          </div>
+          
+      </div>
+         
+
+          
+      </div>
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Password</label>
+              <input id="password" class="registerinput" placeholder="Password" type="text">
+          </div>
+          
+      </div>
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Confirm Password</label>
+              <input id="confirmPassword" class="registerinput" placeholder="Confirm Password" type="text">
+          </div>
+          
+      </div>
+      
+      <div class="row regrow1">
+          <div class="col col-100">
+            
+                <button ng-click="update_user()" class="registerbtn">Update</button>
+                
+          </div>
+          
+      </div>
+
+
+        </ion-content>
+        </ion-modal-view>
+    </script>
+
+
+
+
+</ion-view>

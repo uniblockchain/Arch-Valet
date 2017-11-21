@@ -1,0 +1,77 @@
+<ion-view view-title="ArchValet">
+
+    <ion-header-bar align-title="left" class="header-bar">
+ 
+          <div class="buttons">
+     <button ng-click="myGoBack()" class="button button-icon button-clear ion-chevron-left">
+        </button>
+  </div>
+  <h1 class="title">REGISTER<img class="header-logo" src="img/logo.png"></h1>
+  
+</ion-header-bar>
+  <ion-content class="register-content">
+          
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Full Name</label>
+              <input id="fullname" class="registerinput" placeholder="Full Name" type="text">
+          </div>
+          
+      </div>
+       <p ng-show="email_error">This email is already used.</p>
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Email Address</label>
+              <input id="email" class="registerinput" placeholder="Email" type="text">
+          </div>
+          
+      </div>
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Contact No</label>
+              <input id="contact_no" class="registerinput" placeholder="Contact No" type="text">
+          </div>
+          
+      </div>
+         
+        <p style="color:red;" ng-show="unit_error">This Unite No is already used.</p>
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Unite No</label>
+              <input id="unite_no" class="registerinput" placeholder="Unite No" type="text">
+          </div>
+          
+      </div>
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Password</label>
+              <input id="password" class="registerinput" placeholder="Password" type="text">
+          </div>
+          
+      </div>
+      <div class="row regrow1">
+          <div class="col col-100">
+              <label>Confirm Password</label>
+              <input id="confirmPassword" class="registerinput" placeholder="Confirm Password" type="text">
+          </div>
+          
+      </div>
+      
+      <div class="row regrow1">
+          <div class="col col-100">
+            
+                <button ng-click="submit_register()" class="registerbtn">register</button>
+                
+          </div>
+          
+      </div>
+      
+    
+      
+      
+  </ion-content>
+
+
+
+
+</ion-view>

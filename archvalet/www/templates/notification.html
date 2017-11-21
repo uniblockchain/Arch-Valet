@@ -1,0 +1,55 @@
+<ion-view view-title="ArchValet">
+
+    <ion-header-bar align-title="left" class="header-bar">
+ 
+          <div class="buttons">
+     <button ng-click="myGoBack()" class="button button-icon button-clear ion-chevron-left" menu-toggle="left">
+        </button>
+  </div>
+  <h1 class="title">Notification
+	  <!-- <img class="header-logo" src="img/logo.png"> -->
+	  <button style="margin:5px !important;float:right;" disabled="true" id="btndelnotifi" >Delete Notifications</button>
+  </h1>
+  
+</ion-header-bar>
+    
+  <ion-content class="notification-content">
+      
+         <ion-refresher pulling-text="Refresh..." on-refresh="reloadNewNotification()"></ion-refresher>
+      
+  <div ng-repeat="notification in notifications" class="card notification-card" >
+  <div style="background:#F7F7F7" class="item item-text-wrap notificatio-wrap">
+      <div class="row">
+          <div class="col col-100">
+              <p style="float:left;"><b>{{notification.title}}</b> <a ng-click="deleteNotifi(notification.id);"> <i style="color:#B86D68" class="ion-ios-trash-outline"></i></a> </p>
+              <p style="float:right"><i style="color:#B86D68" class="ion-ios-clock-outline"></i> {{notification.date * 1000 | date:'MMM d, y, HH:mm a'}}</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col col-100">
+              <p>{{notification.message}}</p>
+          </div>
+      </div>
+      
+      <div class="row" ng-if="notification.msg == '0'">
+          <div class="col col-25">
+               Color: {{notification.color}}
+          </div>
+          <div class="col col-30">
+               Made: {{notification.model}}
+          </div>
+          <div class="col">
+               Plate No: {{notification.plate_number}}
+          </div>
+      </div>
+            </div>
+</div>
+      
+
+         
+  </ion-content>
+
+
+
+
+</ion-view>
