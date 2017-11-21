@@ -1,0 +1,17 @@
+[23-Dec-2016 08:48:32 CST6CDT] PHP Parse error:  syntax error, unexpected ''_title as title, url from tbl' (T_ENCAPSED_AND_WHITESPACE) in /home/archvaletapp/public_html/tucasa24/application/controllers/front.php on line 103
+[23-Dec-2016 08:49:25 CST6CDT] PHP Fatal error:  Class 'Stripe\Error\InvalidRequest' not found in /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php on line 110
+[23-Dec-2016 08:51:58 CST6CDT] PHP Fatal error:  Class 'Stripe\Error\InvalidRequest' not found in /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php on line 110
+[23-Dec-2016 08:53:53 CST6CDT] PHP Fatal error:  Uncaught exception 'Stripe\Error\InvalidRequest' with message 'No such token: ldkdslds' in /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php:110 from API request 'req_9nVRoHatHOj7i4'
+Stack trace:
+#0 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php(266): Stripe\ApiRequestor->handleApiError('{\n  "error": {\n...', 400, Array, Array)
+#1 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php(65): Stripe\ApiRequestor->_interpretResponse('{\n  "error": {\n...', 400, Array)
+#2 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiResource.php(120): Stripe\ApiRequestor->request('post', '/v1/charges', Array, Array)
+#3 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiResource.php(160): Stripe\ApiResource::_staticRequest('post', '/v1/charges', Array, NULL)
+#4 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/Charge.php(73): Stripe\ApiR in /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php on line 110
+[23-Dec-2016 08:58:45 CST6CDT] PHP Fatal error:  Uncaught exception 'Stripe\Error\InvalidRequest' with message 'No such token: ldkdslds' in /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php:110 from API request 'req_9nVWIQ30ZLYGVZ'
+Stack trace:
+#0 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php(266): Stripe\ApiRequestor->handleApiError('{\n  "error": {\n...', 400, Array, Array)
+#1 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php(65): Stripe\ApiRequestor->_interpretResponse('{\n  "error": {\n...', 400, Array)
+#2 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiResource.php(120): Stripe\ApiRequestor->request('post', '/v1/charges', Array, Array)
+#3 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiResource.php(160): Stripe\ApiResource::_staticRequest('post', '/v1/charges', Array, NULL)
+#4 /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/Charge.php(73): Stripe\ApiR in /home/archvaletapp/public_html/tucasa24/application/libraries/Stripe/lib/ApiRequestor.php on line 110

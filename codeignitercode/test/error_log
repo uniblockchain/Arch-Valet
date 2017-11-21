@@ -1,0 +1,9 @@
+[10-Jan-2017 04:29:26 CST6CDT] PHP Warning:  stream_socket_client(): unable to connect to ssl://gateway.push.apple.com:2195 (Connection refused) in /home/archvaletapp/public_html/test/apple.php on line 17
+[10-Jan-2017 04:30:00 CST6CDT] PHP Warning:  stream_socket_client(): unable to connect to ssl://gateway.push.apple.com:2195 (Connection refused) in /home/archvaletapp/public_html/test/apple.php on line 17
+[10-Jan-2017 04:30:37 CST6CDT] PHP Warning:  stream_socket_client(): unable to connect to ssl://gateway.sandbox.push.apple.com:2195 (Connection refused) in /home/archvaletapp/public_html/test/apple.php on line 17
+[10-Jan-2017 04:35:40 CST6CDT] PHP Warning:  stream_socket_client(): unable to connect to ssl://gateway.sandbox.push.apple.com:2195 (Connection refused) in /home/archvaletapp/public_html/test/apple.php on line 60
+[10-Jan-2017 04:36:20 CST6CDT] PHP Warning:  stream_socket_client(): unable to connect to ssl://gateway.push.apple.com:2195 (Connection refused) in /home/archvaletapp/public_html/test/apple.php on line 60
+[10-Jan-2017 04:37:17 CST6CDT] PHP Warning:  stream_socket_client(): unable to connect to ssl://gateway.sandbox.push.apple.com:2195 (Connection refused) in /home/archvaletapp/public_html/test/apple.php on line 18
+[10-Jan-2017 04:37:45 CST6CDT] PHP Warning:  stream_context_set_option(): called with wrong number or type of parameters; please RTM in /home/archvaletapp/public_html/test/apple.php on line 17
+[10-Jan-2017 04:37:45 CST6CDT] PHP Warning:  stream_socket_client(): unable to connect to ssl://gateway.sandbox.push.apple.com:2195 (Connection refused) in /home/archvaletapp/public_html/test/apple.php on line 18
+[10-Jan-2017 04:38:03 CST6CDT] PHP Warning:  stream_socket_client(): unable to connect to ssl://gateway.sandbox.push.apple.com:2195 (Connection refused) in /home/archvaletapp/public_html/test/apple.php on line 18

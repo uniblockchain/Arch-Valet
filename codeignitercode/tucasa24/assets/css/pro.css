@@ -1,0 +1,21 @@
+.errors{
+    color:red!important;
+}
+
+.success_msg{
+    color:green;
+}
+
+.unsucces_msg{
+    text-align: center;
+    color:red;
+}
+.errors_login{
+    color:red;
+}
+.lang {
+    position: fixed;
+    right: 15px;
+    top: 10px;
+    z-index: 9999;
+}

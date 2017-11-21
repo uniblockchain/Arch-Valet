@@ -1,0 +1,70 @@
+<ion-view view-title="ArchValet">
+
+    <ion-header-bar align-title="left" class="header-bar">
+ 
+    
+  
+  <h1 class="title"><img class="header-logo" src="img/logo.png"></h1>
+    <div class="buttons">
+    <button ng-click="opensetting()" class="button btnvertical button-icon button-clear ion-android-more-vertical">
+        </button>
+  </div>
+  
+</ion-header-bar>
+    
+        <div class="contains">
+        <ul class="containsul">
+            <li ng-click="logout()"><a><i class="ion-power poweroff"></i><span>Logout</span></a> </li>
+        </ul>
+    </div>
+      
+    
+  <ion-content class="notification-content">
+  
+      
+    <ion-refresher pulling-text="Refresh..." on-refresh="loadNewNotification()"></ion-refresher>
+  <div ng-repeat="notification in notifications" class="card notification-card" >
+  <div style="background:#F7F7F7" class="item item-text-wrap notificatio-wrap">
+    
+        <div class="row">
+<!--           <div class="col col-40">
+              <p><b>Car Request</b></p>
+          </div> -->
+     
+      
+
+          <div class="col col-100">
+              <!--<p style="float:left;"><b>{{notification.title}}</b></p>-->
+              <p class="requesteddate"><i style="color:#B86D68" class="ion-ios-clock-outline"></i> {{notification.request_timestamp * 1000 | date:'MMM d, y, HH:mm a'}}</p>
+          </div>
+      </div>
+    
+      
+      <div class="row">
+          <div class="col col-50">
+               Unite No {{notification.unite_no}}
+          </div>
+          <div class="col col-50">
+               Color: {{notification.color}}
+          </div>
+          </div>
+      
+      <div class="row">
+          <div class="col col-50">
+               Made: {{notification.model}}
+          </div>
+          <div class="col col-50">
+               Plate No: {{notification.plate_number}}
+          </div>
+      </div>
+            </div>
+</div>
+      
+
+         
+  </ion-content>
+
+
+
+
+</ion-view>

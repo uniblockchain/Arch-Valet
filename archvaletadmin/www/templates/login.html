@@ -1,0 +1,40 @@
+<ion-view hide-nav-bar="true">
+       
+    <ion-content class="loginContent" has-header="false" >
+        <div class="row">
+            <div class="col"></div>
+            <div class="col col-80">
+             <img style="width:100%;" class="loginLogo" src="img/logo2.png">
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <p style="text-align:center; color:red;" ng-show="matched">Username or Password not matched.</p>
+        <p style="text-align:center; color:red;" ng-show="unsuccess">Your account has not been approved yet.</p>
+        <div class="row inputrow1">
+            <div class="col col-100">
+            <i class="ion-home loginhome"></i>
+                <input id="unitevalue" placeholder="Username:" class="logininputfield" type="text">
+            </div>
+        </div>
+        <div class="row inputrow2">
+            <div class="col col-100 inputcol2">
+            <i style="margin-left:13px" class="ion-key loginhome"></i>
+                <input id="unitepass"  placeholder="Password:" class="logininputfield" type="password">
+            </div>
+        </div>
+           
+        
+        <div class="row btnlogin">
+            <div class="col col-100 logincol">
+              <button ng-click="checkLogin()" class="login-btn">Login</button>
+            </div>
+        </div>
+
+       
+        
+     
+    </ion-content>
+        
+       
+      </ion-view>

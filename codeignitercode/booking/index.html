@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Booking Site</title>
+
+        <!-- Bootstrap -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.css" rel="stylesheet">
+        <link href="css/jquery-ui.css" rel="stylesheet">
+        <link href="css/vegas.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <section class="menu-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 col-md-2 no-padding">
+                        <div class="logo">
+                            <img src="images/dummy_logo.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-9 col-md-10 no-padding">
+                        <div class="main-menu">
+                            <nav class="navbar navbar-default" role="navigation">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header pull-right">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" style="margin-top:-45px;">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                    <ul class="nav navbar-nav navbar-left">
+                                        <li><a href="#">Hotel</a></li>
+                                        <li><a href="#">Tours</a></li>
+                                        <li><a href="#">Cars</a></li>
+                                        <li><a href="#">Offers</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <!--                                        <li class="select-style icon">
+                                                                                    <select type="text" class="btn btn-select">
+                                                                                        <option>Us Dollar</option>
+                                                                                        <option>Indian Rupee</option>
+                                                                                        <option>Nepalese Rupee</option>
+                                                                                        <option>EURO</option>
+                                                                                    </select>
+                                        
+                                                                                </li>-->
+                                        <!--                                        <span class="menu-border"></span>-->
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+                                            <ul class="dropdown-menu dropdown-menu-left">
+                                                <li><a href="#">Login</a></li>
+                                                <li><a href="#">Sign Up</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div><!-- /.navbar-collapse -->
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking_wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 bg_booking">
+                        <ul class="nav nav-tabs tab_head" role="tablist">
+                            <li role="presentation" class="active"><a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab">
+                                    <i class="fa fa-building" aria-hidden="true"></i>
+                                    Hotels
+                                </a></li>
+                            <!--                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                                                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                                                Tours</a></li>-->
+                            <li role="presentation"><a href="#car" aria-controls="car" role="tab" data-toggle="tab">
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                    Cars</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="hotel">
+                                <form class="booking-form">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group booking-group">
+                                                <label class="booking_label">Going to</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control book_control" placeholder="Destination, hotel name, airport, train station, landmark or address" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-3 col-md-3">
+                                            <div class="form-group booking-group">
+                                                <label class="booking_label">Check In</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control book_control_2" id="datepicker1" placeholder="dd/mm/yyy" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-3 col-md-3">
+                                            <div class="form-group booking-group">
+                                                <label class="booking_label">Check Out</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control book_control_2" id="datepicker2" placeholder="dd/mm/yyy" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-2 col-md-1">
+                                            <div class="form-group booking-group select-style">
+                                                <label class="booking_label">Rooms</label>
+                                                <select class="form-control book_control_2">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>8</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-2 col-md-1">
+                                            <div class="form-group booking-group select-style">
+                                                <label class="booking_label">Adults(18+)</label>
+                                                <select class="form-control book_control_2">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>8</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-2 col-md-1">
+                                            <div class="form-group booking-group select-style">
+                                                <label class="booking_label">Children</label>
+                                                <select class="form-control book_control_2">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>8</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--<div class="col-xs-12 col-sm-2 col-md-2"></div>-->
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <input type="submit" class="btn btn-search" value="Search">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="car">
+                                <form class="booking-form">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-5">
+                                            <div class="form-group booking-group">
+                                                <label class="booking_label">Picking up </label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control book_control_2" placeholder="City, airport or address" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-5">
+                                            <div class="form-group booking-group">
+                                                <label class="booking_label">Dropping off</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control book_control_2" placeholder="Same as Pick-Up" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-2"></div>
+
+                                        <div class="col-xs-12 col-sm-3 col-md-3">
+                                            <div class="form-group booking-group">
+                                                <label class="booking_label">Pick up date</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control book_control_2" id="datepicker3" placeholder="dd/mm/yyy" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-2 col-md-1 no-padding">
+                                            <div class="form-group booking-group select-style">
+                                                <!--                                                    <label class="booking_label">Rooms</label>-->
+                                                <select class="form-control book_control_2 time_select">
+                                                    <option>00:30</option>
+                                                    <option>1:00</option>
+                                                    <option>1:30</option>
+                                                    <option>2:00</option>
+                                                    <option>2:30</option>
+                                                    <option>3:00</option>
+                                                    <option>3:50</option>
+                                                    <option>4:00</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-3 col-md-3">
+                                            <div class="form-group booking-group">
+                                                <label class="booking_label">Drop off date</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control book_control_2" id="datepicker4" placeholder="dd/mm/yyy" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-2 col-md-1 no-padding">
+                                            <div class="form-group booking-group select-style">
+                                                <!--                                                    <label class="booking_label">Rooms</label>-->
+                                                <select class="form-control book_control_2 time_select">
+                                                    <option>00:30</option>
+                                                    <option>1:00</option>
+                                                    <option>1:30</option>
+                                                    <option>2:00</option>
+                                                    <option>2:30</option>
+                                                    <option>3:00</option>
+                                                    <option>3:50</option>
+                                                    <option>4:00</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!--<div class="col-xs-12 col-sm-2 col-md-2"></div>-->
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <input type="submit" class="btn btn-search" value="Search">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="service_div">
+                            <i class="fa fa-building-o" aria-hidden="true"></i>
+                            <p>Best locations and <br/>prices</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="service_div">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <p>Manage your billing <br/>online</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="service_div">
+                            <i class="fa fa-volume-up" aria-hidden="true"></i>
+                            <p>Last minute deals & <br/>offers</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="service_div">
+                            <i class="fa fa-credit-card" aria-hidden="true"></i>
+                            <p>100% Secure <br/>payments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-ms-12">
+                        <div class="footer-links">
+                            <a href="#" class="first">About</a> <span>|</span> <a href="#">Terms & Condition</a> <span>|</span> <a href="#">Privacy Policy</a> <span>|</span> <a href="#">Contact Us</a> <span>|</span> <a href="#">FAQ</a>
+                            <p>&copy; 2017 <a href="#"><span class="highlight">booking.com</span> </a> All right reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <script src="js/moment.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/bootstrap-datetimepicker.min.js"></script>
+        <script src="js/vegas.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            $("#booking_wrapper").vegas({
+                delay: 10000,
+                timer: false,
+                shuffle: true,
+                transition: ['zoomOut'],
+                transitionDuration: 10000,
+                slides: [
+                    { src: "images/car.jpg" },
+                    { src: "images/mustang.jpg" },
+                    { src: "images/hotel_2.jpg" }
+                ]
+            });
+            $( function() {
+                $( "#datepicker1" ).datepicker();
+                $( "#datepicker2" ).datepicker();
+                $( "#datepicker3" ).datepicker();
+                $( "#datepicker4" ).datepicker();
+            } );
+        </script>
+    </body>
+</html>

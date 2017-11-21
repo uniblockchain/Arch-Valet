@@ -1,0 +1,47 @@
+<ion-view view-title="ArchValet">
+
+    <ion-header-bar align-title="left" class="header-bar">
+        <h1 class="title"><img class="header-logo" src="img/logo.png"></h1>
+        <div class="buttons">
+            <button ng-click="opensetting()" class="button btnvertical button-icon button-clear ion-android-more-vertical">
+            </button>
+        </div>
+        
+    </ion-header-bar>
+    <div class="contains">
+        <ul class="containsul">
+            <li ng-click="logout()"><a><i class="ion-power poweroff"></i><span>Logout</span></a> </li>
+        </ul>
+    </div>
+    <ion-content class="notification-content">
+
+   
+
+                    <div class="row tableheader">
+                        <div class="col col-25">Unite No
+                        </div>
+                        
+                        <div class="col col-25">Plate No
+                        </div>
+                        <div class="col col-50 actioncol">Action
+                        </div>
+                    </div>
+                    
+                    <div ng-repeat="(key,req) in requests" class="card cardetails">
+                        <div class="item item-text-wrap mens-product">
+                            <div class="row">
+                                <div class="col col-25">{{req.unite_no}}
+                                </div>
+                                <div class="col col-25">{{req.plate_number}}
+                                </div>
+                                <div class="col col-50 requestLink">
+                                    <a ng-click="accept_request(key,req.id)" class="acceptrequest">Accept</a>
+                                    <a ng-click="reject_request(key,req.id)" class="rejectrequest">Reject</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+</ion-content>
+
+</ion-view>

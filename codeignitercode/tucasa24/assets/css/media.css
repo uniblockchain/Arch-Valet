@@ -1,0 +1,337 @@
+
+@media(min-width:1200px){
+    .hww_title{
+        font-size: 26px;
+    }
+}
+@media(min-width:768px) and (max-width:991px){
+    .desktop_menu{
+        display:none !important;
+    }
+    #sidr{
+        display: block;
+    }
+    #simple-menu{
+        display: block;
+    }
+    .caption {
+        width: 100%;
+        top: 160px;
+    }
+    .caption h1 {
+        color: #fff;
+        font-size: 68px;
+    }
+    .caption p {
+        font-size: 18px;
+        padding: 0 30px;
+    }
+    .slider_section video {
+        width: none;
+    }
+    .press_image li {
+        margin-bottom: 15px !important;
+        vertical-align: middle;
+        width: 24%;
+    }
+    .press_image{
+        text-align:center;
+    }
+    .home-showcase__lady__info {
+        bottom: 160px;
+        position: absolute;
+        right: -20px;
+    }
+    .home-showcase__lady__info::before {
+        background-image: none;
+        background-repeat: no-repeat;
+        content: "";
+        display: none;
+    }
+
+    .faq_panel h2 {
+        background-color: #00c4b3;
+        color: #fff;
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: -2px;
+        margin: 0;
+        padding: 8px 15px;
+    }
+    .btn-prev {
+        padding: 12px 40px;
+    }
+    .wizard-btn {
+        padding: 12px 20px;
+    }
+    .hww_title{
+        font-size: 24px;
+    }
+    .inc_icons{
+        max-width: 70%;
+    }
+    .inc_title{
+        font-size: 24px;
+    }
+    .inc_tab_imgbox, .inc_tab_infobox{
+        min-height: 480px;
+    }
+    .rdbtn_text{
+        font-size: 21px;
+        line-height: 25px;
+        position: relative;
+        right: unset !important;
+    }
+    .btn-radio {
+        text-align: center;
+    }
+    .img-radio {
+        float: none !important;
+    }
+}
+@media(min-width:992px) and (max-width:1199px){
+    .hww_title{
+        font-size: 21px;
+    }
+    .inc_tab_imgbox, .inc_tab_infobox{
+        min-height: 480px;
+    }
+}
+@media(max-width:767px){
+    .main-footer__social a {
+        margin-left: 3px;
+        opacity: 0.5;
+        text-decoration: none;
+    }
+    .home-showcase__lady > img {
+        margin-top: 20px;
+    }
+    .home-showcase__lady__info {
+        position: static;
+        text-align: center;
+
+    }
+    .press-highlights{
+        display:none;
+    }
+    .desktop_menu{
+        display:none;
+    }
+    #sidr{
+        display: block;
+    }
+    #simple-menu{
+        display: block;
+    }
+    .menu {
+        float: right;
+        margin-top: -32px;
+    }
+    .faq_panel h2 {
+        font-size: 24px;
+    }
+    .caption{
+        width: 100%;
+    }
+    .caption h1{
+        font-size: 35px;
+        line-height: 58px;
+    }
+    .caption p{
+        font-size: 16px;
+    }
+    .bg_slider_n{
+        height:450px !important;
+    }
+    .wizard-btn {
+        background-color: #fba756;
+        border: medium none;
+        border-radius: 0;
+        float: none;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 19px;
+        margin-top: 20px;
+        padding: 12px 25px;
+    }
+    .res_page_sidebar {
+        clear: both;
+    }
+    .reserve_payment > h4 {
+        font-size: 22px;
+        font-weight: 600;
+        padding-left: 15px;
+    }
+    .payment_label {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
+    .social_links{
+        text-align: left;
+        margin-top: 15px;
+    }
+    .hww_title{
+        font-size: 22px;
+    }
+    .inc_icons{
+        max-width: 250px;
+    }
+    .inc_tab_imgbox{
+        min-height: 350px !important;
+        max-height: 350px !important;
+    }
+
+    .how_we_work{
+        padding-bottom: 0px;
+    }
+    .anothorow{
+        margin-bottom: 10px;
+    }
+    .summary{
+        padding-left: 15px;
+    }
+    .btn-radio{
+        margin-bottom: 15px;
+    }
+}
+
+@media(min-width:450px) and (max-width: 640px){
+    .caption{
+        top: 50px;
+    }
+    .caption h1{
+        font-size: 25px !important;
+        line-height: 25px !important;
+    }
+    .caption p{
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 20px;
+    }
+    .pink_btn{
+        padding: 15px;
+        font-size: 16px;
+    }
+    .bg_slider_n{
+        height:330px !important;
+    }
+    .btn-prev {
+        background: #fff none repeat scroll 0 0;
+        border: 1px solid #bde7ec;
+        border-radius: 0;
+        color: #24b0bf;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 20px;
+        padding: 7px 12px;
+    }
+    .wizard-btn {
+        background-color: #fba756;
+        border: medium none;
+        border-radius: 0;
+        float: none;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 19px;
+        margin-top: 20px;
+        padding: 10px;
+    }
+}
+@media(max-width: 585px){
+    .inc_li{
+        width: 50%;
+        text-align: center !important;
+        float: left !important;
+    }
+    .numbering {
+        float: left;
+        padding: 15px 30px;
+        width: 80px;
+        margin-right: 15px;
+    }
+    .reserve_in_min, .res_mun_box{
+        padding: 0px;
+    }
+    .res_inmin_detail {
+        margin-top: 0;
+        text-align: left;
+    }
+}
+@media(max-width: 450px){
+    .caption{
+        top: 50px;
+    }
+    .caption h1{
+        font-size: 20px !important;
+        line-height: 25px !important;
+    }
+    .caption p{
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 20px;
+    }
+    .pink_btn{
+        padding: 10px;
+        font-size: 14px;
+    }
+    .menu-section{
+        position: relative;
+    }
+    .bg_slider_n{
+        height:290px !important;
+    }
+    .form_detail h3 {
+        float: none;
+        font-size: 20px;
+        margin: 0;
+        text-align: center;
+    }
+    .form_detail a {
+        float: none;
+    }
+    .form_detail{
+        text-align: center;
+    }
+    .pull-right {
+        float: none !important;
+    }
+    .btn-prev {
+        background: #fff none repeat scroll 0 0;
+        border: 1px solid #bde7ec;
+        border-radius: 0;
+        color: #24b0bf;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 20px;
+        padding: 8px 15px;
+    }
+    .wizard-btn {
+        background-color: #fba756;
+        border: medium none;
+        border-radius: 0;
+        float: none;
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 19px;
+        margin-top: 20px;
+        padding: 10px;
+    }
+    .hww_title{
+        font-size: 22px;
+    }
+    .hww_icon{
+        float: none;
+    }
+    .page_title h1{
+        font-size: 30px;
+    }
+    .inc_tab_imgbox{
+        min-height: 225px !important;
+        max-height: 225px !important;
+    }
+    .inc_li a{
+        padding:10px 3px !important;
+    }
+}
