@@ -622,87 +622,89 @@ padding:0px;
     font-size: 16px;
 }
 
-#splash-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
+.splash_screen {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	background: #fff;
+	text-align: center;
 }
-#splash {
+.splash {
     display: block;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1001;
-}
-#splash img{
-    width: 150px;
+    overflow: hidden;
+    margin: 0 auto;
     position: absolute;
-    top: 50%;
     left: 50%;
+    top: 50%;
     transform: translate(-50%,-50%);
 }
-#splash-wrapper h2{
-    position: absolute;
-    left: 50%;
-    bottom: 10%;
-    transform: translate(-50%);
-	color: #8e1009;
-	font-size: 15px;
+.splash img{
+	padding:30px;
+	width: 150px;
 }
-#splash-wrapper .splash-section {
-        position: fixed;
-        width: 100%;
-        height: 51%;
-        background: #fff;
-        z-index: 1000;
-        -webkit-transform: translateX(0);  / Chrome, Opera 15+, Safari 3.1+ /
-        -ms-transform: translateX(0);  / IE 9 /
-        transform: translateX(0);  / Firefox 16+, IE 10+, Opera /
-    }
-
-    #splash-wrapper .splash-section.section-left {
-        left: 0;
-        top: 0;
-    }
-
-    #splash-wrapper .splash-section.section-right {
-        right: 0;
-        bottom: 0;
-    }
-
-    .loaded #splash-wrapper .splash-section.section-left {
-        -webkit-transform: translateY(-100%);  / Chrome, Opera 15+, Safari 3.1+ /
-            -ms-transform: translateY(-100%);  / IE 9 /
-                transform: translateY(-100%);  / Firefox 16+, IE 10+, Opera /
-
-        -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  
-                transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    }
-
-    .loaded #splash-wrapper .splash-section.section-right {
-        -webkit-transform: translateY(500%);  / Chrome, Opera 15+, Safari 3.1+ /
-            -ms-transform: translateY(500%);  / IE 9 /
-                transform: translateY(500%);  / Firefox 16+, IE 10+, Opera /
-
--webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  
-        transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    }
-    
-    .loaded #splash {
-        opacity: 0;
-        -webkit-transition: all 0.3s ease-out;  
-                transition: all 0.3s ease-out;
-    }
-    .loaded #splash-wrapper {
-        visibility: hidden;
-
-        -webkit-transform: translateY(-100%);  / Chrome, Opera 15+, Safari 3.1+ /
-            -ms-transform: translateY(-100%);  / IE 9 /
-                transform: translateY(-100%);  / Firefox 16+, IE 10+, Opera /
-
-        -webkit-transition: all 0.3s 1s ease-out;  
-                transition: all 0.3s 1s ease-out;
-    }
+.splash img {
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	-webkit-transform-origin: center center;
+	-ms-transform-origin: center center;
+	transform-origin: center center;
+	-webkit-animation: logo 1.2s linear;
+	animation: logo 1.2s linear;
+}
+/ Animations /
+@-webkit-keyframes logo {
+	0% {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	}
+	100% {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+	}
+}
+@keyframes logo {
+	0% {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	}
+	100% {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+	}
+}
+.splash_screen .title{
+	display: block;
+	margin: 0 auto;
+	position: absolute;
+	left: 50%;
+	bottom: 10%;
+	transform: translate(-50%,-50%);
+	color: #ef5055;
+}
+.splash_screen .title h2{
+	-webkit-transform-origin: center center;
+	-ms-transform-origin: center center;
+	transform-origin: center center;
+	-webkit-animation-name: title;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-delay: 0s;
+	animation-name: title;
+	visibility: visible;
+	animation-delay: 0s;
+	animation-duration: 2s;
+}
+@-webkit-keyframes title {
+	0%   {opacity: 0; transform: translateY(100px);}
+	60%  {opacity: 1; transform: translateY(-30px);}
+	80%  {transform: translateY(10px);}
+	100%  {transform: translateY(0px);}
+}
+@keyframes title {
+	0%   {opacity: 0; transform: translateY(100px);}
+	60%  {opacity: 1; transform: translateY(-30px);}
+	80%  {transform: translateY(10px);}
+	100%  {transform: translateY(0px);}
+}

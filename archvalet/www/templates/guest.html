@@ -34,13 +34,13 @@
 
 
                     <div class="row tableheader">
-                        <div class="col col-25">Car Made
+                        <div class="col">Car Made
                         </div>
-                        <div class="col col-20">Color
+                        <div class="col">Color
                         </div>
-                        <div class="col col-25">Ticket No
+                        <div class="col">Ticket No
                         </div>
-                        <div class="col col-25">Action
+                        <div class="col">Action
                         </div>
                     </div>
 
@@ -48,13 +48,13 @@
                     <div ng-if="car.visitor == 1" ng-repeat="(key,car) in cars" class="card cardetails" >
                         <div class="item item-text-wrap mens-product">
                             <div class="row">
-                                <div class="col col-25">{{car.made}}
+                                <div class="col">{{car.made}}
                                 </div>
-                                <div class="col col-20">{{car.color}}
+                                <div class="col">{{car.color}}
                                 </div>
-                                <div class="col col-25">{{car.ticket_no}}
+                                <div class="col">{{car.ticket_no}}
                                 </div>
-                                <div class="col col-30 requestLink">
+                                <div class="col requestLink">
                                     <a class="requested" style="background:#269946; float:left;" ng-if="car.statuss == 1">Requested</a>
                                     <a style="margin-top: 5px;" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</a>
                                     <a style="float:left" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</a>
