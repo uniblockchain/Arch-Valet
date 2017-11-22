@@ -16,7 +16,7 @@
                     	<!-- Page content --> 
                         <div class="page-content">
                         <!-- Page header -->
-                        <div class="page-header"><div class="page-title"><h3>Dashboard <small>Welcome Admin. 12 hours since last visit</small></h3></div>
+                        <div class="page-header"><div class="page-title"><h3>Request <small>Welcome Admin</small></h3></div>
                         </div>
                         <!-- /page header -->
                         <!-- Breadcrumbs line -->
