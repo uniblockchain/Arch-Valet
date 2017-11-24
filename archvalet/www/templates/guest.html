@@ -34,9 +34,9 @@
 
 
                     <div class="row tableheader">
-                        <div class="col">Car Made
+                        <div class="col">Vehicle
                         </div>
-                        <div class="col">Color
+                        <div class="col">Made
                         </div>
                         <div class="col">Ticket No
                         </div>
@@ -48,9 +48,12 @@
                     <div ng-if="car.visitor == 1" ng-repeat="(key,car) in cars" class="card cardetails" >
                         <div class="item item-text-wrap mens-product">
                             <div class="row">
+								<div class="col cars_block">								
+									<img src="https://png.icons8.com/{{car.type}}/win8/50/{{car.color}}" ng-show = "car.type == 'truck' || car.type == 'suv'">
+									<img src="https://png.icons8.com/shuttle/win8/50/{{car.color}}" ng-show = "car.type == 'van'">
+									<img src="https://png.icons8.com/sedan/win8/50/{{car.color}}" ng-show = "car.type == 'sydain'">
+								</div>
                                 <div class="col">{{car.made}}
-                                </div>
-                                <div class="col">{{car.color}}
                                 </div>
                                 <div class="col">{{car.ticket_no}}
                                 </div>

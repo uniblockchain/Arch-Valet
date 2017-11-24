@@ -24,11 +24,11 @@ if (isset($car)) {
 
 
 
-                        <!-- Page content --> <div class="page-content"><!-- Page header --><div class="page-header"><div class="page-title"><h3>Add Guest Vehicle <small>Welcome Admin. <!--12 hours since last visit--></small></h3></div>
+                        <!-- Page content --> <div class="page-content"><!-- Page header --><div class="page-header"><div class="page-title"><h3><?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?><small>Welcome Admin. <!--12 hours since last visit--></small></h3></div>
                         </div>
                         <!-- /page header -->
                         <!-- Breadcrumbs line -->
-                        <div class="breadcrumb-line"><ul class="breadcrumb"><li><a href="<?php echo admin_url(); ?>">Home</a></li><li><a href="<?php echo admin_url('visitors'); ?>">Guest Vehicle</a></li><li class="active">Add Guest Vehicle</li></ul><div class="visible-xs breadcrumb-toggle"><a class="btn btn-link btn-lg btn-icon" data-toggle="collapse" data-target=".breadcrumb-buttons"><i class="icon-menu2"></i></a></div></div><!-- /breadcrumbs line --> 
+                        <div class="breadcrumb-line"><ul class="breadcrumb"><li><a href="<?php echo admin_url(); ?>">Home</a></li><li><a href="<?php echo admin_url('visitors'); ?>">Guest Vehicle</a></li><li class="active"><?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?></li></ul><div class="visible-xs breadcrumb-toggle"><a class="btn btn-link btn-lg btn-icon" data-toggle="collapse" data-target=".breadcrumb-buttons"><i class="icon-menu2"></i></a></div></div><!-- /breadcrumbs line --> 
 
 
 
@@ -42,7 +42,7 @@ if (isset($car)) {
                <div class="panel-heading">
                    <h6 class="panel-title">
                    <i class="icon-car"></i>
-                   <?php if (isset($cars)) { echo "Edit Guest Vehicle"; } else{ echo "Add Guest Vehicle"; }  ?>
+                   <?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?>
                    </h6>
                </div> 
                <div class="panel-body">
@@ -66,7 +66,7 @@ if (isset($car)) {
 							   </select> 
 						  </div>
 						  <div class="col-md-4 car_icon">
-							<img src="https://png.icons8.com/truck/win8/50/333333">
+								<img src="https://png.icons8.com/truck/win8/50/333333">
 						  </div>
 					  
                     </div>

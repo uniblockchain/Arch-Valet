@@ -41,7 +41,8 @@
 
 <div class="dropdown pull-right"> 
     <a href="#" class="dropdown-toggle panel-icon" data-toggle="dropdown"> <i class="icon-cog3"></i> <b class="caret"></b> </a>    <ul class="dropdown-menu icons-right dropdown-menu-right" style="display: none;">
-             <li><a href="<?php echo admin_url('report/generatepdf'); ?>"><i class="icon-file-pdf"></i> Download .pdf</a></li>
+             <li><a href="<?php echo admin_url('report/generatepdf/current'); ?>"><i class="icon-file-pdf"></i> Download .pdf</a></li>
+			 <li><a href="<?php echo admin_url('report/generatepdf/previous'); ?>"><i class="icon-file-pdf"></i> Download .pdf for previous month</a></li>
             <li><a href="javascript:void(0);" onclick="printContent('printable');"><i class="icon-print2"></i> Print report</a></li>
            
         </ul> 
@@ -68,8 +69,8 @@
 
 
                         </div> 
-                        <div class="datatable-add-row" > 
-                            <table class="table" id="example"> 
+                        <div class="" > 
+                            <table class="table" id="table"> 
                                 <thead> 
                                     <tr> 
                                         <th>#</th> 
@@ -84,42 +85,7 @@
 
                                 <tbody> 
 
-<?php
-$i=1; foreach($report as $u){ 
-$car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
-?>
 
-									<tr> 
-										<td><?php echo $i; ?></td> 
-										<td><?php echo $car_detail->unite_no; ?></td>
-										<td><?php echo $car_detail->made; ?></td> 
-										<td><?php echo $car_detail->model; ?></td> 
-										<td>
-										<?php if(!empty($u->requested_timestamp)){ 
-											echo date('h:i A', $u->requested_timestamp); 
-										} ?>   
-										</td> 
-										<td>
-										<?php if(!empty($u->requested_timestamp)){ 
-											echo date('M j, Y', $u->requested_timestamp); 
-										} ?>    
-										</td> 
-										<td>
-										<?php if($u->status == '0'){ ?>
-											<span class="label label-info">Requested</span>
-										<?php }if($u->status == '2'){ ?>
-											<span class="label label-success">Request accepted</span>
-										<?php }if($u->status == '3'){ ?>    
-											<span class="label label-danger">Request refused</span>
-										<?php }if($u->status == '4'){ ?>
-											<span class="label label-primary">Car in</span>
-										<?php } ?>   
-										</td>
-
-
-									</tr> 
-                                  
-<?php $i++; } ?>
                                 </tbody> 
                             </table> 
                         </div> 
@@ -139,4 +105,31 @@ function printContent(el){
     window.print();
     $('#printable').html(restorepage);
 }
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    //datatables
+    $('#table').DataTable({ 
+		 // "bDestroy": true,
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' server-side processing mode.
+        "order": [], //Initial no order.
+
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo admin_url('report/report_page')?>",
+            "type": "POST"
+        },
+
+        //Set column definition initialisation properties.
+        "columnDefs": [
+        { 
+            "targets": [ 0 ], //first column / numbering column
+            "orderable": false, //set not orderable
+        },
+        ],
+    });
+});
+
 </script>
