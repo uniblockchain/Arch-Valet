@@ -6,8 +6,10 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-//  var base_url = 'http://localhost/valet/';
-var base_url = 'http://archvaletapp.com/';
+ // var base_url = 'http://localhost/Arch-Valet/codeignitercode/index.php/';
+var base_url = 'http://abhishekarora.in/projects/archvalet/Arch-Valet/codeignitercode/index.php/';
+// var base_url = 'http://archvaletapp.com/';
+
  angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($ionicConfigProvider) {
