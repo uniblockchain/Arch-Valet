@@ -20,9 +20,9 @@
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
 		
-        <script type="text/javascript" src="<?php echo admin_js('jscolor.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('jquery.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('jquery-ui.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo admin_js('jscolor.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/charts/sparkline.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/forms/uniform.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/forms/select2.min.js'); ?>"></script>

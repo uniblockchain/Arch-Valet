@@ -27,6 +27,8 @@ class Admin_model extends CI_Model{
              return $query->row();
         }
     }
+	
+	
 }
 /*
  * To change this template, choose Tools | Templates

@@ -12,7 +12,7 @@ class Visitors extends Admin_Controller {
         // $data['all_requests'] = $this->db->get_where('tbl_requests', array('status'=>'1'))->result(); 
 		$data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
         
-		$data['cars'] = $this->db->select('*')->from('tbl_cars')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('visitor'=>'1','tbl_users.created_by'=> $this->session->userdata('admin_user_id')))->order_by('tbl_cars.id','desc')->get()->result();
+		$data['cars'] = $this->db->select('*, tbl_cars.id as car_id')->from('tbl_cars')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('visitor'=>'1','tbl_users.created_by'=> $this->session->userdata('admin_user_id')))->order_by('tbl_cars.id','desc')->get()->result();
 		
 		// $data['cars'] = $this->db->order_by('id','desc')->get_where('tbl_cars', array('visitor'=>'1'))->result();
         $data['title'] = 'Vistors Car Information';
