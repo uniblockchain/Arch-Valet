@@ -13,7 +13,7 @@ class Requests extends Admin_Controller {
 		
 		$data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 
-		$data['requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_requests.id','DESC')->order_by('tbl_requests.request_time','DESC')->get()->result();
+		$data['requests'] = $this->db->select('*, tbl_requests.id as id')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_requests.id','DESC')->order_by('tbl_requests.request_time','DESC')->get()->result();
 		
 		
         // $this->db->order_by('id','DESC');
@@ -93,7 +93,6 @@ class Requests extends Admin_Controller {
         $noti['title'] = 'Car is ready';
         $noti['date'] = time();
         $this->db->insert('tbl_notifications',$noti);
-        
 
         $this->load->model('push');
 
