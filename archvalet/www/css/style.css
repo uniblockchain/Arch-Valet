@@ -622,89 +622,74 @@ padding:0px;
     font-size: 16px;
 }
 
-.splash_screen {
-	height: 100%;
-	width: 100%;
-	position: fixed;
-	z-index: 99999;
-	top: 0;
-	background: #fff;
-	text-align: center;
+.loader {
+ height: 100%;
+ width: 100%;
+ position: fixed;
+ z-index: 99999;
+ top: 0;
+ background: #fff;
+ text-align: center;
 }
-.splash {
+.icon {
     display: block;
-    overflow: hidden;
+    overflow: visible;
     margin: 0 auto;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
 }
-.splash img{
-	padding:30px;
-	width: 150px;
+.icon img,.title img{
+	width: 160px;
 }
-.splash img {
-	-webkit-transform: scale(1);
-	-ms-transform: scale(1);
-	transform: scale(1);
-	-webkit-transform-origin: center center;
-	-ms-transform-origin: center center;
-	transform-origin: center center;
-	-webkit-animation: logo 1.2s linear;
-	animation: logo 1.2s linear;
+.icon img {
+ -webkit-transform-origin: center center;
+ -ms-transform-origin: center center;
+ transform-origin: center center;
+    -webkit-animation-name: object; / Chrome, Safari, Opera /
+    -webkit-animation-duration: 2s; / Chrome, Safari, Opera /
+    -webkit-animation-delay: 0s; / Chrome, Safari, Opera /
+ animation-name: object;
+ visibility: visible;
+ animation-delay: 0s;
+ animation-duration: 2s;
 }
-/ Animations /
+@-webkit-keyframes object {
+    0%   {opacity: 0; transform: translateY(-500px);}
+    100%  {transform: translateY(0px);}
+}
+@keyframes object {
+    0%   {opacity: 0; transform: translateY(-500px);}
+    100%  {transform: translateY(0px);}
+}
+.title{
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: #ef5055;
+}
+.title img{
+ -webkit-transform-origin: center center;
+ -ms-transform-origin: center center;
+ transform-origin: center center;
+    -webkit-animation-name: logo; / Chrome, Safari, Opera /
+    -webkit-animation-duration: 2s; / Chrome, Safari, Opera /
+    -webkit-animation-delay: 0s; / Chrome, Safari, Opera /
+ animation-name: logo;
+ visibility: visible;
+ animation-delay: 0s;
+ animation-duration: 2s;
+}
 @-webkit-keyframes logo {
-	0% {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	}
-	100% {
-	-webkit-transform: scale(1.3);
-	transform: scale(1.3);
-	}
+    0%   {opacity: 0; transform: translateY(500px);}
+    100%  {transform: translateY(0px);}
 }
+
 @keyframes logo {
-	0% {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	}
-	100% {
-	-webkit-transform: scale(1.3);
-	transform: scale(1.3);
-	}
-}
-.splash_screen .title{
-	display: block;
-	margin: 0 auto;
-	position: absolute;
-	left: 50%;
-	bottom: 10%;
-	transform: translate(-50%,-50%);
-	color: #ef5055;
-}
-.splash_screen .title h2{
-	-webkit-transform-origin: center center;
-	-ms-transform-origin: center center;
-	transform-origin: center center;
-	-webkit-animation-name: title;
-	-webkit-animation-duration: 2s;
-	-webkit-animation-delay: 0s;
-	animation-name: title;
-	visibility: visible;
-	animation-delay: 0s;
-	animation-duration: 2s;
-}
-@-webkit-keyframes title {
-	0%   {opacity: 0; transform: translateY(100px);}
-	60%  {opacity: 1; transform: translateY(-30px);}
-	80%  {transform: translateY(10px);}
-	100%  {transform: translateY(0px);}
-}
-@keyframes title {
-	0%   {opacity: 0; transform: translateY(100px);}
-	60%  {opacity: 1; transform: translateY(-30px);}
-	80%  {transform: translateY(10px);}
-	100%  {transform: translateY(0px);}
+    0%   {opacity: 0; transform: translateY(500px);}
+    100%  {transform: translateY(0px);}
 }
