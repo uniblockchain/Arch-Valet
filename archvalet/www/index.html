@@ -56,11 +56,11 @@
   </head>
   <body ng-app="starter" ng-controller="allController">
 	<!-- Splash Screen -->
-	 <div class="loader">
-	   <div class="icon">
+	 <div class="splash_screen">
+	   <div class="splash_icon">
 		<img src="img/splash-top.png" alt="archvalet">
 	   </div>
-	   <div class="title">
+	   <div class="splash_title">
 		<img src="img/splash-bottom.png" alt="archvalet">
 	   </div>
 	</div>
@@ -80,6 +80,6 @@
 </html>
 <script>
 	$(window).on('load', function() {
-	 $('.splash_screen').delay(2000).fadeOut('slow');
+	 $('.splash_screen').delay(4000).fadeOut('slow');
 	});
 </script>
