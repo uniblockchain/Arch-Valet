@@ -15,27 +15,10 @@
        
 <ion-refresher pulling-text="" on-refresh="loadCars()"></ion-refresher>
 
-           <div class="tsb-icons" can-swipe="true">
-                <div class="tsb-ic-wrp">
-                    <div class="row slideTop">
-                        <div   class="col col-50 vehi slideTop-col">
-                            <a href="javascript:;">My Vehicles</a>
-                        </div>
-                        <div  class="col col-50 slideTop-col">
-                            <a href="#/tab/guest">Guest</a>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-
-<!--
-
-                    <div ng-click="openAddForm()" class="row addcarrow">
-                        <div class="col col-100 addcar"><a>Add a Car</a></div>
-                    </div>-->
-
-
-                    <div class="row tableheader">
+       <!-- <ion-content scroll="false"> -->
+            <ion-slides slider="slider" ion-slides-tabs slide-tabs-scrollable="false">
+                <ion-slide-page ion-slide-tab-label="My Vehicles">
+					<div class="row tableheader">
 						<div class="col">Vehicle
                         </div>
                         <div class="col">Make
@@ -67,6 +50,51 @@
                             </div>
                         </div>
                     </div>
+				</ion-slide-page>
+                <ion-slide-page ion-slide-tab-label="Guest">
+					<div class="row tableheader">
+                        <div class="col">Vehicle
+                        </div>
+                        <div class="col">Made
+                        </div>
+                        <div class="col">Ticket No
+                        </div>
+                        <div class="col">Action
+                        </div>
+                    </div>
+
+                    
+                    <div ng-if="car.visitor == 1" ng-repeat="(key,car) in cars" class="card cardetails" >
+                        <div class="item item-text-wrap mens-product">
+                            <div class="row">
+								<div class="col cars_block">								
+									<img src="https://png.icons8.com/{{car.type}}/win8/50/{{car.color}}" ng-show = "car.type == 'truck' || car.type == 'suv'">
+									<img src="https://png.icons8.com/shuttle/win8/50/{{car.color}}" ng-show = "car.type == 'van'">
+									<img src="https://png.icons8.com/sedan/win8/50/{{car.color}}" ng-show = "car.type == 'sydain'">
+								</div>
+                                <div class="col">{{car.made}}
+                                </div>
+                                <div class="col">{{car.ticket_no}}
+                                </div>
+                                <div class="col requestLink">
+                                    <a class="requested" style="background:#269946; float:left;" ng-if="car.statuss == 1">Requested</a>
+                                    <a style="margin-top: 5px;" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</a>
+                                    <a style="float:left" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</a>
+                                    <a style="background:red" ng-if="car.statuss == 2">Car Out</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</ion-slide-page>
+            </ion-slides>
+        <!-- </ion-content> -->
+		   
+<!--
+
+                    <div ng-click="openAddForm()" class="row addcarrow">
+                        <div class="col col-100 addcar"><a>Add a Car</a></div>
+                    </div>-->
+
 
     </ion-content>
 

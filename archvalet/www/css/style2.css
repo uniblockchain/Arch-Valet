@@ -28,7 +28,7 @@
 }
 
 .tableheader{
-    background:#8e1009;
+    background:#848484;
     color:white;
     margin-top: 5px;
     margin-top: 1px;
@@ -318,7 +318,8 @@ margin-left: 8px;
 
 }
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
-    color: #8e1009;
+    color: #8e1009 !important;
+	border-color: #8e1009 !important;
 }
 .loginContent {
 	height: 100% !important;
@@ -338,4 +339,7 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
 }
 .cars_block img{
 	width: 50%;
+}
+.swiper-container-horizontal > .swiper-pagination{
+	display: none;
 }
