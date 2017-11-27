@@ -93,6 +93,7 @@ $scope.loadCarsGuest();
              
         }).success(function(data){
     $scope.cars = data;
+	console.log($scope.cars);
     })
          $http({
              url:base_url+'api/cars/fetch_cars_visitors/'+unite_no,
@@ -104,6 +105,7 @@ $scope.loadCarsGuest();
              
         }).success(function(data){
     $scope.visitors_cars = data;
+	console.log($scope.visitors_cars);
     })
     
     
@@ -122,6 +124,7 @@ $scope.loadCarsGuest();
              
         }).success(function(data){
     $scope.cars = data;
+	console.log($scope.cars);
     })
     }, 5000);
 
