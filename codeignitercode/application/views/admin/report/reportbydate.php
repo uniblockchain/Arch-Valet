@@ -16,7 +16,7 @@
                         <!-- Page content --> 
                         <div class="page-content">
                         <!-- Page header -->
-                        <div class="page-header"><div class="page-title"><h3>Dashboard <small>Welcome Admin. 12 hours since last visit</small></h3></div>
+                        <div class="page-header"><div class="page-title"><h3>Request Report  <small>Welcome Admin. <!-- 12 hours since last visit --></small></h3></div>
                         </div>
                         <!-- /page header -->
                         <!-- Breadcrumbs line -->
@@ -75,8 +75,10 @@
                                         <th>Unit No.</th> 
                                         <th>Make</th> 
                                         <th>Model</th> 
-                                        <th>Time</th>
-                                        <th>Date</th>
+                                        <th>Requested Time</th>
+                                        <th>Requested Date</th>
+                                        <th>Ready Time</th>
+                                        <th>Ready Date</th>
                                         <th>Status</th>
                                     </tr> 
                                 </thead>
@@ -88,34 +90,44 @@ $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
 
 ?>
                                     <tr> 
-                                        <td><?php echo $i; ?></td> 
-                                        <td><?php echo $car_detail->unite_no; ?></td>
-                                        <td><?php echo $car_detail->made; ?></td> 
-                                        <td><?php echo $car_detail->model; ?></td> 
-                                        <td>
-                                        <?php if(!empty($u->requested_timestamp)){ ?>
-                                        <?php echo date('h:i A', $u->requested_timestamp); ?>
-                                         <?php } ?>   
-                                        </td> 
-                                        <td>
-                                        <?php if(!empty($u->requested_timestamp)){ ?>
-                                        <?php echo date('M j, Y', $u->requested_timestamp);  ?>
-                                        <?php } ?>    
-                                        </td> 
-                                        <td>
-                                        <?php if($u->reqstatus == '0'){ ?>
-<span class="label label-info">Requested</span>
-                                        <?php }if($u->reqstatus == '2'){ ?>
-<span class="label label-success">Request accepted</span>
-                                        <?php }if($u->reqstatus == '3'){ ?>    
-<span class="label label-danger">Request refused</span>
-                                        <?php }if($u->reqstatus == '4'){ ?>
-<span class="label label-primary">Car in</span>                                        
-                                        <?php } ?>   
-                                        </td>
+										<td><?php echo $i; ?></td> 
+										<td><?php echo $car_detail->unite_no; ?></td>
+										<td><?php echo $car_detail->made; ?></td> 
+										<td><?php echo $car_detail->model; ?></td> 
+										<td>
+										<?php if(!empty($u->requested_timestamp)){ 
+											echo date('h:i A', $u->requested_timestamp); 
+										} ?>   
+										</td> 
+										<td>
+										<?php if(!empty($u->requested_timestamp)){ 
+											echo date('M j, Y', $u->requested_timestamp); 
+										} ?>    
+										</td> 
+										<td>
+										<?php if(!empty($u->updated_date_time)){ 
+											echo date('h:i A', $u->updated_date_time); 
+										} ?>   
+										</td>
+										<td>
+										<?php if(!empty($u->updated_date_time)){ 
+											echo date('M j, Y', $u->updated_date_time); 
+										} ?>    
+										</td> 
+										<td>
+										<?php if($u->reqstatus == '0'){ ?>
+											<span class="label label-info">Requested</span>
+										<?php }if($u->reqstatus == '2'){ ?>
+											<span class="label label-success">Request accepted</span>
+										<?php }if($u->reqstatus == '3'){ ?>    
+											<span class="label label-danger">Request refused</span>
+										<?php }if($u->reqstatus == '4'){ ?>
+											<span class="label label-primary">Car in</span>
+										<?php } ?>   
+										</td>
 
-                                  
-                                    </tr> 
+
+									</tr> 
 <?php $i++; } ?>
                                 </tbody> 
                             </table> 
