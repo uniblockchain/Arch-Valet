@@ -15,7 +15,7 @@ class Report extends Admin_Controller {
         // $data['all_requests'] = $this->db->get_where('tbl_requests', array('status'=>'1'))->result();
 		$data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 		
-		// $data['report'] =  $this->db->select('*')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('MONTH(FROM_UNIXTIME(requested_timestamp))'=> date('m'),'YEAR(FROM_UNIXTIME(requested_timestamp))'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
+		// $data['report'] =  $this->db->select('*,tbl_request_report.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('MONTH(FROM_UNIXTIME(requested_timestamp))'=> date('m'),'YEAR(FROM_UNIXTIME(requested_timestamp))'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
 				
         // $data['report'] = $this->db->order_by('id','desc')->get_where('tbl_request_report', array('MONTH(FROM_UNIXTIME(requested_timestamp))'=> date('m'),'YEAR(FROM_UNIXTIME(requested_timestamp))'=> date('Y')))->result();
 		
@@ -75,11 +75,11 @@ class Report extends Admin_Controller {
         // $data['report'] = $this->db->order_by('id','desc')->get_where('tbl_request_report', array('MONTH(FROM_UNIXTIME(requested_timestamp))'=> date('m')-1,'YEAR(FROM_UNIXTIME(requested_timestamp))'=> date('Y')))->result();
 		
 		if($month == "current"){
-			$data['report'] =  $this->db->select('*')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('MONTH(FROM_UNIXTIME(requested_timestamp))'=> date('m'),'YEAR(FROM_UNIXTIME(requested_timestamp))'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
+			$data['report'] =  $this->db->select('*,tbl_request_report.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('MONTH(FROM_UNIXTIME(tbl_request_report.requested_timestamp))'=> date('m'),'YEAR(FROM_UNIXTIME(tbl_request_report.requested_timestamp))'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
 		} else {
-			$data['report'] =  $this->db->select('*')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('MONTH(FROM_UNIXTIME(requested_timestamp))'=> date('m')-1,'YEAR(FROM_UNIXTIME(requested_timestamp))'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
+			$data['report'] =  $this->db->select('*,tbl_request_report.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('MONTH(FROM_UNIXTIME(tbl_request_report.requested_timestamp))'=> (date('m')-1),'YEAR(FROM_UNIXTIME(tbl_request_report.requested_timestamp))'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
 		}
-
+		
         //load the view and saved it into $html variable
         $html=$this->load->view('admin/reportpage', $data, true);
  
@@ -89,20 +89,19 @@ class Report extends Admin_Controller {
         //this the the PDF filename that user will get to download
         $pdfFilePath = $today.'-valet-report.pdf';
  
-
-        //load mPDF library
-        $this->load->library('m_pdf');
+         //load mPDF library
+		ob_clean();
+        $this->load->library('pdf');
+        $pdf = $this->pdf->load();
 		
-		// echo $pdfFilePath;
        // debug($html); 
 	   // exit;
- 
   
        //generate the PDF from the given html
-        $this->m_pdf->pdf->WriteHTML($html);
+        $pdf->WriteHTML($html);
  
         //download it.
-        $this->m_pdf->pdf->Output("../uploads/".$pdfFilePath, "D");   
+        $pdf->Output($pdfFilePath, "D");   
          exit;
         redirect(admin_url('report'));     
     }
@@ -122,7 +121,7 @@ class Report extends Admin_Controller {
 		$data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 		
         // $data['report'] = $this->db->order_by('id','desc')->get_where('tbl_request_report', array('requested_date'=>$date))->result();
-		$data['report'] =  $this->db->select('*')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('requested_date'=>$date,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
+		$data['report'] =  $this->db->select('*,tbl_request_report.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('requested_date'=>$date,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
 		
 		
         $data['printdate'] = $date;
@@ -137,12 +136,10 @@ class Report extends Admin_Controller {
         //echo $date; exit;
         if($date){
         // $data['report'] = $this->db->order_by('id','desc')->get_where('tbl_request_report', array('requested_date'=>$date))->result();
-		$data['report'] =  $this->db->select('*')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('requested_date'=>$date,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
+		$data['report'] =  $this->db->select('*,tbl_request_report.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('requested_date'=>$date,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_request_report.id','DESC')->get()->result();
         }else{
             $data['report'] = array('error:'=>'Nodate'); 
         }
-
-        
 
         //load the view and saved it into $html variable
         $html=$this->load->view('admin/reportpage', $data, true);
@@ -156,13 +153,18 @@ class Report extends Admin_Controller {
         $pdfFilePath = $today.'-valet-report.pdf';
  
         //load mPDF library
-        $this->load->library('m_pdf');
- 
+		ob_clean();
+        $this->load->library('pdf');
+        $pdf = $this->pdf->load();
+		
+       // debug($html); 
+	   // exit;
+  
        //generate the PDF from the given html
-        $this->m_pdf->pdf->WriteHTML($html);
+        $pdf->WriteHTML($html);
  
         //download it.
-        $this->m_pdf->pdf->Output($pdfFilePath, "D");   
+        $pdf->Output($pdfFilePath, "D"); ;   
         exit;
         redirect(admin_url('report'));     
     }
