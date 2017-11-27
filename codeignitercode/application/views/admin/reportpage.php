@@ -19,11 +19,8 @@
                                     <tr> 
                                         <th>#</th> 
                                         <th>Unite No.</th> 
-                                        <th>Parking Spot</th> 
                                         <th>Made</th> 
                                         <th>Model</th> 
-                                        <th>Color</th>
-                                        <th>Plate No.</th> 
                                         <th>Time</th>
                                         <th>Date</th>
                                         <th>Status</th>
@@ -31,35 +28,41 @@
                                 </thead>
 
                                 <tbody> 
-<?php 
+<?php
 $i=1; foreach($report as $u){ 
 $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
-
 ?>
-                                    <tr> 
-                                        <td><?php echo $i; ?></td> 
-                                        <td><?php echo $car_detail->unite_no; ?></td> 
-                                        <td><?php echo $car_detail->parking_spot; ?></td> 
-                                        <td><?php echo $car_detail->made; ?></td> 
-                                        <td><?php echo $car_detail->model; ?></td> 
-                                        <td><?php echo $car_detail->color; ?></td> 
-                                        <td><?php echo $car_detail->plate_number; ?></td>
-                                        <td><?php echo date('h:i A', $u->requested_timestamp); ?></td> 
-                                        <td><?php echo date('M j, Y', $u->requested_timestamp);  ?></td> 
-                                        <td>
-                                        <?php if($u->status == '0'){ ?>
-<span class="label label-info">Requested</span>
-                                        <?php }if($u->status == '2'){ ?>
-<span class="label label-success">Request accepted</span>
-                                        <?php }if($u->status == '3'){ ?>    
-<span class="label label-danger">Request refused</span>
-                                        <?php }if($u->status == '4'){ ?>
-<span class="label label-primary">Car in</span>                                        
-                                        <?php } ?>   
-                                        </td>
 
+									<tr> 
+										<td><?php echo $i; ?></td> 
+										<td><?php echo $car_detail->unite_no; ?></td>
+										<td><?php echo $car_detail->made; ?></td> 
+										<td><?php echo $car_detail->model; ?></td> 
+										<td>
+										<?php if(!empty($u->requested_timestamp)){ 
+											echo date('h:i A', $u->requested_timestamp); 
+										} ?>   
+										</td> 
+										<td>
+										<?php if(!empty($u->requested_timestamp)){ 
+											echo date('M j, Y', $u->requested_timestamp); 
+										} ?>    
+										</td> 
+										<td>
+										<?php if($u->reqstatus == '0'){ ?>
+											<span class="label label-info">Requested</span>
+										<?php }if($u->reqstatus == '2'){ ?>
+											<span class="label label-success">Request accepted</span>
+										<?php }if($u->reqstatus == '3'){ ?>    
+											<span class="label label-danger">Request refused</span>
+										<?php }if($u->reqstatus == '4'){ ?>
+											<span class="label label-primary">Car in</span>
+										<?php } ?>   
+										</td>
+
+
+									</tr> 
                                   
-                                    </tr> 
 <?php $i++; } ?>
                                 </tbody> 
                             </table> 

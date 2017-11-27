@@ -103,13 +103,13 @@ $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
                                         <?php } ?>    
                                         </td> 
                                         <td>
-                                        <?php if($u->status == '0'){ ?>
+                                        <?php if($u->reqstatus == '0'){ ?>
 <span class="label label-info">Requested</span>
-                                        <?php }if($u->status == '2'){ ?>
+                                        <?php }if($u->reqstatus == '2'){ ?>
 <span class="label label-success">Request accepted</span>
-                                        <?php }if($u->status == '3'){ ?>    
+                                        <?php }if($u->reqstatus == '3'){ ?>    
 <span class="label label-danger">Request refused</span>
-                                        <?php }if($u->status == '4'){ ?>
+                                        <?php }if($u->reqstatus == '4'){ ?>
 <span class="label label-primary">Car in</span>                                        
                                         <?php } ?>   
                                         </td>
