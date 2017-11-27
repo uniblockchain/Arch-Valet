@@ -489,15 +489,34 @@ $scope.loadCarsGuest();
 })
 
 .controller('buildingCtrl', function($scope,$http,$location,$ionicLoading,RequestsService) {
-    window.setInterval(function(){
-	$ionicLoading.show({
+    $ionicLoading.show({
             template: '<ion-spinner icon="spiral"></ion-spinner>'
     }).then(function(){
-       //console.log("The loading indicator is now displayed");
+       console.log("The loading indicator is now displayed");
+	   $http({
+			 url:base_url+'api/building/fetch_buildings/',
+			  method:'get',
+		dataType:'json',
+		 headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			 
+		}).success(function(data){          
+		$ionicLoading.hide();
+		$scope.buildings = data;
+		// console.log( $scope.buildings);
+		})
+
     });
-
-
-         $http({
+	
+	window.setInterval(function(){
+		// $ionicLoading.show({
+            // template: '<ion-spinner icon="spiral"></ion-spinner>'
+		// }).then(function(){
+		   // console.log("The loading indicator is now displayed");
+		// });
+		
+	    $http({
              url:base_url+'api/building/fetch_buildings/',
               method:'get',
         dataType:'json',
@@ -506,7 +525,7 @@ $scope.loadCarsGuest();
                 }
              
         }).success(function(data){          
-		$ionicLoading.hide();
+		// $ionicLoading.hide();
 		$scope.buildings = data;
 		// console.log( $scope.buildings);
 		})
