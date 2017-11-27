@@ -23,6 +23,7 @@ $(function() {
 	//===== Default datatable =====//
 
 	oTable = $('.datatable table').dataTable({
+		
 		"bJQueryUI": false,
 		"bAutoWidth": false,
 		"sPaginationType": "full_numbers",

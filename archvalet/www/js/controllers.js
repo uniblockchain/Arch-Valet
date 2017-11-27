@@ -93,7 +93,7 @@ $scope.loadCarsGuest();
              
         }).success(function(data){
     $scope.cars = data;
-	console.log($scope.cars);
+	// console.log($scope.cars);
     })
          $http({
              url:base_url+'api/cars/fetch_cars_visitors/'+unite_no,
@@ -105,7 +105,7 @@ $scope.loadCarsGuest();
              
         }).success(function(data){
     $scope.visitors_cars = data;
-	console.log($scope.visitors_cars);
+	// console.log($scope.visitors_cars);
     })
     
     
@@ -124,7 +124,7 @@ $scope.loadCarsGuest();
              
         }).success(function(data){
     $scope.cars = data;
-	console.log($scope.cars);
+	// console.log($scope.cars);
     })
     }, 5000);
 
@@ -490,7 +490,13 @@ $scope.loadCarsGuest();
 
 .controller('buildingCtrl', function($scope,$http,$location,$ionicLoading,RequestsService) {
     window.setInterval(function(){
-  
+	$ionicLoading.show({
+            template: '<ion-spinner icon="spiral"></ion-spinner>'
+    }).then(function(){
+       //console.log("The loading indicator is now displayed");
+    });
+
+
          $http({
              url:base_url+'api/building/fetch_buildings/',
               method:'get',
@@ -499,9 +505,10 @@ $scope.loadCarsGuest();
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
              
-        }).success(function(data){
+        }).success(function(data){          
+		$ionicLoading.hide();
 		$scope.buildings = data;
-		console.log( $scope.buildings);
+		// console.log( $scope.buildings);
 		})
     }, 5000);
  

@@ -69,22 +69,69 @@
 
 
                         </div> 
-                        <div class="" > 
-                            <table class="table" id="table"> 
+                        <div class="datatable-add-row" > 
+                            <table class="table" >
                                 <thead> 
                                     <tr> 
                                         <th>#</th> 
                                         <th>Unit No.</th> 
                                         <th>Make</th> 
                                         <th>Model</th> 
-                                        <th>Time</th>
-                                        <th>Date</th>
+                                        <th>Requested Time</th>
+                                        <th>Requested Date</th>
+                                        <th>Ready Time</th>
+                                        <th>Ready Date</th>
                                         <th>Status</th>
                                     </tr> 
                                 </thead>
 
                                 <tbody> 
+									<?php
+									$i=1; foreach($report as $u){ 
+									$car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
+									?>
 
+									<tr> 
+										<td><?php echo $i; ?></td> 
+										<td><?php echo $car_detail->unite_no; ?></td>
+										<td><?php echo $car_detail->made; ?></td> 
+										<td><?php echo $car_detail->model; ?></td> 
+										<td>
+										<?php if(!empty($u->requested_timestamp)){ 
+											echo date('h:i A', $u->requested_timestamp); 
+										} ?>   
+										</td> 
+										<td>
+										<?php if(!empty($u->requested_timestamp)){ 
+											echo date('M j, Y', $u->requested_timestamp); 
+										} ?>    
+										</td> 
+										<td>
+										<?php if(!empty($u->updated_date_time)){ 
+											echo date('h:i A', $u->updated_date_time); 
+										} ?>   
+										</td>
+										<td>
+										<?php if(!empty($u->updated_date_time)){ 
+											echo date('M j, Y', $u->updated_date_time); 
+										} ?>    
+										</td> 
+										<td>
+										<?php if($u->reqstatus == '0'){ ?>
+											<span class="label label-info">Requested</span>
+										<?php }if($u->reqstatus == '2'){ ?>
+											<span class="label label-success">Request accepted</span>
+										<?php }if($u->reqstatus == '3'){ ?>    
+											<span class="label label-danger">Request refused</span>
+										<?php }if($u->reqstatus == '4'){ ?>
+											<span class="label label-primary">Car in</span>
+										<?php } ?>   
+										</td>
+
+
+									</tr> 
+                                  
+<?php $i++; } ?>
 
                                 </tbody> 
                             </table> 
@@ -108,7 +155,7 @@ function printContent(el){
 </script>
 
 <script type="text/javascript">
-$(document).ready(function() {
+/* $(document).ready(function() {
     //datatables
     $('#table').DataTable({ 
 		 // "bDestroy": true,
@@ -130,6 +177,6 @@ $(document).ready(function() {
         },
         ],
     });
-});
+});  */
 
 </script>
