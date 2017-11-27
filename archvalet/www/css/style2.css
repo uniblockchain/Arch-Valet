@@ -122,7 +122,51 @@
     padding-top: 0px!important;
 }
 .tab-item{
-    padding-top: 9px;
+    padding-top: 5px;
+}
+.bottom-tabs.tabs-striped .tabs {
+    border-bottom: none;
+}
+.bottom-tabs .tab-item{
+    max-width: initial;
+}
+.bottom-tabs .tab-item .icon {
+    height: auto;
+}
+.bottom-tabs .tab-item .tab-title {
+    font-size: 13px;
+}
+.car-list.list{
+    margin-bottom: 0;
+}
+.car-list .item{
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+.car-list .item-thumbnail-left {
+    padding-left: 16px;
+}
+.car-list .item .thumbnail {
+    width: 20%;
+    height: 80px;
+    float: left;
+    margin-right: 20px;
+}
+.car-list .item .thumbnail img {
+    width: 100%;
+}
+.car-list .button{
+    height: auto;
+    min-height: auto;
+    line-height: initial;
+    padding: 5px 12px;
+    margin-top: 10px;
+}
+.car-list .button-assertive{
+    background-color: #8e1009;
+}
+.popup-container .popup{
+    background-color: #fff;
 }
 
 .notification-content{
@@ -262,13 +306,12 @@
 }
 
 
-.loginhome{
-position: absolute;
-font-size: 27px;
-color: #ccc;
-margin-top: 5px!important;
-margin-left: 8px;
-
+.loginhome {
+    position: absolute;
+    font-size: 22px;
+    color: #ccc;
+    line-height: 40px;
+    margin-left: 8px;
 }
 
 .logininputfield{
