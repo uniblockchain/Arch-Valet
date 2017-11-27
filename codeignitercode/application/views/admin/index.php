@@ -1,42 +1,23 @@
 <?php include('header.php'); ?>
-
-
-                    <!-- Page container --> 
-                    <div class="page-container">
-
-<?php include('sidebar.php'); ?>
-
-
-
-
-
-
-
-                        <!-- Page content --> <div class="page-content"><!-- Page header --><div class="page-header"><div class="page-title"><h3>Dashboard <small>Welcome <?php echo $this->session->userdata('admin_name'); ?></small></h3></div>
-                        </div>
-                        <!-- /page header -->
-                        <!-- Breadcrumbs line -->
-                        <div class="breadcrumb-line">
-                            <ul class="breadcrumb">
-                                <li><a href="<?php echo admin_url(); ?>">Home</a></li>
-                                <li class="active">Dashboard</li>
-                            </ul>
-                        <div class="visible-xs breadcrumb-toggle"><a class="btn btn-link btn-lg btn-icon" data-toggle="collapse" data-target=".breadcrumb-buttons"><i class="icon-menu2"></i></a></div></div><!-- /breadcrumbs line --> 
-
-
-<?php include('dashboard.php'); ?>
-
-
-                   
-
-
+    <!-- Page container --> 
+        <div class="page-container">
+            <?php include('sidebar.php'); ?>
+                <!-- Page content -->
+                <div class="page-content">
+                    <?php include('dashboard.php'); ?>
                     <!-- Footer --> 
-                    <div class="footer clearfix"> 
-                        <div class="pull-left">&copy; <?php echo date("Y"); ?> <a href="#"><?=config_item('site_name');?></a> | Admin Panel
+                    <footer class="main-footer">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <p><a href="#"><?=config_item('site_name');?></a> &copy; <?php echo date("Y"); ?></p>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                              <p>Design by <a href="#" class="external"></a></p>
+                            </div>
+                          </div>
                         </div> 
-                        <div class="pull-right icons-group"> <a href="#"><i class="icon-screen2"></i></a> <a href="#"><i class="icon-balance"></i></a> <a href="#"><i class="icon-cog3"></i></a> 
-                        </div> 
-                    </div> 
+                    </footer> 
                     <!-- /footer -->
                 </div><!-- /page content -->
             </div><!-- /page container -->
