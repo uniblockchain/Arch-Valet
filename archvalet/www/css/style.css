@@ -622,7 +622,7 @@ padding:0px;
     font-size: 16px;
 }
 
-.loader {
+.splash_screen {
  height: 100%;
  width: 100%;
  position: fixed;
@@ -631,7 +631,7 @@ padding:0px;
  background: #fff;
  text-align: center;
 }
-.icon {
+.splash_icon {
     display: block;
     overflow: visible;
     margin: 0 auto;
@@ -640,10 +640,10 @@ padding:0px;
     top: 50%;
     transform: translate(-50%,-50%);
 }
-.icon img,.title img{
+.splash_icon img,.splash_title img{
 	width: 160px;
 }
-.icon img {
+.splash_icon img {
  -webkit-transform-origin: center center;
  -ms-transform-origin: center center;
  transform-origin: center center;
@@ -663,7 +663,7 @@ padding:0px;
     0%   {opacity: 0; transform: translateY(-500px);}
     100%  {transform: translateY(0px);}
 }
-.title{
+.splash_title{
     display: block;
     margin: 0 auto;
     position: absolute;
@@ -672,7 +672,7 @@ padding:0px;
     transform: translate(-50%,-50%);
     color: #ef5055;
 }
-.title img{
+.splash_title img{
  -webkit-transform-origin: center center;
  -ms-transform-origin: center center;
  transform-origin: center center;
