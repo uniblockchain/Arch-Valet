@@ -11,44 +11,78 @@
           </div>-->
     </ion-header-bar>
 
-    <ion-content scroll="true">
+    <ion-content>
        
-<ion-refresher pulling-text="Pull to Refresh" on-refresh="loadCars()"></ion-refresher>
+<ion-refresher pulling-text="" on-refresh="loadCars()"></ion-refresher>
 
        <!-- <ion-content scroll="false"> -->
             <ion-slides slider="slider" ion-slides-tabs slide-tabs-scrollable="false">
                 <ion-slide-page ion-slide-tab-label="My Vehicles">
-                    <div class="car-list list" ng-if="car.visitor == 0" ng-repeat="(key,car) in cars" class="card cardetails">
-                        <div class="item item-thumbnail-left">
-                            <div class="thumbnail">
-                                <img src="https://png.icons8.com/{{car.type}}/win8/50/{{car.color}}" data-ng-class="{ 'cariconvisible': (car.type == 'truck' || car.type == 'suv') }" style="display: none;">
-                                <img src="https://png.icons8.com/shuttle/win8/50/{{car.color}}" data-ng-class="{ 'cariconvisible': (car.type == 'van') }" style="display: none;">
-                                <img src="https://png.icons8.com/sedan/win8/50/{{car.color}}" data-ng-class="{ 'cariconvisible': (car.type == 'sydain') }" style="display: none;">
+					<div class="row tableheader">
+						<div class="col">Vehicle
+                        </div>
+                        <div class="col">Make
+                        </div>
+                        <div class="col">Model
+                        </div>
+                        <div class="col">Action
+                        </div>
+                    </div>
+                    
+                    <div ng-if="car.visitor == 0" ng-repeat="(key,car) in cars" class="card cardetails" >
+                        <div class="item item-text-wrap mens-product">
+                            <div class="row">
+								<div class="col cars_block">								
+									<img src="https://png.icons8.com/{{car.type}}/win8/50/{{car.color}}" ng-show = "car.type == 'truck' || car.type == 'suv'">
+									<img src="https://png.icons8.com/shuttle/win8/50/{{car.color}}" ng-show = "car.type == 'van'">
+									<img src="https://png.icons8.com/sedan/win8/50/{{car.color}}" ng-show = "car.type == 'sydain'">
+								</div>
+                                <div class="col">{{car.made}}
+                                </div>
+                                <div class="col">{{car.model}}
+                                </div>
+                                <div class="col requestLink">
+                                    <a class="requested" style="background:#269946; float:left;" ng-if="car.statuss == 1">Requested</a>
+                                    <a style="margin-top: 5px;" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</a>
+                                    <a style="float:left" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</a>
+                                    <a style="background:red" ng-if="car.statuss == 2">Car Out</a>
+                                </div>
                             </div>
-                            <h2>Make: {{car.made}}</h2>
-                            <h2>Model: {{car.model}}</h2>
-                            <button class="requested button button-balanced" ng-if="car.statuss == 1">Requested</button>
-                            <button class="button button-assertive" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</button>
-                            <button class="button button-balanced" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
-                            <button class="button button-assertive" ng-if="car.statuss == 2">Car Out</button>
                         </div>
                     </div>
 				</ion-slide-page>
                 <ion-slide-page ion-slide-tab-label="Guest">
+					<div class="row tableheader">
+                        <div class="col">Vehicle
+                        </div>
+                        <div class="col">Made
+                        </div>
+                        <div class="col">Ticket No
+                        </div>
+                        <div class="col">Action
+                        </div>
+                    </div>
 
-                    <div class="car-list list" ng-if="car.visitor == 1" ng-repeat="(key,car) in cars" class="card cardetails" >
-                        <div class="item item-thumbnail-left">
-                            <div class="thumbnail">
-                                <img src="https://png.icons8.com/{{car.type}}/win8/50/{{car.color}}" data-ng-class="{ 'cariconvisible': (car.type == 'truck' || car.type == 'suv') }" style="display: none;">
-                                <img src="https://png.icons8.com/shuttle/win8/50/{{car.color}}" data-ng-class="{ 'cariconvisible': (car.type == 'van') }" style="display: none;">
-                                <img src="https://png.icons8.com/sedan/win8/50/{{car.color}}" data-ng-class="{ 'cariconvisible': (car.type == 'sydain') }" style="display: none;">
+                    
+                    <div ng-if="car.visitor == 1" ng-repeat="(key,car) in cars" class="card cardetails" >
+                        <div class="item item-text-wrap mens-product">
+                            <div class="row">
+								<div class="col cars_block">								
+									<img src="https://png.icons8.com/{{car.type}}/win8/50/{{car.color}}" ng-show = "car.type == 'truck' || car.type == 'suv'">
+									<img src="https://png.icons8.com/shuttle/win8/50/{{car.color}}" ng-show = "car.type == 'van'">
+									<img src="https://png.icons8.com/sedan/win8/50/{{car.color}}" ng-show = "car.type == 'sydain'">
+								</div>
+                                <div class="col">{{car.made}}
+                                </div>
+                                <div class="col">{{car.ticket_no}}
+                                </div>
+                                <div class="col requestLink">
+                                    <a class="requested" style="background:#269946; float:left;" ng-if="car.statuss == 1">Requested</a>
+                                    <a style="margin-top: 5px;" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</a>
+                                    <a style="float:left" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</a>
+                                    <a style="background:red" ng-if="car.statuss == 2">Car Out</a>
+                                </div>
                             </div>
-                            <h2>Car Made: {{car.made}}</h2>
-                            <h2>Ticket No.: {{car.ticket_no}}</h2>
-                            <button class="requested button button-balanced" ng-if="car.statuss == 1">Requested</button>
-                            <button class="button button-assertive" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</button>
-                            <button class="button button-balanced" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
-                            <button class="button button-assertive" ng-if="car.statuss == 2">Car Out</a>
                         </div>
                     </div>
 				</ion-slide-page>
