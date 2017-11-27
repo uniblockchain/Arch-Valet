@@ -7,21 +7,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><?php echo config_item('site_name'); ?> || Admin Panel</title>
 
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.filter.css" />
+        <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.filter.css" />
-<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
+        <!-- <link href="<?php echo admin_css('bootstrap.min.css'); ?>" rel="stylesheet" type="text/css"> -->
+        <!-- <link href="<?php echo admin_css('londinium-theme.min.css'); ?>" rel="stylesheet" type="text/css"> -->
+        <!-- <link href="<?php echo admin_css('styles.min.css'); ?>" rel="stylesheet" type="text/css"> -->
+        <!-- <link href="<?php echo admin_css('icons.min.css'); ?>" rel="stylesheet" type="text/css"> -->
 
-        <link href="<?php echo admin_css('bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
-        <link href="<?php echo admin_css('londinium-theme.min.css'); ?>" rel="stylesheet" type="text/css">
-        <link href="<?php echo admin_css('styles.min.css'); ?>" rel="stylesheet" type="text/css">
-        <link href="<?php echo admin_css('icons.min.css'); ?>" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/vendor/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?php echo admin_css('fontastic.css'); ?>">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <link rel="stylesheet" href="<?php echo admin_css('grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+        <link rel="stylesheet" href="<?php echo admin_css('style.red.css'); ?>" id="theme-stylesheet">
+        <link rel="stylesheet" href="<?php echo admin_css('custom.css'); ?>">
 
 
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css"> -->
 		
-        <script type="text/javascript" src="<?php echo admin_js('jquery.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo admin_js('jquery-ui.min.js'); ?>"></script>
+        <!-- <script type="text/javascript" src="<?php echo admin_js('jquery.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo admin_js('jquery-ui.min.js'); ?>"></script> -->
         <script type="text/javascript" src="<?php echo admin_js('jscolor.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/charts/sparkline.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/forms/uniform.min.js'); ?>"></script>
@@ -47,11 +55,23 @@
         <script type="text/javascript" src="<?php echo admin_js('plugins/interface/fullcalendar.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/interface/timepicker.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/interface/collapsible.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo admin_js('bootstrap.min.js'); ?>"></script>
+        <!-- <script type="text/javascript" src="<?php echo admin_js('bootstrap.min.js'); ?>"></script> -->
         <script type="text/javascript" src="<?php echo admin_js('application.js'); ?>"></script>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.filter.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.filter.js"></script>
+
+         <!-- Javascript files-->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
+        <script src="<?php echo base_url(); ?>assets/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
+        <script src="<?php echo admin_js('grasp_mobile_progress_circle-1.0.0.min.js'); ?>"></script>
+        <script src="<?php echo base_url(); ?>assets/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/admin/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="<?php echo admin_js('charts-home.js'); ?>"></script>
+        <script src="<?php echo admin_js('front.js'); ?>"></script>
 
 
 <script type="text/javascript">
@@ -61,46 +81,25 @@
 
 
     </head>
-    <body class="sidebar-wide" >
-        <!-- Navbar -->
-        <div class="navbar navbar-inverse" role="navigation">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="<?php  echo admin_url(); ?>"><h1 style='text-transform:capitalize;'><?php //echo config_item('site_name') ;?> 
-				<?php  if($this->session->userdata('admin_role') == "superadmin") { 
-					echo $this->session->userdata('admin_name'); 
-				} else {
-					echo $this->session->userdata('admin_building_name');  
-				} ?></h1></a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons">
-                    <span class="sr-only">Toggle navbar</span><i class="icon-grid3"></i>
-                </button>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar">
-                    <span class="sr-only">Toggle navigation</span><i class="icon-paragraph-justify2"></i>
-                </button>
-            </div>
-            <ul class="nav navbar-nav navbar-right collapse" id="navbar-icons">
-                <li class="dropdown">
-                    <a href="<?php  echo admin_url('requests'); ?>"><i class="icon-bell"></i><span id="autorefresh1" class="label label-default"><?php echo count($all_requests); ?></span></a>
+    <body>
+    <div class="page home-page">
+        <!-- navbar-->
+        <header class="header">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-holder d-flex align-items-center justify-content-between">
+                        <div class="navbar-header">
+                            <a id="toggle-btn" href="#" class="menu-btn">
+                                <i class="icon-bars"> </i>
+                            </a>
+                        </div>
 
-                </li>
-               
-
-            <li class="user dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="<?php echo admin_img('user.png'); ?>" alt="">
-                    <span><?php echo $this->session->userdata('admin_name'); ?></span>
-                    <i class="caret"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right icons-right">
-                    <li>
-                        <a href="#">
-                            <i class="icon-user">
-                            </i> Profile</a>
-                        </li>
-
-                        <li><a href="<?php echo admin_url('login/logout'); ?>"><i class="icon-exit"></i> Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- /navbar -->
+                        <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                            <li class="nav-item dropdown"> <a href="<?php  echo admin_url('requests'); ?>" class="nav-link"><i class="fa fa-bell"></i><span id="autorefresh1" class="badge badge-info"><strong><?php echo count($all_requests); ?></strong></span></a>
+                            <li class="nav-item"><a href="<?php echo admin_url('#'); ?>" class="nav-link logout">Profile<i class="fa fa-user"></i></a></li>
+                            <li class="nav-item"><a href="<?php echo admin_url('login/logout'); ?>" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+      </header>

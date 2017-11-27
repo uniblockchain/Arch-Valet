@@ -1,17 +1,22 @@
-                   
+                
 
-
-                    <!-- Footer --> 
-                    <div class="footer clearfix"> 
-                        <div class="pull-left">&copy; <?php echo date("Y"); ?> <a href="#"><?=config_item('site_name');?></a> | Admin Panel
-                        </div> 
-                        <div class="pull-right icons-group"> <a href="#"><i class="icon-screen2"></i></a> <a href="#"><i class="icon-balance"></i></a> <a href="#"><i class="icon-cog3"></i></a> 
-                        </div> 
-                    </div> 
-                    <!-- /footer -->
-                </div><!-- /page content -->
-            </div><!-- /page container -->
-        </body>
+            <!-- Footer --> 
+            <footer class="main-footer">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <p><a href="#"><?=config_item('site_name');?></a> &copy; <?php echo date("Y"); ?></p>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                      <p>Design by <a href="#" class="external"></a></p>
+                    </div>
+                  </div>
+                </div> 
+            </footer> 
+            <!-- /footer -->
+        </div><!-- /page content -->
+    </div><!-- /page container -->
+</body>
 
 
 
