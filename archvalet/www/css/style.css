@@ -640,8 +640,9 @@ padding:0px;
     top: 50%;
     transform: translate(-50%,-50%);
 }
-.splash_icon img,.splash_title img{
-	width: 160px;
+.splash_icon img, .splash_title img {
+    width: 160px;
+    image-rendering: -webkit-optimize-contrast;
 }
 .splash_icon img {
  -webkit-transform-origin: center center;
@@ -692,4 +693,8 @@ padding:0px;
 @keyframes logo {
     0%   {opacity: 0; transform: translateY(500px);}
     100%  {transform: translateY(0px);}
+}
+
+.cariconvisible{
+    display: inline !important;
 }
