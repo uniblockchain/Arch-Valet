@@ -13,7 +13,7 @@
 
         <!-- <link href="<?php echo admin_css('bootstrap.min.css'); ?>" rel="stylesheet" type="text/css"> -->
         <!-- <link href="<?php echo admin_css('londinium-theme.min.css'); ?>" rel="stylesheet" type="text/css"> -->
-        <!-- <link href="<?php echo admin_css('styles.min.css'); ?>" rel="stylesheet" type="text/css"> -->
+        <link href="<?php echo admin_css('styles.min.css'); ?>" rel="stylesheet" type="text/css">
         <!-- <link href="<?php echo admin_css('icons.min.css'); ?>" rel="stylesheet" type="text/css"> -->
 
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/vendor/bootstrap/css/bootstrap.min.css">
@@ -28,8 +28,10 @@
 
         <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css"> -->
 		
-        <!-- <script type="text/javascript" src="<?php echo admin_js('jquery.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo admin_js('jquery-ui.min.js'); ?>"></script> -->
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <!--   <script type="text/javascript" src="<?php echo admin_js('jquery.min.js'); ?>"></script> -->
+        <script type="text/javascript" src="<?php echo admin_js('jquery-ui.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('jscolor.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/charts/sparkline.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/forms/uniform.min.js'); ?>"></script>
@@ -56,13 +58,12 @@
         <script type="text/javascript" src="<?php echo admin_js('plugins/interface/timepicker.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/interface/collapsible.min.js'); ?>"></script>
         <!-- <script type="text/javascript" src="<?php echo admin_js('bootstrap.min.js'); ?>"></script> -->
-        <script type="text/javascript" src="<?php echo admin_js('application.js'); ?>"></script>
+        
 
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/admin/multiselect/jquery.multiselect.filter.js"></script>
 
          <!-- Javascript files-->
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
         <script src="<?php echo base_url(); ?>assets/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -72,6 +73,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script src="<?php echo admin_js('charts-home.js'); ?>"></script>
         <script src="<?php echo admin_js('front.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo admin_js('application.js'); ?>"></script>
 
 
 <script type="text/javascript">
@@ -90,7 +92,7 @@
                     <div class="navbar-holder d-flex align-items-center justify-content-between">
                         <div class="navbar-header">
                             <a id="toggle-btn" href="#" class="menu-btn">
-                                <i class="icon-bars"> </i>
+                                <i class="fa fa-bars"> </i>
                             </a>
                         </div>
 
