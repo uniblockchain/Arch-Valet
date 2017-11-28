@@ -27,10 +27,10 @@
                             </div>
                                 <h2>Make: {{car.made}}</h2>
                                 <h2>Model: {{car.model}}</h2>
-                                <button class="requested button button-balanced" ng-if="car.statuss == 1">Requested</button>
+                                <button class="requested button button-dark" ng-if="car.statuss == 1">Requested</button>
                                 <button class="button button-assertive" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</button>
-                                <button class="button button-balanced" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
-                                <button class="button button-assertive" ng-if="car.statuss == 2">Car Out</button>
+                                <button class="button button-positive" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
+                                <button class="button button-dark" ng-if="car.statuss == 2">Car Out</button>
                         </div>
                     </div>
 				</ion-slide-page>
@@ -46,10 +46,10 @@
                             </div>
                             <h2>Car Made: {{car.made}}</h2>
                             <h2>Ticket No.: {{car.ticket_no}}</h2>
-                            <button class="requested button button-balanced" ng-if="car.statuss == 1">Requested</button>
+                            <button class="requested button button-dark" ng-if="car.statuss == 1">Requested</button>
                             <button class="button button-assertive" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</button>
-                            <button class="button button-balanced" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
-                            <button class="button button-assertive" ng-if="car.statuss == 2">Car Out</button>
+                            <button class="button button-positive" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
+                            <button class="button button-dark" ng-if="car.statuss == 2">Car Out</button>
                         </div>
                     </div>
 				</ion-slide-page>

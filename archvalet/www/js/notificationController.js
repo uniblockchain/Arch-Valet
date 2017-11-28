@@ -1,26 +1,26 @@
 
-app.controller('notificationCtrl', function($scope,$ionicModal,$ionicHistory,$http,$location) {
+app.controller('notificationCtrl', function($scope, $ionicModal, $ionicHistory, $http, $location, $rootScope,$ionicPopup) {
     $scope.myGoBack = function(){
-     $ionicHistory.goBack();
-  }
+		 $ionicHistory.goBack();
+	  }
   
  
-       var unit = window.localStorage.getItem('unite_no');
-           $http({
-               url: base_url + 'api/notification/reset_notification/'+unit,
-               method : 'get',
-               dataType : 'json',
-           })
+var unit = window.localStorage.getItem('unite_no');
+$http({
+   url: base_url + 'api/notification/reset_notification/'+unit,
+   method : 'get',
+   dataType : 'json',
+})
   
   
   
 window.setInterval(function(){
-$scope.loadNewNotification();
-    }, 5000);
+	$scope.loadNewNotification();
+}, 5000);
   
 
   
-  $scope.loadNewNotification = function(){
+$scope.loadNewNotification = function(){
   var unit = window.localStorage.getItem('unite_no');
   $http({
       url: base_url+ 'api/notification/notifi/'+unit,
@@ -33,7 +33,7 @@ $scope.loadNewNotification();
 }
 
 
-  $scope.reloadNewNotification = function(){
+$scope.reloadNewNotification = function(){
   var unit = window.localStorage.getItem('unite_no');
   $http({
       url: base_url+ 'api/notification/clean/'+unit,
@@ -50,21 +50,25 @@ $scope.loadNewNotification();
 $scope.loadNewNotification();
 
 $scope.deleteNotifi = function(notifiID){
-	$('#btndelnotifi').removeAttr('disabled');
-	// alert(notifiID);
-	$http({
-		  url: base_url+ 'api/notification/delnotifi/'+notifiID,
-		  method:'get',
-		  dataType: 'json',
-	  }).success(function (data){
-		  // $scope.notifications = data;
-		  // alert(data);
-		  $scope.$broadcast('scroll.refreshComplete')
-	  })
-	
+	var confirmPopup = $ionicPopup.confirm({
+		title: 'Delete Notification',
+		template: 'Are you sure?'
+	});
+	confirmPopup.then(function(res) {
+		if(res) {
+		 $http({
+			  url: base_url+ 'api/notification/delnotifi/'+notifiID,
+			  method:'get',
+			  dataType: 'json',
+		  }).success(function (data){
+			  $scope.$broadcast('scroll.refreshComplete')
+		  })
+		} else {
+		 console.log('You are not sure');
+		}
+	});
 }        
 		
-		
-        })
+})
 
         
