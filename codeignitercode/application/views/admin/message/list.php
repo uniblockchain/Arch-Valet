@@ -1,41 +1,33 @@
 <?php include(dirname(__DIR__).'/header.php'); ?>
-
-
 <!-- Page container --> 
-				<div class="page-container">
+    <div class="page-container">
+        <?php include(dirname(__DIR__).'/sidebar.php'); ?>
+        <!-- Page content --> 
+        <div class="page-content">
+            <!-- Page header -->
+            <div class="breadcrumb-holder">
+                <div class="container-fluid">
+                  <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo admin_url(); ?>">Home</a></li>
+                    <li class="breadcrumb-item active">Message</li>
+                  </ul>
+                </div>
+            </div>
 
+            <div class="container-fluid">
+                <div class="page-title"> 
+                    <h1 class="h3 display">Message</h1>
+                </div>
 
+                <a href="<?php echo admin_url('message/add_new'); ?>" class="btn btn-primary add_new" type="button"><i class="icon-plus"></i>Add New</a> 
 
-<?php include(dirname(__DIR__).'/sidebar.php'); ?>
-
-
-<!-- Page content -->
-
-
-
-                    	<!-- Page content --> 
-                        <div class="page-content">
-                        <!-- Page header -->
-                        <div class="page-header"><div class="page-title"><h3>Message <small>Welcome Admin</small></h3></div>
-                        </div>
-                        <!-- /page header -->
-                        <!-- Breadcrumbs line -->
-                        <div class="breadcrumb-line"><ul class="breadcrumb"><li><a href="<?php echo admin_url(); ?>">Home</a></li><li class="active">Message</li></ul><div class="visible-xs breadcrumb-toggle"><a class="btn btn-link btn-lg btn-icon" data-toggle="collapse" data-target=".breadcrumb-buttons"><i class="icon-menu2"></i></a></div></div><!-- /breadcrumbs line --> 
-
-
-<a href="<?php echo admin_url('message/add_new'); ?>" class="btn btn-success add_new" type="button"><i class="icon-plus"></i>Create Message</a> 
-
-
-<!-- Page tabs --> 
-                <div class="tabbable page-tabs"> 
-
-<!-- Datatable with custom column filtering --> 
-                    <div class="panel panel-default"> 
-                        <div class="panel-heading">
-                            <h6 class="panel-title"><i class="icon-bubbles3"></i> Messages</h6>
-                        </div> 
-                        <div class="datatable-add-row"> 
-                            <table class="table"> 
+                <!-- Page tabs -->
+              <div class="card tabbable page-tabs">
+                <div class="card-header d-flex align-items-center">
+                  <h2 class="h5 display"><i class="icon-users"></i>Message</h2>
+                </div>
+                <div class="card-body datatable-add-row">
+                  <table class="table table-striped table-hover">
                                 <thead> 
                                     <tr> 
                                         <th>#</th> 
@@ -60,12 +52,10 @@
                                     </tr> 
 <?php $i++; } ?>
                                 </tbody> 
-                            </table> 
-                        </div> 
-                    </div> <!-- /datatable with custom column filtering --> 
-
-</div> <!-- /third tab content --> 
-</div> 
-</div> <!-- /page tabs --> 
+                  </table>
+                </div>
+              </div> 
+            </div> 
+        </div> <!-- /page tabs --> 
 
 <?php include(dirname(__DIR__).'/footer.php'); ?>

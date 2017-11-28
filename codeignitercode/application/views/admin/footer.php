@@ -4,12 +4,12 @@
             <footer class="main-footer">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                       <p><a href="#"><?=config_item('site_name');?></a> &copy; <?php echo date("Y"); ?></p>
                     </div>
-                    <div class="col-sm-6 text-right">
+                    <!-- <div class="col-sm-6 text-right">
                       <p>Design by <a href="#" class="external"></a></p>
-                    </div>
+                    </div> -->
                   </div>
                 </div> 
             </footer> 

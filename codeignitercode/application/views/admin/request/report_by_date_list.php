@@ -76,7 +76,7 @@ $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
                                         <td><?php echo date('h:i A', $u->request_timestamp); ?></td> 
                                         <td>
                                         <?php if($u->status == '1'){ ?>
-                                           <a href="<?php echo admin_url('requests/ready/'.$u->id); ?>" class="btn btn-success" type="button" onclick="return confirm('Are your sure want to ready ?')">Ready</a> 
+                                           <a href="<?php echo admin_url('requests/ready/'.$u->id); ?>" class="btn btn-primary" type="button" onclick="return confirm('Are your sure want to ready ?')">Ready</a> 
                                            <a href="<?php echo admin_url('requests/cancel/'.$u->id); ?>" class="btn btn-danger" type="button" onclick="return confirm('Are your sure want to cancel ?')">Cancel</a> 
                                         <?php } ?>
                                         <?php if($u->status == '2'){ ?>
