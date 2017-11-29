@@ -138,7 +138,7 @@ $(function(){
 		$('.car_icon').html('<img src="https://png.icons8.com/'+$('.car_type_change').find('option:selected').attr('data-icon')+'/win8/50/'+$(this).val()+'">');
 	});	
 	$('.car_type_change').on('change',function(){
-		$('.car_icon').html('<img src="https://png.icons8.com/'+$(this).find('option:selected').attr('data-icon')+'/win8/50/333333">');
+		$('.car_icon').html('<img src="https://png.icons8.com/'+$(this).find('option:selected').attr('data-icon')+'/win8/50/'+($('.car_color_change').val() == undefined ? '333333' : $('.car_color_change').val() )+'">');
 	});
 });
 </script>
