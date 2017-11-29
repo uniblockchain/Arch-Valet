@@ -6,18 +6,29 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-// var base_url = 'http://localhost/Arch-Valet/codeignitercode/index.php/';
+// var base_url = 'http://localhost/Arch-Valet/codeignitercode/index.php/'; 
 var base_url = 'http://abhishekarora.in/projects/archvalet/Arch-Valet/codeignitercode/index.php/';
 // var base_url = 'http://archvaletapp.com/';
 
- angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
  
 
 .config(function($ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 })
  
-.run(function($ionicPlatform,$rootScope,$location) {
+.run(function($ionicPlatform,$rootScope,$location, $cordovaSplashscreen) {	 
+	 $ionicPlatform.ready(function() {
+		 console.log($cordovaSplashscreen);
+		 console.log(navigator);
+		 try {
+			  $cordovaSplashscreen.hide();
+			} catch(e) {
+			  console.log(e.stack);
+			};
+		  // navigator.splashscreen.hide();
+	  });
+  
           $rootScope.$on("$stateChangeStart", function (event, next, current, from) {
         if (next.checkLogged || current.checkLogged) {
        
