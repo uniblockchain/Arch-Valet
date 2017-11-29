@@ -71,7 +71,7 @@ $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
                                         <td><?php echo date('h:i A', $u->updated_date_time); ?></td> 
                                         <td>
 
-                                           <a href="<?php echo admin_url('out/in/'.$u->id); ?>" class="btn btn-success" type="button" onclick="return confirm('Are your sure ?')">In</a> 
+                                           <a href="<?php echo admin_url('out/in/'.$u->id); ?>" class="btn btn-primary" type="button" onclick="return confirm('Are your sure ?')">In</a> 
                                           
 
                                         </td>

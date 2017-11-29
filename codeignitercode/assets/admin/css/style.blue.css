@@ -61,7 +61,6 @@ table {
   font-size: 0.9em;
   color: #666;
 }
-
 .btn-xs {
   font-size: 0.7em !important;
   padding: 2px 5px !important;
@@ -512,7 +511,7 @@ nav.side-navbar .sidenav-header img {
 
 nav.side-navbar .sidenav-header span {
   font-size: 0.8em;
-  color: #666;
+  color: #2b90d9;
 }
 
 nav.side-navbar .sidenav-header h2 {
@@ -2710,4 +2709,17 @@ a.text-light:focus, a.text-light:hover {
 
 a.text-dark:focus, a.text-dark:hover {
   color: #1d2124 !important;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
+    color: #2b90d9;
+    border: 1px solid #2b90d9;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+    color: #fff;
+    border: 1px solid #2b90d9;
+    background: #2b90d9;
+}
+.ui-widget-header{
+    background: #2b90d9;
+    border: 1px solid #2b90d9;
 }

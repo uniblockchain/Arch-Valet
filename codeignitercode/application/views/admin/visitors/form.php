@@ -24,28 +24,24 @@ if (isset($car)) {
 
 
 
-                        <!-- Page content --> <div class="page-content"><!-- Page header --><div class="page-header"><div class="page-title"><h3><?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?><small>Welcome Admin. <!--12 hours since last visit--></small></h3></div>
-                        </div>
-                        <!-- /page header -->
-                        <!-- Breadcrumbs line -->
-                        <div class="breadcrumb-line"><ul class="breadcrumb"><li><a href="<?php echo admin_url(); ?>">Home</a></li><li><a href="<?php echo admin_url('visitors'); ?>">Guest Vehicle</a></li><li class="active"><?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?></li></ul><div class="visible-xs breadcrumb-toggle"><a class="btn btn-link btn-lg btn-icon" data-toggle="collapse" data-target=".breadcrumb-buttons"><i class="icon-menu2"></i></a></div></div><!-- /breadcrumbs line --> 
+            <div class="breadcrumb-holder">
+                <div class="container-fluid">
+                  <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo admin_url(); ?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo admin_url('visitors'); ?>">Guest Vehicle</a></li>
+                    <li class="breadcrumb-item active"><?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?></li>
+                  </ul>
+                </div>
+            </div>
 
-
-
-
-
-
-
+            <div class="container-fluid">
+                <div class="page-title"> 
+                    <h1 class="h3 display"><?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?></h1>
+                </div>
 
        <form action="<?= $path; ?>" method="post" enctype="multipart/form-data" role="form"> 
-           <div class="panel panel-default"> 
-               <div class="panel-heading">
-                   <h6 class="panel-title">
-                   <i class="icon-car"></i>
-                   <?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?>
-                   </h6>
-               </div> 
-               <div class="panel-body">
+           <div class="card card-default"> 
+               <div class="card-body">
                   <div class="form-group">
                     <div class="row">
 						<div class="col-md-4">
@@ -135,13 +131,14 @@ if (isset($car)) {
 
               <div class="form-group">
                    <div class="form-actions text-right"> 
-                        
+                        <input type="submit" value="<?php if(isset($car)){ echo "Update Vehicle"; }else{  echo "Add Vehicle"; }  ?>" class="btn btn-primary"> 
                        <a href="<?php echo admin_url('cars'); ?>" class="btn btn-danger">Cancel</a> 
-                       <input type="submit" value="<?php if(isset($car)){ echo "Update Vehicle"; }else{  echo "Add Vehicle"; }  ?>" class="btn btn-primary"> 
+                       
                    </div>
               </div>
            </div>
        </form>
+     </div>
 
 
 

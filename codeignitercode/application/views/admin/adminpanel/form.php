@@ -15,28 +15,30 @@ if (isset($user)) {
 <?php include(dirname(__DIR__).'/sidebar.php'); ?>
 
 
-
 <!-- Page content --> 
 
 
 
-                        <!-- Page content --> <div class="page-content"><!-- Page header --><div class="page-header"><div class="page-title"><h3>Add User <small>Welcome Admin</small></h3></div>
-                        </div>
-                        <!-- /page header -->
-                        <!-- Breadcrumbs line -->
-                        <div class="breadcrumb-line"><ul class="breadcrumb"><li><a href="<?php echo admin_url(); ?>">Home</a></li><li class="active">Add User</li></ul><div class="visible-xs breadcrumb-toggle"><a class="btn btn-link btn-lg btn-icon" data-toggle="collapse" data-target=".breadcrumb-buttons"><i class="icon-menu2"></i></a></div></div><!-- /breadcrumbs line --> 
+            <div class="breadcrumb-holder">
+                <div class="container-fluid">
+                  <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo admin_url(); ?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo admin_url('user_management'); ?>">Admin</a></li>
+                    <li class="breadcrumb-item active"> <?php if (isset($user)) { echo "Edit Admin"; } else{ echo "Add Admin "; }  ?></li>
+                  </ul>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="page-title"> 
+                    <h1 class="h3 display">  <?php if (isset($user)) { echo "Edit Admin"; } else{ echo "Add Admin "; }  ?></h1>
+                </div>
 
 
 
        <form action="<?= $path; ?>" method="post" enctype="multipart/form-data" role="form"> 
-           <div class="panel panel-default"> 
-               <div class="panel-heading">
-                   <h6 class="panel-title">
-                   <i class="icon-user"></i>
-                   <?php if (isset($user)) { echo "Edit User"; } else{ echo "Add User "; }  ?>
-                   </h6>
-               </div> 
-               <div class="panel-body">
+           <div class="card card-default"> 
+              <div class="card-body">
                    <div class="form-group">
                        <div class="row">
                            <div class="col-md-6">
@@ -92,14 +94,14 @@ if (isset($user)) {
 
 
                    <div class="form-actions text-right"> 
-                        
+                         <input type="submit" value="<?php if(isset($user->name)){ echo "Update Admin"; }else{  echo "Add Admin"; }  ?>" class="btn btn-primary"> 
                        <a href="<?php echo admin_url('user_management'); ?>" class="btn btn-danger">Cancel</a> 
-                       <input type="submit" value="<?php if(isset($user->name)){ echo "Update User"; }else{  echo "Add User"; }  ?>" class="btn btn-primary"> 
+                      
                    </div>
                </div>
            </div>
        </form>
-
+</div>
 <?php include(dirname(__DIR__).'/footer.php'); ?>
 
 
