@@ -29,7 +29,7 @@ $scope.loadCars();
       method:'get',
       dataType: 'json',
   }).success(function (data){
-      $scope.notifications = data;
+      // $scope.notifications = data;
 	  $scope.cars = data;
       $scope.$broadcast('scroll.refreshComplete')
   })
@@ -57,7 +57,7 @@ $scope.loadCarsGuest();
       method:'get',
       dataType: 'json',
   }).success(function (data){
-      $scope.notifications = data;
+      // $scope.notifications = data;
 	  $scope.visitors_cars = data;
       $scope.$broadcast('scroll.refreshComplete')
   })
