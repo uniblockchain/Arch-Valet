@@ -1,54 +1,54 @@
 <ion-view hide-nav-bar="true">
        
-    <ion-content class="loginContent" has-header="false" >
-        <div class="row">
-            <div class="col"></div>
-            <div class="col col-80">
-             <img style="width:100%;" class="loginLogo" src="img/logo2.png">
+    <ion-content class="loginContent" has-header="true" >
+        <div class="login_section">
+            <div class="row">
+                <div class="col text-center">
+                    <img class="loginLogo" src="img/logo2.png">
+                </div>
             </div>
-            <div class="col"></div>
-        </div>
-<!--         <div class="row">
-            <div class="col col-100">
-                <p style="text-align: center; font-size:16px;">WE GET IT READY AT TIME YOU WANT</p>
+
+            <!--<div class="row">
+                <div class="col col-100">
+                    <p style="text-align: center; font-size:16px;">WE GET IT READY AT TIME YOU WANT</p>
+                </div>
+            </div> -->
+
+            <p style="text-align:center; color:red;" ng-show="matched">Unit No or Password not matched.</p>
+            <p style="text-align:center; color:red;" ng-show="unsuccess">Your account has not been approved yet.</p>
+
+            <div class="row inputrow1">
+                <div class="col col-100">
+                <i class="ion-home loginhome"></i>
+                    <input id="unitevalue" placeholder="Unit No:" class="logininputfield" type="text">
+                </div>
             </div>
-        </div> -->
-        <p style="text-align:center; color:red;" ng-show="matched">Unit No or Password not matched.</p>
-        <p style="text-align:center; color:red;" ng-show="unsuccess">Your account has not been approved yet.</p>
-        <div class="row inputrow1">
-            <div class="col col-100">
-            <i class="ion-home loginhome"></i>
-                <input id="unitevalue" placeholder="Unit No:" class="logininputfield" type="text">
+            <div class="row inputrow2">
+                <div class="col col-100 inputcol2">
+                <i style="margin-left:13px" class="ion-key loginhome"></i>
+                    <input id="unitepass"  placeholder="Password:" class="logininputfield" type="password">
+                </div>
             </div>
-        </div>
-        <div class="row inputrow2">
-            <div class="col col-100 inputcol2">
-            <i style="margin-left:13px" class="ion-key loginhome"></i>
-                <input id="unitepass"  placeholder="Password:" class="logininputfield" type="password">
-            </div>
-        </div>
         
-              
-<!--         <p style="font-size:11px; padding-left: 4px;">By continuing you agree to out <a style="color:#8C0C04;">terms of service</a> and <a style="color:#8C0C04;">Privacy Poicy</a>.</p> -->
+            <!--<p style="font-size:11px; padding-left: 4px;">By continuing you agree to out <a style="color:#8C0C04;">terms of service</a> and <a style="color:#8C0C04;">Privacy Poicy</a>.</p> -->
            
-           
-        
-        <div class="row btnlogin">
-            <div class="col col-100 logincol">
-              <button ng-click="checkLogin()" class="login-btn">Login</button>
+            <div class="row btnlogin">
+                <div class="col col-100 logincol">
+                  <button ng-click="checkLogin()" class="login-btn button button-full button-positive">Login</button>
+                </div>
             </div>
-        </div>
-        <!-- <a class="forgotpass">Forgot Password?</a> -->
+
+            <!-- <a class="forgotpass">Forgot Password?</a> -->
         
-<!--         <p class="noaccount">Don't have an account?</p>
-        <div class="row resisterbtnrow">
-            <div class="col col-100 regcol">
-                <a href="#/register">
-                <button class="regBtn">Register to Archivalet</button>
-                </a>
-            </div>
-        </div> -->
-                   
+            <!--<p class="noaccount">Don't have an account?</p>
+            <div class="row resisterbtnrow">
+                <div class="col col-100 regcol">
+                    <a href="#/register">
+                    <button class="regBtn">Register to Archivalet</button>
+                    </a>
+                </div>
+            </div> -->
+        </div>   
 
        
         
