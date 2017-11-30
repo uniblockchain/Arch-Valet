@@ -21,13 +21,22 @@ var base_url = 'http://abhishekarora.in/projects/archvalet/Arch-Valet/codeignite
 	 $ionicPlatform.ready(function() {
 		 console.log($cordovaSplashscreen);
 		 console.log(navigator);
-		 try {
-			  $cordovaSplashscreen.hide();
-			} catch(e) {
-			  console.log(e.stack);
-			};
+		 // try {
+			  // $cordovaSplashscreen.hide();
+			// } catch(e) {
+			  // console.log(e.stack);
+			// };
 		  // navigator.splashscreen.hide();
 	  });
+	  
+	  $ionicPlatform.registerBackButtonAction(function (event) {
+		  // if($state.current.name=="app.home"){
+			navigator.app.exitApp(); 
+		  // }
+		  // else {
+			// navigator.app.backHistory();
+		  // }
+		}, 100);
   
           $rootScope.$on("$stateChangeStart", function (event, next, current, from) {
         if (next.checkLogged || current.checkLogged) {
