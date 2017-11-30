@@ -28,10 +28,9 @@
 }
 
 .tableheader{
-    background:#848484;
+    background:#387ef5;
     color:white;
-    margin-top: 5px;
-    margin-top: 1px;
+    margin-top: 0;
 }
 
 .addcarrow{
@@ -136,21 +135,60 @@
 .bottom-tabs .tab-item .tab-title {
     font-size: 13px;
 }
+.notification-card .card{
+    margin-bottom: 10px !important;
+    box-shadow: 0 0 5px 2px #efefef;
+    border-radius: 10px;
+}
+.notification-card .list .item-avatar {
+    padding-left: 16px !important;
+}
+.notification-card .list .item-avatar .thumbnail {
+    float: left;
+    margin-right: 15px;
+}
+.notification-card .list .item-avatar img{
+    border-radius: 0;
+}
+.notification-card .list .item-avatar h2{
+    font-weight: bold;
+    color: 
+}
+.notification-card .list .item-avatar i{
+    font-size: 30px;
+    float: right;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+.notification-card .list .item-body p{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
 .car-list.list{
-    margin-bottom: 0;
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 10px;
 }
 .car-list .item{
     border: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 2px #efefef;
+    padding: 20px 10px;
 }
 .car-list .item-thumbnail-left {
     padding-left: 16px;
 }
 .car-list .item .thumbnail {
-    width: 20%;
+    width: 80px;
     height: 80px;
     float: left;
     margin-right: 20px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 10px;
+    line-height: 80px;
 }
 .car-list .item .thumbnail img {
     width: 100%;
@@ -160,7 +198,7 @@
     min-height: auto;
     line-height: initial;
     padding: 5px 12px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 .car-list .button-assertive{
     background-color: #8e1009;
@@ -187,12 +225,38 @@
 .notification-card{
     margin-top: 11px;
 }
+.loginContent .scroll{
+    transform: initial !important;
+}
+.login_section{
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.loginLogo{
+    width: 70%;
+}
 .logininputfield{
     width: 100%;
-    box-shadow: 0px 1px #999;
-
+    box-shadow: 0px 0px 0px 1px #999;
 }
-
+.profile .card {
+    padding: 30px 0;
+    margin: 20px 10px 0px 10px;
+}
+.profile .card i{
+    color: #387ef5;
+    font-size: 40px;
+}
+.profile .card:hover{
+    background-color: #387ef5;
+    color: #fff;
+}
+.profile .card:hover i{
+    color: #fff;
+}
 .inputrow1{
     margin-top:30px!important;
     padding-left: 0px;
@@ -201,13 +265,13 @@
 
 
 
-.login-btn{
+/*.login-btn{
     width:100%;
     color:white;
     background:#269946;
     padding:10px;
     border:none;
-}
+}*/
 .forgotpass{
     padding-left: 5px;
 }
@@ -254,9 +318,6 @@
     padding:6px;
     background: #CACACA;
 }*/
-.login-btn{
-    box-shadow: 0px 2px #999;
-}
 
 .registerinput{
     width: 100%!important;
@@ -360,19 +421,12 @@
   left: 48%;
 
 }
-ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
+/*ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
     color: #8e1009 !important;
 	border-color: #8e1009 !important;
-}
+}*/
 .loginContent {
 	height: 100% !important;
-}
-.loginContent .scroll{
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) !important;
 }
 .btn-red{
 	background-color: #8e1009;
@@ -385,4 +439,15 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
 }
 .swiper-container-horizontal > .swiper-pagination{
 	display: none;
+}
+.swiper-container {
+    overflow-y:auto;
+}
+@media (max-width: 375px){
+    .profile .card {
+        padding: 20px 0;
+    }
+    .profile .card p {
+        font-size: 13px;
+    }
 }
