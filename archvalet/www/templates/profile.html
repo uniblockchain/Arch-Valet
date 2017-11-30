@@ -9,74 +9,94 @@
   <h1 class="title">Profile<img class="header-logo" src="img/logo.png"></h1>
   
 </ion-header-bar>
-  <ion-content style="background:white;" class="profile-content" scroll="false">
+  <ion-content style="background:#f7f7f7;" class="profile-content" scroll="true">
 <!--       <div class="row">
           <div class="col col-100">
               <button ng-click="edit_profile()" class="profileeditbtn">Edit a Profile</button>
           </div>
       </div> -->
-      
-      <div class="card profile-card" >
-  <div style="background:white" class="item item-text-wrap profile">
-     
-      <div style="padding-top:0px; padding-bottom: 0px;" class="row">
-          <div style="padding-top:0px; padding-bottom: 0px;" class="col col-100">
-              
-              <div style="padding-top: 5px; padding-bottom: 5px;" class="row">
-                  
-                  <div style="padding-top:12px; padding-bottom: 0px;" class="col col-20">
-                     <i style="font-size: 30px; color:#8e1009" class="ion-home"></i>
-                  </div>
-                  <div style="padding-top: 6px; padding-bottom: 5px; border-bottom: 1px solid #ccc;" class="col col-80">
-                      Unit No
-                      <p style="padding-top:0px; padding-bottom: 0px;">{{userdetail.unite_no}}</p>
-                  </div>
+      <div class="profile">
+        <div class="row text-center">
+          <div class="col card">
+            <p><i class="ion-home"></i></p>
+            <p >{{userdetail.unite_no}}</p>
+          </div>
 
-              </div>
-              
-              <div style="padding-top: 5px; padding-bottom: 5px;" class="row">
-                  <div style="padding-top:15px; padding-bottom: 0px;" class="col col-20">
-                      <i style="font-size: 30px; color:#8e1009; margin-top: 10px!important;" class="ion-person"></i>
-                  </div>
-                  <div style="padding-top: 6px; padding-bottom: 5px; border-bottom: 1px solid #ccc;" class="col col-80">
-                      Resident
-                     <p style="padding-top: 0px; padding-bottom: 0px;">{{userdetail.name}}</p>
-                  </div>
-              </div>
-              
+          <div class="col card">
+            <p><i class="ion-person"></i>
+            <p >{{userdetail.name}}</p>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col card">
+            <p><i class="ion-ios-email"></i></p>
+            <p >{{userdetail.email}}</p>
           </div>
           
-      </div>
-     
-      <div style="padding-top:0px; padding-bottom: 0px;" class="row">
-          <div style="padding-top:0px; padding-bottom: 0px;" class="col col-100">
-              <div style="padding-top: 0px; padding-bottom: 0px;" class="row">
-                  <div style="padding-top:8px; padding-bottom: 0px;" class="col col-20">
-                     <i style="font-size: 30px; color:#8e1009" class="ion-ios-email"> </i>
-                  </div>
-                  <div style="padding-top: 6px; padding-bottom: 5px; border-bottom: 1px solid #ccc;" class="col col-80">
-                      Email Address
-                      <p style="padding-top:0px; padding-bottom: 0px;">{{userdetail.email}}</p>
-                  </div>
-              </div>
-              
-              <div class="row">
-                  <div style="padding-top: 15px; padding-bottom: 0px;" class="col col-20">
-                    <i style="font-size: 30px; color:#8e1009" class="ion-ios-telephone"></i>
-                  </div>
-                  <div style="padding-top:0px; padding-bottom: 0px; padding-top:10px;" class="col col-80">
-                     Contact No
-                     <p style="padding-top: 0px; padding-bottom: 0px;">{{userdetail.contact_no}}</p>
-                  </div>
-              </div>
-              
+          <div class="col card">
+            <p><i class="ion-ios-telephone"></i></p>
+            <p >{{userdetail.contact_no}}</p>
           </div>
-          
+        </div>
       </div>
-      
-    
+
+<!-- <div class="card profile-card">
+    <div style="background:white" class="item item-text-wrap profile">
+        <div style="padding-top:0px; padding-bottom: 0px;" class="row">
+            <div style="padding-top:0px; padding-bottom: 0px;" class="col col-100">
+
+                <div style="padding-top: 5px; padding-bottom: 5px;" class="row">
+
+                    <div style="padding-top:12px; padding-bottom: 0px;" class="col col-20">
+                        <i style="font-size: 30px; color:#387ef5" class="ion-home"></i>
+                    </div>
+                    <div style="padding-top: 6px; padding-bottom: 5px; border-bottom: 1px solid #ccc;" class="col col-80">
+                        Unit No
+                        <p style="padding-top:0px; padding-bottom: 0px;">{{userdetail.unite_no}}</p>
+                    </div>
+
+                </div>
+
+                <div style="padding-top: 5px; padding-bottom: 5px;" class="row">
+                    <div style="padding-top:15px; padding-bottom: 0px;" class="col col-20">
+                        <i style="font-size: 30px; color:#387ef5; margin-top: 10px!important;" class="ion-person"></i>
+                    </div>
+                    <div style="padding-top: 6px; padding-bottom: 5px; border-bottom: 1px solid #ccc;" class="col col-80">
+                        Resident
+                        <p style="padding-top: 0px; padding-bottom: 0px;">{{userdetail.name}}</p>
+                    </div>
+                </div>
+
             </div>
-</div>
+
+        </div>
+
+        <div style="padding-top:0px; padding-bottom: 0px;" class="row">
+            <div style="padding-top:0px; padding-bottom: 0px;" class="col col-100">
+                <div style="padding-top: 0px; padding-bottom: 0px;" class="row">
+                    <div style="padding-top:8px; padding-bottom: 0px;" class="col col-20">
+                        <i style="font-size: 30px; color:#387ef5" class="ion-ios-email"> </i>
+                    </div>
+                    <div style="padding-top: 6px; padding-bottom: 5px; border-bottom: 1px solid #ccc;" class="col col-80">
+                        Email Address
+                        <p style="padding-top:0px; padding-bottom: 0px;">{{userdetail.email}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div style="padding-top: 15px; padding-bottom: 0px;" class="col col-20">
+                        <i style="font-size: 30px; color:#387ef5" class="ion-ios-telephone"></i>
+                    </div>
+                    <div style="padding-top:0px; padding-bottom: 0px; padding-top:10px;" class="col col-80">
+                        Contact No
+                        <p style="padding-top: 0px; padding-bottom: 0px;">{{userdetail.contact_no}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
       
       
       
@@ -84,7 +104,7 @@
       
        <div class="row">
           <div class="col col-100">
-              <button ng-click="logout()" class="logoutbtn button button-full button-positive button-dark">log out</button>
+              <button ng-click="logout()" class="logoutbtn button button-full button-positive">log out</button>
           </div>
       </div>
   </ion-content>

@@ -1,17 +1,20 @@
 <ion-view hide-nav-bar="true">
        
-    <ion-content has-header="false" >
-		
-        <div class="row tableheader">
-			<div class="col">Building Name
+    <ion-content has-header="false" scroll="true">
+
+		<div class="bar bar-header bar-positive">
+		  <h1 class="title">Select Your Building</h1>
+		  <ion-searchbar></ion-searchbar>
+		</div>
+		<div class="content has-header">
+			<div class="list">
+				<a ng-repeat="(key,building) in buildings" class="item item-icon-left" ng-click="loginprop(key,building.building_name)">
+				<i class="icon"><img src="img/appartment.png" alt="appartment"></i>
+				{{building.building_name}}
+				</a>
 			</div>
 		</div>
-		<div class="list">
-			<a ng-repeat="(key,building) in buildings" class="item" ng-click="loginprop(key,building.building_name)">
-			{{building.building_name}}
-			</a>
-		</div>
-		
+
 		<!-- <div ng-repeat="(key,building) in buildings" class="card cardetails" > -->
 			<!-- <div class="item item-text-wrap mens-product"> -->
 				<!-- <div class="row">					 -->
