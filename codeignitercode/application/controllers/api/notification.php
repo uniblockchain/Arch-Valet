@@ -17,8 +17,9 @@ class Notification extends CI_Controller {
     $this->db->from('tbl_cars');
     $this->db->join('tbl_notifications', 'tbl_cars.id = tbl_notifications.car_id');
 
-    $arr = array('MONTH(FROM_UNIXTIME(tbl_notifications.date))' => date('m'), 'YEAR(FROM_UNIXTIME(tbl_notifications.date))'=> date('Y'), 'tbl_notifications.unite_no' => $id, 'tbl_notifications.status' => '1', 'tbl_notifications.seen' => '0');
-
+    $arr = array('MONTH(FROM_UNIXTIME(tbl_notifications.date))' => date('m'), 'YEAR(FROM_UNIXTIME(tbl_notifications.date))'=> date('Y'), 'tbl_notifications.unite_no' => $id, 'tbl_notifications.status' => '1');
+	
+//     , 'tbl_notifications.seen' => '0'
 /*    $this->db->where('tbl_notifications.unite_no',$id); 
     $this->db->where('tbl_notifications.status','1');*/
 
@@ -41,13 +42,19 @@ class Notification extends CI_Controller {
        $this->db->update('tbl_notifications');
 
         $this->db->select('tbl_cars.*,tbl_notifications.*');
-        $this->db->from('tbl_cars');
-        $this->db->join('tbl_notifications', 'tbl_cars.id = tbl_notifications.car_id');
-        $this->db->where('tbl_notifications.unite_no',$id); 
-        $this->db->where('tbl_notifications.seen','0');
+		$this->db->from('tbl_cars');
+		$this->db->join('tbl_notifications', 'tbl_cars.id = tbl_notifications.car_id');
 
-        $this->db->order_by('tbl_notifications.id','desc');
-        $query = $this->db->get();
+		$arr = array('MONTH(FROM_UNIXTIME(tbl_notifications.date))' => date('m'), 'YEAR(FROM_UNIXTIME(tbl_notifications.date))'=> date('Y'), 'tbl_notifications.unite_no' => $id, 'tbl_notifications.status' => '1');
+		
+	//     , 'tbl_notifications.seen' => '0'
+	/*    $this->db->where('tbl_notifications.unite_no',$id); 
+		$this->db->where('tbl_notifications.status','1');*/
+
+		$this->db->where($arr);
+
+		$this->db->order_by('tbl_notifications.id','desc');
+		$query = $this->db->get();
 
 
         $res = $query->result();

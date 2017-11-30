@@ -30,6 +30,7 @@ $scope.loadCars();
       dataType: 'json',
   }).success(function (data){
       $scope.notifications = data;
+	  $scope.cars = data;
       $scope.$broadcast('scroll.refreshComplete')
   })
 }
@@ -57,6 +58,7 @@ $scope.loadCarsGuest();
       dataType: 'json',
   }).success(function (data){
       $scope.notifications = data;
+	  $scope.visitors_cars = data;
       $scope.$broadcast('scroll.refreshComplete')
   })
 }
@@ -489,50 +491,34 @@ $scope.loadCarsGuest();
 })
 
 .controller('buildingCtrl', function($scope,$http,$location,$ionicLoading,RequestsService,$state) {
-    // $ionicLoading.show({
-            // template: '<ion-spinner icon="spiral"></ion-spinner>'
-    // }).then(function(){
-       // console.log("The loading indicator is now displayed");
-	   // $http({
-			 // url:base_url+'api/building/fetch_buildings/',
-			  // method:'get',
-		// dataType:'json',
-		 // headers: {
-					// 'Content-Type': 'application/x-www-form-urlencoded'
-				// }
-			 
-		// }).success(function(data){          
-		// $ionicLoading.hide();
-		// $scope.buildings = data;
-		// })
-
-    // });
+    $scope.loadbuildings = function(){
+		console.log($state.current.name);
+		// window.setInterval(function(){
+			if($state.current.name == "buildinglist"){
+				$ionicLoading.show({
+					template: '<ion-spinner icon="spiral"></ion-spinner>'
+				}).then(function(){
+				   console.log("The loading indicator is now displayed"+$state.current.name);
+				});
+				
+				$http({
+					 url:base_url+'api/building/fetch_buildings/',
+					  method:'get',
+				dataType:'json',
+				 headers: {
+							'Content-Type': 'application/x-www-form-urlencoded'
+						}
+					 
+				}).success(function(data){          
+				$ionicLoading.hide();
+				$scope.buildings = data;				
+				$scope.$broadcast('scroll.refreshComplete')
+				})
+			}
+		// }, 5000);
+	}
 	
-	console.log($state.current.name);
-	window.setInterval(function(){
-		if($state.current.name == "buildinglist"){
-			$ionicLoading.show({
-				template: '<ion-spinner icon="spiral"></ion-spinner>'
-			}).then(function(){
-			   console.log("The loading indicator is now displayed"+$state.current.name);
-			});
-			
-			$http({
-				 url:base_url+'api/building/fetch_buildings/',
-				  method:'get',
-			dataType:'json',
-			 headers: {
-						'Content-Type': 'application/x-www-form-urlencoded'
-					}
-				 
-			}).success(function(data){          
-			$ionicLoading.hide();
-			$scope.buildings = data;
-			// console.log( $scope.buildings);
-			})
-		}
-	}, 5000);
-	 
+	$scope.loadbuildings(); 
 	
  
     $scope.loginprop = function(key,buildingname){		

@@ -6,7 +6,7 @@ class Report extends Admin_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('Admin_model');
-        $this->load->model('report_model');
+        $this->load->model('Report_model');
         $this->load->library('form_validation');
     }
 
@@ -24,7 +24,7 @@ class Report extends Admin_Controller {
     }
 	
 	public function report_page(){           
-		$reports = $this->report_model->getreport_datatables();
+		$reports = $this->Report_model->getreport_datatables();
 		$data = array();
 		$no = $_POST['start'];
 		foreach($reports as $r) {
@@ -59,8 +59,8 @@ class Report extends Admin_Controller {
 			
 		$output = array(
 		 "draw" => $_POST['draw'],
-		 "recordsTotal" => $this->report_model->count_all_reports(),
-		 "recordsFiltered" => $this->report_model->count_filtered_reports(),
+		 "recordsTotal" => $this->Report_model->count_all_reports(),
+		 "recordsFiltered" => $this->Report_model->count_filtered_reports(),
 		 "data" => $data
 		);
 		  
@@ -90,7 +90,7 @@ class Report extends Admin_Controller {
         $pdfFilePath = $today.'-valet-report.pdf';
  
          //load mPDF library
-		ob_clean();
+		
         $this->load->library('pdf');
         $pdf = $this->pdf->load();
 		
@@ -153,8 +153,7 @@ class Report extends Admin_Controller {
         $pdfFilePath = $today.'-valet-report.pdf';
  
         //load mPDF library
-		ob_clean();
-        $this->load->library('pdf');
+	    $this->load->library('pdf');
         $pdf = $this->pdf->load();
 		
        // debug($html); 
