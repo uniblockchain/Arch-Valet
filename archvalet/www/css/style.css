@@ -696,3 +696,9 @@ padding:0px;
 .cariconvisible{
     display: inline !important;
 }
+.scroll-view.overflow-scroll {
+    position: fixed !important;
+}
+.swiper-slide {
+    margin-top: 45px !important;
+}
