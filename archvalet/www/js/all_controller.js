@@ -16,7 +16,7 @@ app.controller('allController', function($scope,$ionicModal,$ionicHistory,$http,
                     
                 }
         }).success(function (data){
-            $scope.notifications = data;
+            // $scope.notifications = data;
             
         })
 
