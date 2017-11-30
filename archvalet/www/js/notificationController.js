@@ -21,15 +21,15 @@ window.setInterval(function(){
 
   
 $scope.loadNewNotification = function(){
-  var unit = window.localStorage.getItem('unite_no');
-  $http({
-      url: base_url+ 'api/notification/notifi/'+unit,
-      method:'get',
-      dataType: 'json',
-  }).success(function (data){
-      $scope.notifications = data;
-      $scope.$broadcast('scroll.refreshComplete')
-  })
+  // var unit = window.localStorage.getItem('unite_no');
+  // $http({
+      // url: base_url+ 'api/notification/notifi/'+unit,
+      // method:'get',
+      // dataType: 'json',
+  // }).success(function (data){
+      // $scope.notifications = data;
+      // $scope.$broadcast('scroll.refreshComplete')
+  // })
 }
 
 
