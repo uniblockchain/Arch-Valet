@@ -32,11 +32,12 @@ var base_url = 'http://abhishekarora.in/projects/archvalet/Arch-Valet/codeignite
 	  $ionicPlatform.registerBackButtonAction(function (event) {
 		  // if($state.current.name=="app.home"){
 			navigator.app.exitApp(); 
+			
 		  // }
 		  // else {
 			// navigator.app.backHistory();
 		  // }
-		}, 100);
+		}, 101);
   
           $rootScope.$on("$stateChangeStart", function (event, next, current, from) {
         if (next.checkLogged || current.checkLogged) {
