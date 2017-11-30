@@ -17,7 +17,7 @@ var base_url = 'http://abhishekarora.in/projects/archvalet/Arch-Valet/codeignite
     $ionicConfigProvider.tabs.position('bottom');
 })
  
-.run(function($ionicPlatform,$rootScope,$location, $cordovaSplashscreen) {	 
+.run(function($ionicPlatform,$rootScope,$location, $cordovaSplashscreen, $ionicModal, $ionicHistory ,$ionicPopup) {	 
 	 $ionicPlatform.ready(function() {
 		 console.log($cordovaSplashscreen);
 		 console.log(navigator);
@@ -32,7 +32,19 @@ var base_url = 'http://abhishekarora.in/projects/archvalet/Arch-Valet/codeignite
 	  $ionicPlatform.registerBackButtonAction(function (event) {
 		  // if($state.current.name=="app.home"){
 			navigator.app.exitApp(); 
-			
+			var confirmPopup = $ionicPopup.confirm({
+			   title: 'Logout',
+			   template: 'Are you sure?'
+			 });
+			 confirmPopup.then(function(res) {
+			   if(res) {
+				var unite = window.localStorage.getItem('unite_no');
+				window.localStorage.removeItem('unite_no', unite);
+				$location.path('/buildinglist');
+			   } else {
+				 console.log('You are not sure');
+			   }
+			 });
 		  // }
 		  // else {
 			// navigator.app.backHistory();
