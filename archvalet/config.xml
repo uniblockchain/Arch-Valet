@@ -17,9 +17,10 @@
 
     
     <preference name="SplashScreen" value="none" />
-    <preference name="SplashScreenDelay" value="100" />
+    <preference name="SplashScreenDelay" value="1000" />
     <preference name="AutoHideSplashScreen" value="false" />
-
+	<preference name="SplashShowOnlyFirstTime" value="true" />
+	
 
     
     <platform name="android">
