@@ -20,7 +20,8 @@ class Login extends CI_Controller {
 
 
             $username_exists = $this->User_model->unite_no_exists($unite_no,$building);
-            if ($username_exists) {
+			
+		    if ($username_exists) {
               
                 $password = md5(config_item('salt') . $pass);
                 $database_password = $this->User_model->get_password_unite_no($unite_no);
