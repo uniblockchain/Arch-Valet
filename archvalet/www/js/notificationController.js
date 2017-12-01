@@ -1,5 +1,5 @@
 
-app.controller('notificationCtrl', function($scope, $ionicModal, $ionicHistory, $http, $location, $rootScope,$ionicPopup) {
+app.controller('notificationCtrl', function($scope, $ionicModal, $ionicLoading, $ionicHistory, $http, $location, $rootScope,$ionicPopup) {
     $scope.myGoBack = function(){
 		 $ionicHistory.goBack();
 	  }
@@ -14,20 +14,32 @@ $http({
   
   
   
-window.setInterval(function(){
-	$scope.loadNewNotification();
-}, 5000);
+// window.setInterval(function(){
+	// $scope.loadNewNotification();
+// }, 5000);
   
 
   
 $scope.loadNewNotification = function(){
   var unit = window.localStorage.getItem('unite_no');
+  $ionicLoading.show({
+		template: '<ion-spinner icon="spiral"></ion-spinner>'
+	}).then(function(){
+	   console.log("The loading indicator is now displayed");
+	});
+
   $http({
       url: base_url+ 'api/notification/notifi/'+unit,
       method:'get',
       dataType: 'json',
-  }).success(function (data){
-      $scope.notifications = data;
+  }).success(function (data){         
+	  $ionicLoading.hide();
+	  if(data == ''){
+		  $scope.notifyAvail = 0;
+	  } else {
+		  $scope.notifyAvail = 1;
+		$scope.notifications = data; 
+	  }
       $scope.$broadcast('scroll.refreshComplete')
   })
 }

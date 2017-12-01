@@ -492,13 +492,13 @@ $scope.loadCarsGuest();
 
 .controller('buildingCtrl', function($scope,$http,$location,$ionicLoading,RequestsService,$state) {
     $scope.loadbuildings = function(){
-		console.log($state.current.name);
+		// console.log($state.current.name);
 		// window.setInterval(function(){
 			if($state.current.name == "buildinglist"){
 				$ionicLoading.show({
 					template: '<ion-spinner icon="spiral"></ion-spinner>'
 				}).then(function(){
-				   console.log("The loading indicator is now displayed"+$state.current.name);
+				   console.log("The loading indicator is now displayed");
 				});
 				
 				$http({
