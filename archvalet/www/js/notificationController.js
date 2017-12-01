@@ -34,7 +34,12 @@ $scope.loadNewNotification = function(){
       dataType: 'json',
   }).success(function (data){         
 	  $ionicLoading.hide();
-      $scope.notifications = data;
+	  if(data == ''){
+		  $scope.notifyAvail = 0;
+	  } else {
+		  $scope.notifyAvail = 1;
+		$scope.notifications = data; 
+	  }
       $scope.$broadcast('scroll.refreshComplete')
   })
 }
