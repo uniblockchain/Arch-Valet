@@ -73,6 +73,7 @@ $scope.deleteNotifi = function(notifiID){
 			  method:'get',
 			  dataType: 'json',
 		  }).success(function (data){
+			  $scope.loadNewNotification();
 			  $scope.$broadcast('scroll.refreshComplete')
 		  })
 		} else {

@@ -16,7 +16,7 @@
 <ion-refresher pulling-text="Pull to Refresh" on-refresh="loadCars()"></ion-refresher>
 
        <!-- <ion-content scroll="false"> -->
-            <ion-slides slider="slider" ion-slides-tabs slide-tabs-scrollable="true">
+            <ion-slides slider="slider" ion-slides-tabs slide-tabs-scrollable="false">
                 <ion-slide-page ion-slide-tab-label="My Vehicles">
 					<div class="car-list list" ng-if="car.visitor == 0" ng-repeat="(key,car) in cars" class="card cardetails">
                         <div class="item item-thumbnail-left">
