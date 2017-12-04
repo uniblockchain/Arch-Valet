@@ -15,19 +15,26 @@ class User_model extends CI_Model {
 		$this->db->from('admin');
         $this->db->where('building_name',$building);
         $query=$this->db->get();
-		$adminid = $query->row()->id;
-		
-		$this->db->select('*')->from('tbl_users');
-		$this->db->join('admin', 'tbl_users.created_by = admin.id');
-        $this->db->where('tbl_users.unite_no',$unite_no);
-        $this->db->where('admin.building_name',$building);
-        $this->db->where('admin.id',$adminid);
-        $query=$this->db->get();
-		
-        if ($query->num_rows() == 0) {
-            return false;
+        // echo $this->db->last_query().",". $query->num_rows();
+       
+        if ($query->num_rows() != 0) {
+    		$adminid = $query->row()->id;
+    		
+    		$this->db->select('*')->from('tbl_users');
+    		$this->db->join('admin', 'tbl_users.created_by = admin.id');
+            $this->db->where('tbl_users.unite_no',$unite_no);
+            $this->db->where('admin.building_name',$building);
+            $this->db->where('admin.id',$adminid);
+            $query1=$this->db->get();
+    		// echo $this->db->last_query().",". $query1->num_rows();
+      //       exit;
+            if ($query1->num_rows() == 0) {
+                return false;
+            } else {
+                 return $query1->row()->id;
+            }
         } else {
-             return $query->row()->id;
+            return false;
         }
     }
     
