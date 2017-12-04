@@ -26,6 +26,7 @@
             <div class="logo text-uppercase"><img src="<?php echo admin_img('logo_admin.png'); ?>"></div>
             <div class="logo text-uppercase"><span>Admin</span><strong class="text-primary">Login</strong></div>
             <form action="<?=admin_url('login/process');?>" role="form" method="post">
+			  <div class="alert alert-danger"><?php echo $this->session->flashdata('message'); ?></div>
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Username" name="username">
               </div>
