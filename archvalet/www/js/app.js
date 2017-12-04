@@ -18,53 +18,37 @@ var base_url = 'http://abhishekarora.in/projects/archvalet/Arch-Valet/codeignite
 })
  
 .run(function($ionicPlatform,$rootScope,$location, $cordovaSplashscreen, $ionicModal, $ionicHistory ,$ionicPopup) {	 
-	 $ionicPlatform.ready(function() {
-		 console.log($cordovaSplashscreen);
-		 console.log(navigator);
-		 // try {
-			  // $cordovaSplashscreen.hide();
-			// } catch(e) {
-			  // console.log(e.stack);
-			// };
-		  // navigator.splashscreen.hide();
-	  });
-	  
-	  $ionicPlatform.registerBackButtonAction(function (event) {
-		  // if($state.current.name=="app.home"){
-			navigator.app.exitApp(); 
-			var confirmPopup = $ionicPopup.confirm({
-			   title: 'Logout',
-			   template: 'Are you sure?'
-			 });
-			 confirmPopup.then(function(res) {
-			   if(res) {
-				var unite = window.localStorage.getItem('unite_no');
-				window.localStorage.removeItem('unite_no', unite);
-				$location.path('/buildinglist');
-			   } else {
-				 console.log('You are not sure');
-			   }
-			 });
-		  // }
-		  // else {
-			// navigator.app.backHistory();
-		  // }
-		}, 101);
-  
-          $rootScope.$on("$stateChangeStart", function (event, next, current, from) {
-        if (next.checkLogged || current.checkLogged) {
-       
-if (window.localStorage.getItem('unite_no') != null) {
-                  $rootScope.unite_no = window.localStorage.getItem('unite_no');
-                
-            }else {
+	 
+    $rootScope.$on("$stateChangeStart", function (event, next, current, from) {
+        if (next.checkLogged || current.checkLogged) {       
+			if (window.localStorage.getItem('unite_no') != null) {
+                  $rootScope.unite_no = window.localStorage.getItem('unite_no');                
+            } else {
                 $location.path('/buildinglist');
             }
-}
+		}
     })
     
-
-    
+	document.addEventListener("backbutton", onBackKeyDown, false);
+	function onBackKeyDown() {
+		//alert("back call");
+		var confirmPopup = $ionicPopup.confirm({
+		   title: 'Exit Application',
+		   template: 'Are you sure?'
+		 });
+		 confirmPopup.then(function(res) {
+		   if(res) {
+				//window.localStorage.setItem('unite_no','');
+				$ionicHistory.clearCache();
+				navigator.app.exitApp();
+				event.preventDefault();
+				return false;
+			} else {
+				// navigator.app.backHistory();
+			}
+		});
+	}
+        
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
