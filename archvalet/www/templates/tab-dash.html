@@ -10,14 +10,24 @@
                 </button>
           </div>-->
     </ion-header-bar>
-
-    <ion-content>
-       
-	<!-- <ion-refresher pulling-text="Pull to Refresh" on-refresh="loadCars()"></ion-refresher> -->
-
-       <!-- <ion-content scroll="false"> -->
-            <ion-slides slider="slider" ion-slides-tabs slide-tabs-scrollable="true">
-                <ion-slide-page ion-slide-tab-label="My Vehicles">
+	
+    <ion-content overflow-scroll="true">       
+		<ion-refresher pulling-text="Pull to Refresh" on-refresh="loadCars()"></ion-refresher>
+		<tab-slide-box>
+			<div class="tsb-icons">
+				<div class="tsb-ic-wrp">
+					<div class="row slideTop">
+                        <div   class="col col-50 vehi slideTop-col">
+                            <a href="javascript:;">My Vehicles</a>
+                        </div>
+                        <div  class="col col-50 slideTop-col">
+                            <a href="javascript:;">Guest</a>
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+				<ion-slide>
 					<div class="car-list list" ng-if="car.visitor == 0" ng-repeat="(key,car) in cars" class="card cardetails">
                         <div class="item item-thumbnail-left">
                             <div class="thumbnail">
@@ -37,10 +47,8 @@
                                 <button class="button button-dark" ng-if="car.statuss == 2">Car Out</button>
                         </div>
                     </div>
-				</ion-slide-page>
-                <ion-slide-page ion-slide-tab-label="Guest">
-
-                    
+				</ion-slide>
+				<ion-slide>
                     <div class="car-list list" ng-if="car.visitor == 1" ng-repeat="(key,car) in cars" class="card cardetails" >
                         <div class="item item-thumbnail-left">
                             <div class="thumbnail">
@@ -60,9 +68,9 @@
                             <button class="button button-dark" ng-if="car.statuss == 2">Car Out</button>
                         </div>
                     </div>
-				</ion-slide-page>
-            </ion-slides>
-        <!-- </ion-content> -->
+				</ion-slide>
+			</ion-slide-box>
+		</tab-slide-box>
 		   
 <!--
 
