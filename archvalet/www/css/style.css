@@ -696,10 +696,18 @@ padding:0px;
 .cariconvisible{
     display: inline !important;
 }
-.scroll-view.overflow-scroll {
+/* .tsb-icons {
     position: fixed !important;
+    z-index: 99999;
+    width: 100%;
 }
-.swiper-slide {
-    margin-top: 45px !important;
+tab-slide-box .slider-slides{
+	margin-top: 45px;
+} */
+.guest_slide .slideTop .col:first-child{
+	float: right;
+    right: 5px;
+    position: absolute;
 }
+
 .thumbnail svg {width: 100%; height: 100%;}
