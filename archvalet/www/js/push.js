@@ -21,7 +21,7 @@ function onDeviceReady(){
 });
 
  push.on('registration', function(data) {
-    // alert(data.registrationId);
+     alert(data.registrationId);
     localStorage.setItem("device_token", data.registrationId);
     localStorage.setItem("platform", 'android');
 
