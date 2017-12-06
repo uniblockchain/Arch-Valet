@@ -11,17 +11,17 @@
           </div>-->
     </ion-header-bar>
 	
-    <ion-content overflow-scroll="true">       
+    <ion-content overflow-scroll="false">       
 		<ion-refresher pulling-text="Pull to Refresh" on-refresh="loadCars()"></ion-refresher>
 		<tab-slide-box>
 			<div class="tsb-icons">
 				<div class="tsb-ic-wrp">
 					<div class="row slideTop">
-                        <div   class="col col-50 vehi slideTop-col">
-                            <a href="javascript:;">My Vehicles</a>
+                        <div   class="col col-50 slideTop-col" data-ng-class="{ 'vehi': selected_tab == true}">
+                            <a ng-href="javascript:;">My Vehicles</a>
                         </div>
-                        <div  class="col col-50 slideTop-col">
-                            <a href="javascript:;">Guest</a>
+                        <div  class="col col-50 slideTop-col" data-ng-class="{ 'vehi': selected_tab == false}" >
+                            <a ng-href="javascript:;">Guest </a>
                         </div>
                     </div>
 				</div>

@@ -1,5 +1,5 @@
  var app = angular.module('starter.controllers', [])
-.controller('DashCtrl', function($scope,$ionicModal,$ionicHistory,$http,$location,$rootScope,$interval,$ionicNavBarDelegate,$ionicSlideBoxDelegate,$ionicLoading) {
+.controller('DashCtrl', function($scope,$ionicModal,$ionicHistory,$http,$location,$rootScope,$interval,$ionicNavBarDelegate,$ionicSlideBoxDelegate,$ionicLoading, $state) {
     
     
  $scope.selected_tab = true;
@@ -68,17 +68,33 @@ $scope.loadCarsGuest();
 
 
 
+if($state.current.name == "tab.guest"){
+	$scope.selected_tab = false;	
+} else {
+	$scope.selected_tab = true;	
+}
+
  $scope.slideHasChanged = function($index){
+	console.log($index);
+	if($state.current.name != "tab.guest"){
+		if($index === 0){
+		 // $scope.selected_tab1 = false;
+		$scope.selected_tab = true;
+		}else{
+		 $scope.selected_tab = false;
+		// $scope.selected_tab1 = true;
 
-    if($index === 0){
+		}
+	} else {
+		if($index === 1){
+		 // $scope.selected_tab1 = false;
+		$scope.selected_tab = true;
+		}else{
+		 $scope.selected_tab = false;
+		// $scope.selected_tab1 = true;
 
-     $scope.selected_tab1 = false;
-    $scope.selected_tab = true;
-    }else{
-     $scope.selected_tab = false;
-    $scope.selected_tab1 = true;
-
-    }
+		}
+	}
   };
 
 
