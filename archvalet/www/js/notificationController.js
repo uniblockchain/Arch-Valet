@@ -14,9 +14,18 @@ $http({
   
   
   
-// window.setInterval(function(){
-	// $scope.loadNewNotification();
-// }, 5000);
+window.setInterval(function(){
+	 var unit = window.localStorage.getItem('unite_no');
+	  $http({
+		  url: base_url+ 'api/notification/clean/'+unit,
+		  method:'get',
+		  dataType: 'json',
+	  }).success(function (data){
+		  // console.log(data);
+		  $scope.notifications = data;
+		  $scope.$broadcast('scroll.refreshComplete')
+	  })
+}, 5000);
   
 
   
@@ -32,7 +41,8 @@ $scope.loadNewNotification = function(){
       url: base_url+ 'api/notification/notifi/'+unit,
       method:'get',
       dataType: 'json',
-  }).success(function (data){         
+  }).success(function (data){   
+		// console.log(data);  
 	  $ionicLoading.hide();
 	  if(data == ''){
 		  $scope.notifyAvail = 0;
@@ -52,12 +62,11 @@ $scope.reloadNewNotification = function(){
       method:'get',
       dataType: 'json',
   }).success(function (data){
+	  // console.log(data);
       $scope.notifications = data;
       $scope.$broadcast('scroll.refreshComplete')
   })
 }
-
-
 
 $scope.loadNewNotification();
 

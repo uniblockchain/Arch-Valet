@@ -36,12 +36,7 @@ app.controller('allController', function($scope,$ionicModal,$ionicHistory,$http,
 
 
   }
-  
-  
-  
-  
-  
-  
+   
   
   window.setInterval(function(){
    var unit = window.localStorage.getItem('unite_no');
