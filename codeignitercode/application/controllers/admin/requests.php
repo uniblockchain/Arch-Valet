@@ -94,11 +94,11 @@ class Requests extends Admin_Controller {
         $noti['date'] = time();
         $this->db->insert('tbl_notifications',$noti);
 
-        $this->load->model('push');
+        // $this->load->model('push');
 
-        $this->push->android('Car ready','Your Car is ready',$cars->unite_no);
-        $this->push->android_admin('Car request','You have a new car request');
-        $this->push->ios('Car ready','Your car is ready',$cars->unite_no);
+        // $this->push->android('Car ready','Your Car is ready',$cars->unite_no);
+        // $this->push->android_admin('Car request','You have a new car request');
+        // $this->push->ios('Car ready','Your car is ready',$cars->unite_no);
         
         redirect(admin_url('requests'));
     }
