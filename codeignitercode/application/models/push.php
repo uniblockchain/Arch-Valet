@@ -129,7 +129,7 @@ class Push extends CI_Model {
 			$ctx = stream_context_create();
 			stream_context_set_option($ctx, 'ssl', 'local_cert', $certi);
 			stream_context_set_option($ctx, 'ssl', 'passphrase', 'k');
-			$fp = stream_socket_client(
+			$fp = @stream_socket_client(
 			    'ssl://gateway.push.apple.com:2195', $err,
 			    $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
 			if (!$fp)

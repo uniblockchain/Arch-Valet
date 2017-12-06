@@ -82,7 +82,6 @@ class Notification extends CI_Controller {
        $this->db->where('unite_no',$id);
        $this->db->set('flag',1);
        $this->db->update('tbl_notifications');
-
     }
 
    
