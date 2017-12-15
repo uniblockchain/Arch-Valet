@@ -111,32 +111,34 @@ class Report extends Admin_Controller {
     function report_by_date(){
 
 
-        $var = $_POST['date'];
-        $date = str_replace('/', '-', $var);
+        $from = $_POST['from'];
+        $to = $_POST['to'];
+        $fromdate = str_replace('/', '-', $from);
+        $todate = str_replace('/', '-', $to);
 
-        if(!$date){
+        if(!$from || ! $to){
             redirect(admin_url('report'));
         }
         // $data['all_requests'] = $this->db->get_where('tbl_requests', array('status'=>'1'))->result();
 		$data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 		
         // $data['report'] = $this->db->order_by('id','desc')->get_where('tbl_request_report', array('requested_date'=>$date))->result();
-		$data['report'] =  $this->db->select('*,tbl_requests.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->join('tbl_requests', 'tbl_requests.id = tbl_request_report.request_id')->where(array('requested_date'=>$date,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->group_by('tbl_requests.id')->order_by('tbl_request_report.id','DESC')->get()->result();
+		$data['report'] =  $this->db->select('*,tbl_requests.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->join('tbl_requests', 'tbl_requests.id = tbl_request_report.request_id')->where(array('requested_date >='=>$fromdate,'requested_date <='=>$todate,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->group_by('tbl_requests.id')->order_by('tbl_request_report.id','DESC')->get()->result();
 		
 		
-        $data['printdate'] = $date;
-
+        $data['printfromdate'] = $fromdate;
+        $data['printtodate'] = $todate;
         $data['title'] = 'Vehicle Report';
         $this->load->view('admin/report/reportbydate', $data); 
     }
 
 
 
-    function generet_report_by_date($date) {
+    function generet_report_by_date($fromdate,$todate) {
         //echo $date; exit;
-        if($date){
+        if($fromdate && $todate){
         // $data['report'] = $this->db->order_by('id','desc')->get_where('tbl_request_report', array('requested_date'=>$date))->result();
-		$data['report'] =  $this->db->select('*,tbl_requests.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->join('tbl_requests', 'tbl_requests.id = tbl_request_report.request_id')->where(array('requested_date'=>$date,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->group_by('tbl_requests.id')->order_by('tbl_request_report.id','DESC')->get()->result();
+		$data['report'] =  $this->db->select('*,tbl_requests.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->join('tbl_requests', 'tbl_requests.id = tbl_request_report.request_id')->where(array('requested_date >='=>$fromdate,'requested_date <='=>$todate,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->group_by('tbl_requests.id')->order_by('tbl_request_report.id','DESC')->get()->result();
         }else{
             $data['report'] = array('error:'=>'Nodate'); 
         }

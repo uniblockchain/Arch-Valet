@@ -74,7 +74,8 @@
         <script src="<?php echo admin_js('charts-home.js'); ?>"></script>
         <script src="<?php echo admin_js('front.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('application.js'); ?>"></script>
-
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 <script type="text/javascript">
     var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();

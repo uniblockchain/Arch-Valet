@@ -688,7 +688,8 @@ $(function() {
     });
 
 	var currentTime = new Date() 
-	var minDate = new Date(currentTime.getFullYear(), currentTime.getMonth()-1, '1'); //previous month
+	// var minDate = new Date(currentTime.getFullYear(), currentTime.getMonth()-1, '1'); //previous month
+	var minDate = new Date(currentTime.getFullYear(), currentTime.getMonth(), '1'); 
 	console.log(minDate, currentTime.getFullYear());
 	var maxDate =  new Date(); // this month
 
