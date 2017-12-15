@@ -9,14 +9,14 @@
                 <div class="container-fluid">
                   <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo admin_url(); ?>">Home</a></li>
-                    <li class="breadcrumb-item active">Request Report</li>
+                    <li class="breadcrumb-item active">Report</li>
                   </ul>
                 </div>
             </div>
 
             <div class="container-fluid">
                 <div class="page-title"> 
-                    <h1 class="h3 display">Request Report</h1>
+                    <h1 class="h3 display">Report</h1>
                 </div>
 
 <!-- Page tabs --> 
@@ -25,23 +25,25 @@
 <!-- Datatable with custom column filtering --> 
                     <div class="card card-default report"> 
                         <div class="card-header">
-                           <div class="form-group col-sm-6 pull-left">
-                              <form action="<?php echo admin_url('report/report_by_date');?>" method="post" class="form-inline">
+                           <div class="form-group col-sm-8 pull-left">
+                            <form action="<?php echo admin_url('report/report_by_date');?>" method="post" class="form-inline">
                               <div class="form-group">
-                                <input type="text" name="date" placeholder="Choose Date" class="mx-sm-3 form-control datepicker-reportdates">
+                                <input type="text" name="from" placeholder="Choose From Date" value="<?php  echo $printfromdate; ?>" class="mx-sm-3 form-control datepicker-reportdates">
+                                <input type="text" name="to" placeholder="Choose To Date" value="<?php echo $printtodate; ?>" class="mx-sm-3 form-control datepicker-reportdates">
                               </div>
                               <div class="form-group">
                                 <input type="submit" value="View report" class="mx-sm-3 btn btn-primary">
                               </div>
                             </form>
                           </div>
-                          <div class="form-group col-sm-6 pull-left">
+
+                          <div class="form-group col-sm-4 pull-left">
                             <div class="dropdown pull-right"> 
                               <a href="#" class="dropdown-toggle card-icon" data-toggle="dropdown">
                                 <i class="fa fa-cog"></i> <b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu icons-right dropdown-menu-right">
-                                  <li><a href="<?php echo admin_url('report/generet_report_by_date/'.$printdate); ?>"><i class="fa fa-file-pdf-o"></i> View .pdf</a></li>
+                                  <li><a href="<?php echo admin_url('report/generet_report_by_date/'.$printfromdate.'/'.$printtodate); ?>"><i class="fa fa-file-pdf-o"></i> View .pdf</a></li>
                                   <li><a href="javascript:void(0);" onclick="printContent('printable');"><i class="fa fa-print"></i> Print report</a></li>
                               </ul> 
                               </div>
@@ -52,14 +54,13 @@
                           <table class="table table-striped table-hover">
                                 <thead> 
                                     <tr> 
-                                        <th>#</th> 
+                                         <th>#</th> 
                                         <th>Unit No.</th> 
                                         <th>Make</th> 
                                         <th>Model</th> 
-                                        <th>Requested Time</th>
-                                        <th>Requested Date</th>
+                                        <th>Date Requested</th>
+                                        <th>Time Requested</th>
                                         <th>Ready Time</th>
-                                        <th>Ready Date</th>
                                         <th>Status</th>
                                     </tr> 
                                 </thead>
@@ -75,15 +76,15 @@ $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
 										<td><?php echo $car_detail->unite_no; ?></td>
 										<td><?php echo $car_detail->made; ?></td> 
 										<td><?php echo $car_detail->model; ?></td> 
+                    <td>
+                    <?php if(!empty($u->requested_timestamp)){ 
+                      echo date('M j, Y', $u->requested_timestamp); 
+                    } ?>    
+                    </td> 
 										<td>
 										<?php if(!empty($u->requested_timestamp)){ 
 											echo date('h:i A', $u->requested_timestamp); 
 										} ?>   
-										</td> 
-										<td>
-										<?php if(!empty($u->requested_timestamp)){ 
-											echo date('M j, Y', $u->requested_timestamp); 
-										} ?>    
 										</td> 
 										<td>
 										<?php if(!empty($u->updated_date_time)){ 
@@ -91,19 +92,14 @@ $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
 										} ?>   
 										</td>
 										<td>
-										<?php if(!empty($u->updated_date_time)){ 
-											echo date('M j, Y', $u->updated_date_time); 
-										} ?>    
-										</td> 
-										<td>
 										<?php if($u->reqstatus == '0'){ ?>
 											<span class="label label-info">Requested</span>
 										<?php }if($u->reqstatus == '2'){ ?>
 											<span class="label label-success">Request accepted</span>
 										<?php }if($u->reqstatus == '3'){ ?>    
-											<span class="label label-danger">Request refused</span>
+											<span class="label label-danger">Cancelled</span>
 										<?php }if($u->reqstatus == '4'){ ?>
-											<span class="label label-primary">Car in</span>
+											<span class="label label-primary">Car Ready</span>
 										<?php } ?>   
 										</td>
 

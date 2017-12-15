@@ -56,8 +56,8 @@ if (isset($car)) {
                          <label>Vehicle Type</label>
 						   <select data-placeholder="Choose Vehicle Type" class="my_select_opt select-search car_type_change" tabindex="2" name="type"> 
 							   <option value="truck" data-icon="Shape_1_8_" <?php if(isset($car)){ if($car->type == "truck"){ echo "selected"; } }  ?>>TRUCK</option>
-							   <option value="van" data-icon="Shape_1_9_" <?php if(isset($car)){ if($car->type == "van"){ echo "selected"; } }  ?>>VAN</option>
-							   <option value="sydain" data-icon="Shape_1_5_" <?php if(isset($car)){ if($car->type == "sydain"){ echo "selected"; } }  ?>>SYDAIN</option>
+							   <option value="van" data-icon="Shape_1_9_" <?php if(isset($car)){ if($car->type == "van"){ echo "selected"; } }  ?>>MINI VAN</option>
+							   <option value="sydain" data-icon="Shape_1_5_" <?php if(isset($car)){ if($car->type == "sydain"){ echo "selected"; } }  ?>>SEDAN</option>
 							   <option value="suv" data-icon="Shape_1_7_" <?php if(isset($car)){ if($car->type == "suv"){ echo "selected"; } }  ?>>SUV</option>
 						   </select> 
                       </div> 

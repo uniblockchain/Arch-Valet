@@ -17,19 +17,19 @@ class Notification extends CI_Controller {
     $this->db->from('tbl_cars');
     $this->db->join('tbl_notifications', 'tbl_cars.id = tbl_notifications.car_id');
 
-    $arr = array('MONTH(FROM_UNIXTIME(tbl_notifications.date))' => date('m'), 'YEAR(FROM_UNIXTIME(tbl_notifications.date))'=> date('Y'), 'tbl_notifications.unite_no' => $id, 'tbl_notifications.status' => '1');
+    // $arr = array('MONTH(FROM_UNIXTIME(tbl_notifications.date))' => date('m'), 'YEAR(FROM_UNIXTIME(tbl_notifications.date))'=> date('Y'), 'tbl_notifications.unite_no' => $id, 'tbl_notifications.status' => '1');
+
+    $arr = array( 'tbl_notifications.unite_no' => $id, 'tbl_notifications.status' => '1');
 	
 //     , 'tbl_notifications.seen' => '0'
 /*    $this->db->where('tbl_notifications.unite_no',$id); 
     $this->db->where('tbl_notifications.status','1');*/
 
     $this->db->where($arr);
-
+    $this->db->where('FROM_UNIXTIME(tbl_notifications.date) BETWEEN DATE_SUB(NOW(), INTERVAL 15 DAY) AND NOW()');
     $this->db->order_by('tbl_notifications.id','desc');
     $query = $this->db->get();
-
-
-        $res = $query->result();
+    $res = $query->result();
 
       echo json_encode($res);
     }
@@ -45,15 +45,16 @@ class Notification extends CI_Controller {
 		$this->db->from('tbl_cars');
 		$this->db->join('tbl_notifications', 'tbl_cars.id = tbl_notifications.car_id');
 
-		$arr = array('MONTH(FROM_UNIXTIME(tbl_notifications.date))' => date('m'), 'YEAR(FROM_UNIXTIME(tbl_notifications.date))'=> date('Y'), 'tbl_notifications.unite_no' => $id, 'tbl_notifications.status' => '1');
-		
-	//     , 'tbl_notifications.seen' => '0'
-	/*    $this->db->where('tbl_notifications.unite_no',$id); 
-		$this->db->where('tbl_notifications.status','1');*/
+		 $arr = array( 'tbl_notifications.unite_no' => $id, 'tbl_notifications.status' => '1');
+    
+//     , 'tbl_notifications.seen' => '0'
+/*    $this->db->where('tbl_notifications.unite_no',$id); 
+    $this->db->where('tbl_notifications.status','1');*/
 
-		$this->db->where($arr);
+    $this->db->where($arr);
+    $this->db->where('FROM_UNIXTIME(tbl_notifications.date) BETWEEN DATE_SUB(NOW(), INTERVAL 15 DAY) AND NOW()');
+    $this->db->order_by('tbl_notifications.id','desc');
 
-		$this->db->order_by('tbl_notifications.id','desc');
 		$query = $this->db->get();
 
 
@@ -160,7 +161,8 @@ class Notification extends CI_Controller {
      }
 
 	function notifi_delete() {   //Cron run on every first day of new month         
-        $this->db->where(array('MONTH(FROM_UNIXTIME(date))<'=> date('m'),'YEAR(FROM_UNIXTIME(date))'=> date('Y')));
+         $this->db->where('FROM_UNIXTIME(tbl_notifications.date) < DATE_SUB(NOW(), INTERVAL 15 DAY)');
+        // $this->db->where(array('MONTH(FROM_UNIXTIME(date))<'=> date('m'),'YEAR(FROM_UNIXTIME(date))'=> date('Y')));
         $this->db->delete('tbl_notifications');     
 		// echo $this->db->last_query(); exit;
     }

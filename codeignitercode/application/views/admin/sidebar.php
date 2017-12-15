@@ -23,6 +23,8 @@
                            
                            <li class="<?php if($this->uri->segment('2')=='visitors'){ echo "active"; } ?>"><a href="<?php echo admin_url('visitors'); ?>"><i class="fa fa-car"></i><span>Guest Vehicle</span> </a></li>
 
+                            <li class="<?php if($this->uri->segment('2')=='shuttle'){ echo "active"; } ?>"><a href="<?php echo admin_url('shuttle'); ?>"><i class="fa fa-car"></i><span>Shuttle Service</span> </a></li>
+
 
                            <li id="" class="<?php if($this->uri->segment('2')=='requests'){ echo "active"; } ?>"><a href="<?php echo admin_url('requests'); ?>" ><i class="fa fa-pencil"></i><span>Request </span>
                               <div id="autorefresh" class="badge badge-info"><?php echo count($all_requests); ?></div>
@@ -35,7 +37,7 @@
 
 
                            
-                           <li class="<?php if($this->uri->segment('2')=='report'){ echo "active"; } ?>"><a href="<?php echo admin_url('report'); ?>"><i class="fa fa-file-text"></i><span>Request Report</span> </a></li>
+                           <li class="<?php if($this->uri->segment('2')=='report'){ echo "active"; } ?>"><a href="<?php echo admin_url('report'); ?>"><i class="fa fa-file-text"></i><span>Report</span> </a></li>
 
 
 <li class="<?php if($this->uri->segment('2')=='message'){ echo "active"; } ?>"><a href="<?php echo admin_url('message'); ?>"><i class="fa fa-comments"></i><span>Message</span> </a></li>
