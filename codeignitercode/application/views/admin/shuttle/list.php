@@ -13,12 +13,11 @@
                   </ul>
                 </div>
             </div>
-
             <div class="container-fluid">
                 <div class="page-title"> 
-                    <h1 class="h3 display">Shuttle Service</h1>
+                    <h1 class="h3 display">Shuttle Service </h1>
                 </div>
-                <form action="<?php echo admin_url('shuttle/settings'); ?>" method="post" enctype="multipart/form-data" role="form"> 
+                <form action="<?php echo admin_url('shuttle/savesettings'); ?>" method="post" enctype="multipart/form-data" role="form"> 
                  <div class="card card-default"> 
                      <div class="card-body">
                         <?php if($this->session->flashdata('message')){
@@ -27,29 +26,29 @@
                          <div class="form-group">
                              <div class="row">
                                  <div class="col-md-1">
-                                    <input type="checkbox" name="enabled" data-size="small" data-toggle="toggle" data-on="Enabled" data-onstyle="primary" data-offstyle="secondary" data-off="Disabled">
+                                    <input type="checkbox" <?php echo (!empty($shuttlesettings) && $shuttlesettings->enabled == 1) ? 'checked' : '' ?> name="enabled" data-size="small" data-toggle="toggle" data-on="Enabled" data-onstyle="primary" data-offstyle="secondary" data-off="Disabled" >
                                 </div>
                                 <div class="col-md-4">
                                     <select multiple="multiple" name="weekdays[]" class="form-control" style="width:370px">
                                         <optgroup label="Week days">
-                                        <option name="weekdays[]" value="sunday">Sunday</option>
-                                        <option name="weekdays[]" value="monday">Monday</option>
-                                        <option name="weekdays[]" value="tuesday">Tuesday</option>
-                                        <option name="weekdays[]" value="wednesday">Wednesday</option>
-                                        <option name="weekdays[]" value="thursday">Thursday</option>
-                                        <option name="weekdays[]" value="friday">Friday</option>
-                                        <option name="weekdays[]" value="saturday">Saturday</option>
+                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('sunday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?> value="sunday">Sunday</option>
+                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('monday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="monday">Monday</option>
+                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('tuesday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="tuesday">Tuesday</option>
+                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('wednesday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="wednesday">Wednesday</option>
+                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('thursday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="thursday">Thursday</option>
+                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('friday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="friday">Friday</option>
+                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('saturday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="saturday">Saturday</option>
                                         </optgroup>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                     <input type="text" name="from" class="form-control" placeholder="Shuttle service start time">
+                                     <input type="text" name="from" class="form-control" value="<?php echo !empty($shuttlesettings) ? $shuttlesettings->from : '' ; ?>" placeholder="Shuttle service start time">
                                  </div> 
                                  <div class="col-md-3">
-                                     <input type="text" name="to" class="form-control" placeholder="Shuttle service end time">
+                                     <input type="text" name="to" value="<?php echo !empty($shuttlesettings) ? $shuttlesettings->to : '' ; ?>" class="form-control" placeholder="Shuttle service end time">
                                  </div>
                                  <div class="form-actions text-right"> 
-                                     <input type="submit" value="Save" class="btn btn-primary">
+                                     <input type="submit" value="<?php echo !empty($shuttlesettings) ? 'Update' : 'Save' ; ?>" class="btn btn-primary">
                                  </div>                                                 
                              </div>
                          </div>
@@ -59,7 +58,7 @@
 
 
 <!-- Page tabs --> 
-                <div class="tabbable page-tabs" id="printable"> 
+                <div class="tabbable page-tabs" id="printable" <?php echo (!empty($shuttlesettings) && $shuttlesettings->enabled == 1) ? 'style="display:block"' : 'style="display:none"' ?>> 
 
 <!-- Datatable with custom column filtering --> 
                     <div class="card card-default report"> 
