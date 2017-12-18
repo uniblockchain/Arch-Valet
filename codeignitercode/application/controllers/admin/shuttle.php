@@ -16,6 +16,11 @@ class Shuttle extends Admin_Controller {
         
         $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('MONTH(reservedate)'=> date('m'),'YEAR(reservedate)'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 
+        $data['shuttlesettings'] = $this->db->select('*')->from('tbl_shuttle_settings')->where(array('admin_id'=>$this->session->userdata('admin_user_id')))->get()->row();
+
+
+        $data['shuttlesettings']->weekdays = json_decode($data['shuttlesettings']->weekdays);
+
         $data['title'] = 'Shuttle Service';
         $this->load->view('admin/shuttle/list', $data);
     }
@@ -125,17 +130,28 @@ class Shuttle extends Admin_Controller {
         $this->db->delete('tbl_shuttle');     
     }
 
-    function settings(){
+    function savesettings(){
         $data['admin_id'] = $this->session->userdata('admin_user_id');
         $data['enabled'] = $this->input->post('enabled') == "on" ? 1 : 0;
         $data['weekdays'] = json_encode($this->input->post('weekdays'));
         $data['from'] = $this->input->post('from');
         $data['to'] = $this->input->post('to');
-        $this->db->insert('tbl_shuttle_settings', $data);
 
-        $this->session->set_flashdata('message', 'Settings saved successfully!');
+        $shuttlesettings = $this->db->select('*')->from('tbl_shuttle_settings')->where(array('admin_id'=>$this->session->userdata('admin_user_id')))->get()->row();
+        if(empty($shuttlesettings)){
+            $this->db->insert('tbl_shuttle_settings', $data);
+            $this->session->set_flashdata('message', 'Settings saved successfully!');
+        } else {
+            $this->db->update('tbl_shuttle_settings', $data);
+            $this->session->set_flashdata('message', 'Settings updated successfully!');
+        }
+
         redirect(admin_url('shuttle'));
     }
+
+
+
+
 }
 
 /*
