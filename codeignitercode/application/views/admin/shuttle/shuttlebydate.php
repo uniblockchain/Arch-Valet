@@ -115,7 +115,7 @@
                                         <td><?php echo $u->location; ?></td>
                                         <td>
                                         <?php if($u->shuttlestatus == '0'){ ?>
-                                            <span><button class="btn btn-danger">Cancel</button></span>
+                                             <span><a href="<?php echo admin_url('shuttle/cancel_user_shuttle/'.$u->shuttleid); ?>" class="btn btn-danger">Cancel</a></span>
                                         <?php }if($u->shuttlestatus == '1'){ ?>
                                             <span class="label label-danger text-danger">Cancelled</span>
                                         <?php }if($u->shuttlestatus == '2'){ ?>    

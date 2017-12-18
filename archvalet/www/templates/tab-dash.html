@@ -16,12 +16,23 @@
 		<tab-slide-box>
 			<div class="tsb-icons">
 				<div class="tsb-ic-wrp">
-					<div class="row slideTop">
-                        <div   class="col col-50 slideTop-col" data-ng-class="{ 'vehi': selected_tab == true}">
+                    <div class="row slideTop" ng-if="shuttleAvail == 0" >
+                        <div  class="col col-50 slideTop-col" data-ng-class="{ 'vehi': selected_tab == '1'}">
                             <a ng-href="javascript:;">My Vehicles</a>
                         </div>
-                        <div  class="col col-50 slideTop-col" data-ng-class="{ 'vehi': selected_tab == false}" >
+                        <div  class="col col-50 slideTop-col" data-ng-class="{ 'vehi': selected_tab == '2'}" >
                             <a ng-href="javascript:;">Guest </a>
+                        </div>
+                    </div>
+					<div class="row slideTop" ng-if="shuttleAvail == 1" >
+                        <div  class="col col-33 slideTop-col" data-ng-class="{ 'vehi': selected_tab == '1'}">
+                            <a ng-href="javascript:;">My Vehicles</a>
+                        </div>
+                        <div  class="col col-33 slideTop-col" data-ng-class="{ 'vehi': selected_tab == '2'}" >
+                            <a ng-href="javascript:;">Guest </a>
+                        </div>
+                        <div  class="col col-33 slideTop-col" data-ng-class="{ 'vehi': selected_tab == '3'}"  >
+                            <a ng-href="javascript:;">Shuttle Service </a>
                         </div>
                     </div>
 				</div>
@@ -69,6 +80,59 @@
                         </div>
                     </div>
 				</ion-slide>
+                <ion-slide>
+                    <div class = "list" ng-if = "shuttleReserve == 1">
+                       <!-- <input type = "text" placeholder = " Select Shuttle Date"  ion-datetime-picker date ng-model="dateValue" id="reservedate" value="{{dateValue}}"/> 
+                        <input type = "text" placeholder = " Select Shuttle Time" ion-datetime-picker time ng-model="timeValue" id="reservetime" value="{{timeValue}}"/>-->
+                        <div class='item' ion-datetime-picker  date ng-model="dateValue" >   <i class = "ion-calendar"></i> <span  id="reservedate">{{dateValue| date: "yyyy-MM-dd"}} </span></div>
+
+                        <div class='item' ion-datetime-picker  time ng-model="timeValue"  >    <i class = "ion-clock"></i> <span id="reservetime">{{timeValue| date: "H:mm"}} </span> </div>
+                       
+                      
+                       <div class = "item item-input-inset">
+                          <label class = "item item-input-wrapper">
+                             <i class = "ion-location"></i>
+                             <input class='item' type = "text" placeholder = " Enter Location" id="reservelocation"/>
+                          </label>
+                       </div>
+                       <div class = "item item-input">
+                          <button class="button button-positive" ng-click = "reserveShuttle()" >
+                              Reserve
+                            </button>
+                       </div>
+                    </div>
+
+                     <!-- <div class = "list" ng-if = "shuttleReserve == 0">
+                        <span class="addcarError" ng-show="dateError">{{errors.dateError}}</span>
+                        <span class="addcarError" ng-show="timeError">{{errors.timeError}}</span>
+                    </div> -->
+
+                    <div class = "list" ng-if = "shuttleReserve == 0">
+                       <div class = "item item-input-inset"> 
+                          <label class = "item item-input-wrapper">
+                             <i class = "ion-calendar"></i>
+                             <input type = "text" placeholder = " Select Shuttle Date" readonly value="{{previousShuttleData.reservedate}}"/>
+                          </label>
+                       </div>
+                       <div class = "item item-input-inset">
+                          <label class = "item item-input-wrapper">
+                             <i class = "ion-clock"></i>
+                             <input type = "text" placeholder = " Select Shuttle Time" readonly value="{{previousShuttleData.timereserved}}"/>
+                          </label>
+                       </div>
+                       <div class = "item item-input-inset">
+                          <label class = "item item-input-wrapper">
+                             <i class = "ion-location"></i>
+                             <input type = "text" placeholder = " Enter Location" readonly value="{{previousShuttleData.location}}"/>
+                          </label>
+                       </div>
+                       <div class = "item item-input">
+                          <button class="button button-positive" ng-click="cancelShuttle(previousShuttleData.id)">
+                              Cancel
+                            </button>
+                       </div>
+                    </div>
+                </ion-slide>
 			</ion-slide-box>
 		</tab-slide-box>
 		   
