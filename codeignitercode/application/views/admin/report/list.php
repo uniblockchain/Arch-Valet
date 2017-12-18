@@ -23,21 +23,22 @@
                 <div class="tabbable page-tabs" id="printable"> 
 
 <!-- Datatable with custom column filtering --> 
-                    <div class="card card-default report"> 
-                        <div class="card-header">
-                           <div class="form-group col-sm-8 pull-left">
+                    <div class="card card-default report">
+                        <div class="card-header d-flex align-items-center">
+                            <h2 class="h5 display"><i class="icon-users"></i> Request Report</h2>
+                        </div> 
+                        <div class="card-body datatable-add-row">
+                           <div class="form-group col-lg-10 pull-left">
                             <form action="<?php echo admin_url('report/report_by_date');?>" method="post" class="form-inline">
                               <div class="form-group">
                                 <input type="text" name="from" placeholder="Choose From Date" class="mx-sm-3 form-control datepicker-reportdates">
                                 <input type="text" name="to" placeholder="Choose To Date" class="mx-sm-3 form-control datepicker-reportdates">
-                              </div>
-                              <div class="form-group">
                                 <input type="submit" value="View report" class="mx-sm-3 btn btn-primary">
                               </div>
                             </form>
                           </div>
 
-                          <div class="form-group col-sm-4 pull-left">
+                          <div class="form-group col-lg-2 pull-left">
                             <div class="dropdown pull-right"> 
                               <a href="#" class="dropdown-toggle card-icon" data-toggle="dropdown">
                                 <i class="fa fa-cog"></i> <b class="caret"></b>
@@ -49,10 +50,8 @@
                                   <li><a href="javascript:void(0);" onclick="printContent('printable');"><i class="fa fa-print"></i> Print report</a></li>
                               </ul> 
                             </div>
-                          </div>  
-                        </div>
+                          </div>
 
-                        <div class="card-body datatable-add-row">
                           <table class="table table-striped table-hover">
                                 <thead> 
                                     <tr> 

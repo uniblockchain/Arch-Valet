@@ -7,13 +7,6 @@
     height: 400px;
     overflow: auto;
 }
-.report .card-header{
-  border: none;
-}
-.report .col-sm-6{
-  padding-right: 0;
-  padding-left: 0;
-}
 .report .dropdown a{
   text-decoration: none;
 }
@@ -57,11 +50,34 @@
 .m-t-30{
   margin-top: 30px;
 }
-nav.side-navbar {
-  width: 220px;
+@media (min-width: 1200px){
+  nav.side-navbar {
+    width: 220px;
+  }
+}
+@media (max-width: 991px){
+  section.statistics {
+      padding-top: 50px;
+  }
+  .table td .btn{
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .table td .btn:last-child{
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 768px){
+  .container-fluid {
+      padding: 0 30px;
+  }
 }
 nav.side-navbar .sidenav-header {
     margin-bottom: 0;
+}
+nav.side-navbar.show-sm a,nav.side-navbar.shrink a{
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .login-page .form-inner, .register-page .form-inner {
     width: 100%;
@@ -80,4 +96,17 @@ nav.side-navbar .sidenav-header {
   float: left;
   width: auto !important;
   margin-top: 5px !important;
+}
+.ui-multiselect{
+  max-width: 100%;
+}
+@media (max-width: 590px){
+  .report form .form-group{
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .report form .form-group input{
+    width: 100%;
+    margin-bottom: 5px;
+  }
 }

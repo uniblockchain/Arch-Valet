@@ -61,67 +61,10 @@ table {
   font-size: 0.9em;
   color: #666;
 }
-.page-title {
-    padding: 30px 0;
-}
-.multiselect-container {
-    height: 400px;
-    overflow: auto;
-}
-.report .card-header{
-  border: none;
-}
-.report .col-sm-6{
-  padding-right: 0;
-  padding-left: 0;
-}
-.report .dropdown a{
-  text-decoration: none;
-}
-.report .dropdown-menu{
-  font-size: 0.9em;
-  width: 300px;
-  padding: 0;
-}
-.report .dropdown-menu a{
-  color: #212529;
-  width: 100%;
-  padding: 7px 10px;
-}
-.report .dropdown-menu a:hover{
-  background-color: #e9ecef;
-}
-.report .dropdown-menu i{
-  margin-right: 10px;
-}
 .btn-xs {
   font-size: 0.7em !important;
   padding: 2px 5px !important;
   border-radius: 2px !important;
-}
-.m-b-5{
-  margin-bottom: 5px;
-}
-.m-b-10{
-  margin-bottom: 10px;
-}
-.m-b-20{
-  margin-bottom: 20px;
-}
-.m-b-30{
-  margin-bottom: 30px;
-}
-.m-t-5{
-  margin-top: 5px;
-}
-.m-t-10{
-  margin-top: 10px;
-}
-.m-t-20{
-  margin-top: 20px;
-}
-.m-t-30{
-  margin-top: 30px;
 }
 .badge {
   font-weight: 400;
