@@ -1,9 +1,8 @@
  var app = angular.module('starter.controllers', [])
-.controller('DashCtrl', function($scope,$ionicModal,$ionicHistory,$http,$location,$rootScope,$interval,$ionicNavBarDelegate,$ionicSlideBoxDelegate,$ionicLoading, $state) {
-    
-    
- $scope.selected_tab = true;
-    $scope.selected_tab1 = false;
+.controller('DashCtrl', function($scope,$ionicModal,$ionicPopup,$ionicHistory,$http,$location,$rootScope,$interval,$ionicNavBarDelegate,$ionicSlideBoxDelegate,$ionicLoading, $state) {
+     $scope.dateValue = formatDate(new Date());
+       $scope.timeValue = formatTime(new Date());
+ $scope.selected_tab = "1";
 
  
 
@@ -66,35 +65,17 @@ $scope.loadCarsGuest();
 $scope.loadCarsGuest();
 
 
-
-
-if($state.current.name == "tab.guest"){
-	$scope.selected_tab = false;	
-} else {
-	$scope.selected_tab = true;	
-}
-
  $scope.slideHasChanged = function($index){
-	console.log($index);
-	if($state.current.name != "tab.guest"){
-		if($index === 0){
+		if($index === 0) {
 		 // $scope.selected_tab1 = false;
-		$scope.selected_tab = true;
-		}else{
-		 $scope.selected_tab = false;
-		// $scope.selected_tab1 = true;
-
-		}
-	} else {
-		if($index === 1){
-		 // $scope.selected_tab1 = false;
-		$scope.selected_tab = true;
-		}else{
-		 $scope.selected_tab = false;
-		// $scope.selected_tab1 = true;
-
-		}
-	}
+		  $scope.selected_tab = "1";
+		} else  if($index === 1) {
+		  $scope.selected_tab = "2";
+		  // $scope.selected_tab1 = true;
+		} else {
+      $scope.selected_tab = "3";
+      // $scope.selected_tab1 = true;      
+    }
   };
 
 
@@ -126,10 +107,7 @@ if($state.current.name == "tab.guest"){
 	// console.log($scope.visitors_cars);
     })
     
-    
-    
- 
-  window.setInterval(function(){
+   window.setInterval(function(){
   
                var unite_no = window.localStorage.getItem('unite_no');
          $http({
@@ -142,18 +120,202 @@ if($state.current.name == "tab.guest"){
              
         }).success(function(data){
     $scope.cars = data;
-	// console.log($scope.cars);
+  // console.log($scope.cars);
     })
     }, 5000);
 
 
+    
+    
+    
+    
+    function formatDate(date) {
+    
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
 
+    return year+ '-' + (monthIndex+1) + '-' + day;
+  }
+
+   function formatTime(date) {
     
+    var hour = date.getHours();
+    var min = date.getMinutes();
+    // var sec = date.getSeconds();
+
+    return hour+ ':' + ((min < 10)? '0'+min : min)  ;  /*  + ':' + sec; */
+  }
+
+ 
+      //Shuttle Service
+
+      //check whether the app user admin available for shuttle service 
 
 
-    
-    
-    
+
+        var unite_no = window.localStorage.getItem('unite_no');
+         $http({
+             url:base_url+'api/shuttle/fetch_shuttle/'+unite_no,
+              method:'get',
+        dataType:'json',
+         headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+             
+        }).success(function(data){
+          $scope.shuttleAvail = 0;
+          // console.log(data.enabled);
+          if(data.enabled != undefined)
+            $scope.shuttleAvail = data.enabled;
+        })
+
+        // check whether the app user already had any shuttle service reserved 
+        // then cannot reserve another shuttle till its not completed or cancelled 
+        var unite_no = window.localStorage.getItem('unite_no');
+         $http({
+             url:base_url+'api/shuttle/fetch_user_shuttle/'+unite_no,
+              method:'get',
+        dataType:'json',
+         headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+             
+        }).success(function(data){
+          $scope.shuttleReserve = 1;
+          // console.log(data);
+
+          if(data.status != undefined)
+            $scope.shuttleReserve = data.status;
+          
+          $scope.previousShuttleData = data;
+        })
+
+  window.setInterval(function(){
+  
+        //check whether the app user admin available for shuttle service 
+        var unite_no = window.localStorage.getItem('unite_no');
+         $http({
+             url:base_url+'api/shuttle/fetch_shuttle/'+unite_no,
+              method:'get',
+        dataType:'json',
+         headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+             
+        }).success(function(data){
+          $scope.shuttleAvail = 0;
+          // console.log(data.enabled);
+          if(data.enabled != undefined)
+            $scope.shuttleAvail = data.enabled;
+        })
+
+        // check whether the app user already had any shuttle service reserved 
+        // then cannot reserve another shuttle till its not completed or cancelled 
+        var unite_no = window.localStorage.getItem('unite_no');
+         $http({
+             url:base_url+'api/shuttle/fetch_user_shuttle/'+unite_no,
+              method:'get',
+        dataType:'json',
+         headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+             
+        }).success(function(data){
+          $scope.shuttleReserve = 1;
+          // console.log(data);
+
+          if(data.status != undefined)
+            $scope.shuttleReserve = data.status;
+          
+          $scope.previousShuttleData = data;
+        })
+    }, 5000);
+
+
+    $scope.cancelShuttle = function(shuttleID){
+         $ionicLoading.show({
+            template: '<ion-spinner icon="spiral"></ion-spinner>'
+          }).then(function(){
+             //console.log("The loading indicator is now displayed");
+          });
+
+      var unite_no = window.localStorage.getItem('unite_no');
+        $http({
+            url:base_url+'api/shuttle/cancel_user_shuttle/'+unite_no+'/'+shuttleID,
+            method:'get',
+            dataType:'json',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function(data){
+          if(data == "true")
+            $ionicLoading.hide();
+        })
+    }
+
+
+    $scope.reserveShuttle = function(){
+         $ionicLoading.show({
+            template: '<ion-spinner icon="spiral"></ion-spinner>'
+          }).then(function(){
+             //console.log("The loading indicator is now displayed");
+          });
+
+      var unite_no = window.localStorage.getItem('unite_no');
+
+      var data = {
+            date: $('#reservedate').text(),
+            time: $('#reservetime').text(),
+            location: $('#reservelocation').val(),
+            unite_no: window.localStorage.getItem('unite_no')
+        }
+        
+        
+        var c = $.param(data);
+        $http({
+            data:c,
+             url:base_url+'api/shuttle/reserve_user_shuttle',
+              method:'POST',
+        dataType:'json',
+         headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+             
+        }).success(function(data){
+          
+              if(data.success){
+               //$scope.modalform.hide();
+             }
+            
+            $ionicLoading.hide();
+           
+            $scope.errors = data;
+            if(data.dateError || data.timeError){
+                var alertPopup = $ionicPopup.alert({
+                  title: 'Mandatory Fields Information',
+                  template: '<span style="display:block;">'+data.dateError+'</span><span style="display:block;">'+data.timeError+'</span>'
+                });
+                alertPopup.then(function(res) {      
+                
+                });
+            }
+             
+
+           // if(data.dateError){
+           //     $scope.dateError = true;
+           // }else{
+           //      $scope.dateError = false;
+           // }
+           
+           
+           // if(data.timeError){
+           //      $scope.timeError = true;
+           // }else{
+           //      $scope.timeError = false;
+           // }           
+        })
+    }
     
     
     

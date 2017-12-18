@@ -14,12 +14,13 @@ class Shuttle extends Admin_Controller {
         // $data['all_requests'] = $this->db->get_where('tbl_requests', array('status'=>'1'))->result();
         $data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
         
-        $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('MONTH(reservedate)'=> date('m'),'YEAR(reservedate)'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
+        $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus,tbl_shuttle.id as shuttleid')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('MONTH(reservedate)'=> date('m'),'YEAR(reservedate)'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 
         $data['shuttlesettings'] = $this->db->select('*')->from('tbl_shuttle_settings')->where(array('admin_id'=>$this->session->userdata('admin_user_id')))->get()->row();
 
-
-        $data['shuttlesettings']->weekdays = json_decode($data['shuttlesettings']->weekdays);
+        if(!empty($data['shuttlesettings']->weekdays)){
+         $data['shuttlesettings']->weekdays = json_decode($data['shuttlesettings']->weekdays);
+        }
 
         $data['title'] = 'Shuttle Service';
         $this->load->view('admin/shuttle/list', $data);
@@ -30,9 +31,9 @@ class Shuttle extends Admin_Controller {
     {
 
         if($month == "current"){
-            $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('MONTH(reservedate)'=> date('m'),'YEAR(reservedate)'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
+            $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus,tbl_shuttle.id as shuttleid')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('MONTH(reservedate)'=> date('m'),'YEAR(reservedate)'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
         } else {
-            $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('MONTH(reservedate)'=> (date('m')-1),'YEAR(reservedate)'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
+            $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus,tbl_shuttle.id as shuttleid')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('MONTH(reservedate)'=> (date('m')-1),'YEAR(reservedate)'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
         }
         
         //load the view and saved it into $html variable
@@ -78,7 +79,7 @@ class Shuttle extends Admin_Controller {
         // $data['all_requests'] = $this->db->get_where('tbl_requests', array('status'=>'1'))->result();
         $data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
         
-        $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('reservedate >='=> $fromdate,'reservedate <='=> $todate,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
+        $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus,tbl_shuttle.id as shuttleid')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('reservedate >='=> $fromdate,'reservedate <='=> $todate,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 
         
         $data['printfromdate'] = $fromdate;
@@ -92,7 +93,7 @@ class Shuttle extends Admin_Controller {
     function generet_shuttle_by_date($fromdate,$todate) {
         //echo $date; exit;
         if($fromdate && $todate){
-            $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('reservedate >='=> $fromdate,'reservedate <='=> $todate,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
+            $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus,tbl_shuttle.id as shuttleid')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('reservedate >='=> $fromdate,'reservedate <='=> $todate,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
         }else{
             $data['shuttle'] = array('error:'=>'Nodate'); 
         }
@@ -149,7 +150,12 @@ class Shuttle extends Admin_Controller {
         redirect(admin_url('shuttle'));
     }
 
+     function cancel_user_shuttle($shuttleID) {
 
+       $request = $this->db->where(array('id' => $shuttleID))->update('tbl_shuttle',array('status' => 1));
+
+       redirect(admin_url('shuttle'));
+    }
 
 
 }
