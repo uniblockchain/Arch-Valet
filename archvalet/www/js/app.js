@@ -10,7 +10,7 @@
 var base_url = 'http://abhishekarora.in/projects/archvalet/Arch-Valet/codeignitercode/index.php/';
 // var base_url = 'http://archvaletapp.com/';
 
- angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
+ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova','ion-datetime-picker'])
  
 
 .config(function($ionicConfigProvider) {
