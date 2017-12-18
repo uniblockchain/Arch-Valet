@@ -37,9 +37,9 @@
                      <div class="card-body">
                         <div class="form-group">
                           <div class="row">
-                             <div class="col-md-6">
+                             <div class="col-md-12">
                                <label>Choose Unit No.</label>
-                                <select multiple="multiple" name="unite[]" style="width:370px">
+                                <select multiple="multiple" name="unite[]" style="width:370px;">
                                         <optgroup label="Unites">
                                         <?php foreach($unites as $u){  ?>
                                             <option name="unite[]" value="<?php echo $u->unite_no; ?>"><?php echo $u->unite_no; ?></option>
@@ -67,7 +67,7 @@
 
                           <div class="form-group">
                               <label>Message:</label> 
-                              <textarea  name="message" placeholder="Your message here..." class="form-control" ></textarea>
+                              <textarea rows="5" name="message" placeholder="Your message here..." class="form-control"></textarea>
                                 
                               
                               <?php echo form_error('message'); ?>
