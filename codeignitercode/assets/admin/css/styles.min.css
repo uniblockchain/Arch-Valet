@@ -1460,7 +1460,7 @@ ul.list-justified li {
 }
 @media (max-width: 768px) {
     .page-content {
-        margin: 0 15px!important
+        margin: 0 0px!important
     }
 }
 .user-menu>a {
