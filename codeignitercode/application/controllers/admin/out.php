@@ -10,24 +10,18 @@ class Out extends Admin_Controller {
 
     function index() {
 
-        // $data['all_requests'] = $this->db->get_where('tbl_requests', array('status'=>'1'))->result();
-		$data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
-       
-		$this->db->order_by('status','ASC');
-        $this->db->order_by('id','DESC');
-        $this->db->order_by('request_time','DESC');
-        $this->db->where('status','2');
-        $query = $this->db->get('tbl_requests');
-        $data['requests'] = $query->result();
+        $data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'1','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 
-        $data['title'] = 'Car Requests';
+        $data['requests'] = $this->db->select('*, tbl_requests.id as id,tbl_requests.status as reqstatus')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'5','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->order_by('tbl_requests.id','DESC')->order_by('tbl_requests.request_time','DESC')->get()->result();
+
+        $data['title'] = 'Car Out Requests';
         $this->load->view('admin/in_out/out', $data);
     }
 
 
     function in($id) {
         $data['status'] = '4';
-        $data['updated_date_time'] = time();
+        $data['car_in_timestamp'] = time();
         $this->db->where('id', $id);
         $this->db->update('tbl_requests', $data);
         $this->session->set_flashdata('message', 'Car is ready !');

@@ -4,7 +4,7 @@
        $scope.timeValue = formatTime(new Date());
  $scope.selected_tab = "1";
 
- 
+
 
   $scope.myGoBack = function() {
     $ionicNavBarDelegate.back();
@@ -165,7 +165,26 @@ $scope.loadCarsGuest();
              
         }).success(function(data){
           $scope.shuttleAvail = 0;
-          // console.log(data.enabled);
+          weekdays = data.weekdays;
+          // console.log(data.weekdays);
+          weekdays = weekdays.replace("\"sunday\"", "0");
+          weekdays = weekdays.replace("\"monday\"", "1");
+          weekdays = weekdays.replace("\"tuesday\"", "2");
+          weekdays = weekdays.replace("\"wednesday\"", "3");
+          weekdays = weekdays.replace("\"thursday\"", "4");
+          weekdays = weekdays.replace("\"friday\"", "5");
+          weekdays = weekdays.replace("\"saturday\"", "6");
+
+          $scope.enabledays = weekdays;
+          $scope.disabledays = new Array();
+
+          for(i=0;i<=6;i++) {
+              if(weekdays.indexOf(i) == -1){
+                  $scope.disabledays.push(i);
+              }
+          }
+          // console.log($scope.enabledays,$scope.disabledays);
+
           if(data.enabled != undefined)
             $scope.shuttleAvail = data.enabled;
         })
@@ -283,7 +302,7 @@ $scope.loadCarsGuest();
                 }
              
         }).success(function(data){
-          
+          console.log(data);
               if(data.success){
                //$scope.modalform.hide();
              }
@@ -295,6 +314,16 @@ $scope.loadCarsGuest();
                 var alertPopup = $ionicPopup.alert({
                   title: 'Mandatory Fields Information',
                   template: '<span style="display:block;">'+data.dateError+'</span><span style="display:block;">'+data.timeError+'</span>'
+                });
+                alertPopup.then(function(res) {      
+                
+                });
+            }
+
+            if(data.reserveError){
+                var alertPopup = $ionicPopup.alert({
+                  title: 'Reservation Failed',
+                  template: '<span style="display:block;">'+data.reserveError+'</span>'
                 });
                 alertPopup.then(function(res) {      
                 

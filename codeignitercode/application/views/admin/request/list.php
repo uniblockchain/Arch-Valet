@@ -16,13 +16,13 @@
 
             <div class="container-fluid">
                 <div class="page-title"> 
-                    <h1 class="h3 display">Request</h1>
+                    <h1 class="h3 display"> Vehicle Requests</h1>
                 </div>
 
                 <!-- Page tabs -->
               <div class="card tabbable page-tabs">
                 <div class="card-header d-flex align-items-center">
-                  <h2 class="h5 display"><i class="icon-users"></i> Vehicle Request</h2>
+                  <h2 class="h5 display"><i class="icon-users"></i> Vehicle Requests</h2>
                 </div>
                 <div class="card-body datatable-add-row">
                   <table class="table table-striped table-hover">
@@ -33,7 +33,6 @@
                                         <th>Parking Spot</th> 
                                         <th>Made</th> 
                                         <th>Model</th> 
-                                        <th>Color</th>
                                         <th>Plate No.</th> 
                                         <th>Date</th>
                                         <th>Time</th>
@@ -53,7 +52,6 @@ $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
                                         <td><?php echo $car_detail->parking_spot; ?></td> 
                                         <td><?php echo $car_detail->made; ?></td> 
                                         <td><?php echo $car_detail->model; ?></td> 
-                                        <td><?php echo $car_detail->color; ?></td> 
                                         <td><?php echo $car_detail->plate_number; ?></td>
                                         <td><?php echo date('l M j', $u->request_timestamp); ?></td> 
                                         <td><?php echo date('h:i A', $u->request_timestamp); ?></td> 
