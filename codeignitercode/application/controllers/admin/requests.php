@@ -68,7 +68,7 @@ class Requests extends Admin_Controller {
 
 
     function ready($id) {
-        $data['status'] = '4';
+        $data['status'] = '5';
         $data['updated_date_time'] = time();
         $this->db->where('id', $id);
         $this->db->update('tbl_requests', $data);
@@ -77,7 +77,7 @@ class Requests extends Admin_Controller {
         $detail = $this->db->get_where('tbl_requests', array('id'=>$id))->row();
         
         $car['car_id'] = $detail->car_id;
-        $car['status'] = '4';
+        $car['status'] = '5';
         $car['requested_date'] = date('m-d-Y');
         $car['requested_timestamp'] = time();
         $car['request_id'] = $id;

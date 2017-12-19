@@ -16,7 +16,7 @@
 
             <div class="container-fluid">
                 <div class="page-title"> 
-                    <h1 class="h3 display">Message</h1>
+                    <h1 class="h3 display">Messages</h1>
                 </div>
 
                 <a href="<?php echo admin_url('message/add_new'); ?>" class="btn btn-primary add_new" type="button"><i class="icon-plus"></i>Add New</a> 
@@ -24,7 +24,7 @@
                 <!-- Page tabs -->
               <div class="card tabbable page-tabs">
                 <div class="card-header d-flex align-items-center">
-                  <h2 class="h5 display"><i class="icon-users"></i>Message</h2>
+                  <h2 class="h5 display"><i class="icon-users"></i>Messages</h2>
                 </div>
                 <div class="card-body datatable-add-row">
                   <table class="table table-striped table-hover">

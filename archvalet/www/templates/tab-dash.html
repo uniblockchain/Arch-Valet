@@ -82,9 +82,12 @@
 				</ion-slide>
                 <ion-slide>
                     <div class = "list" ng-if = "shuttleReserve == 1">
+                        <i class = "ion-calendar"></i><datepicker date-min-limit="{{dateValue}}" date-disabled-weekdays="{{disabledays}}" style="display:inline;" >
+                            <input ng-model="dateValue" class="item" type="text" id="reservedate"/>
+                        </datepicker>
                        <!-- <input type = "text" placeholder = " Select Shuttle Date"  ion-datetime-picker date ng-model="dateValue" id="reservedate" value="{{dateValue}}"/> 
                         <input type = "text" placeholder = " Select Shuttle Time" ion-datetime-picker time ng-model="timeValue" id="reservetime" value="{{timeValue}}"/>-->
-                        <div class='item' ion-datetime-picker  date ng-model="dateValue" >   <i class = "ion-calendar"></i> <span  id="reservedate">{{dateValue| date: "yyyy-MM-dd"}} </span></div>
+                       <!--  <div class='item' ion-datetime-picker  date ng-model="dateValue" >    <span  >{{dateValue| date: "yyyy-MM-dd"}} </span></div> -->
 
                         <div class='item' ion-datetime-picker  time ng-model="timeValue"  >    <i class = "ion-clock"></i> <span id="reservetime">{{timeValue| date: "H:mm"}} </span> </div>
                        

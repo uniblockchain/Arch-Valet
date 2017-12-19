@@ -16,27 +16,25 @@
 
             <div class="container-fluid">
                 <div class="page-title"> 
-                    <h1 class="h3 display">Car Out</h1>
-                </div> 
+                    <h1 class="h3 display">Car Out Report</h1>
+                </div>
 
                 <!-- Page tabs -->
               <div class="card tabbable page-tabs">
                 <div class="card-header d-flex align-items-center">
-                  <h2 class="h5 display"><i class="icon-users"></i> Car Out</h2>
+                  <h2 class="h5 display"><i class="icon-users"></i> Cars Out</h2>
                 </div>
                 <div class="card-body datatable-add-row">
-                  <table class="table table-striped table-hover"> 
+                  <table class="table table-striped table-hover">
                                 <thead> 
                                     <tr> 
                                         <th>#</th> 
                                         <th>Unit No.</th> 
-                                        <th>Parking Spot</th> 
                                         <th>Made</th> 
                                         <th>Model</th> 
-                                        <th>Color</th>
                                         <th>Plate No.</th> 
-                                        <th>Time</th>
-                                        <th>Date</th>
+                                        <th>Ready Date</th>
+                                        <th>Ready Time</th>
                                         <th>Action</th>
                                     </tr> 
                                 </thead>
@@ -45,26 +43,27 @@
 <?php 
 $i=1; foreach($requests as $u){ 
 $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
-if($car_detail->visitor != '1'){
+
 ?>
                                     <tr> 
                                         <td><?php echo $i; ?></td> 
-                                        <td><?php echo $car_detail->unite_no; ?></td> 
-                                        <td><?php echo $car_detail->parking_spot; ?></td> 
+                                        <td><?php if($car_detail->visitor == '1'){ echo 'Ticket No: ' .$car_detail->ticket_no; }else{ echo $car_detail->unite_no;  } ?></td> 
                                         <td><?php echo $car_detail->made; ?></td> 
                                         <td><?php echo $car_detail->model; ?></td> 
-                                        <td><?php echo $car_detail->color; ?></td> 
                                         <td><?php echo $car_detail->plate_number; ?></td>
-                                        <td><?php echo date('l M j', $u->updated_date_time); ?></td> 
+                                        <td><?php echo date('M j, Y', $u->updated_date_time); ?></td> 
                                         <td><?php echo date('h:i A', $u->updated_date_time); ?></td> 
                                         <td>
+                                        <?php if($u->reqstatus == '5'){ ?>
+                                           <a href="<?php echo admin_url('out/in/'.$u->id); ?>" class="btn btn-primary" type="button" >Car In</a>
+                                        <?php } ?> 
 
-                                           <a href="<?php echo admin_url('out/in/'.$u->id); ?>" class="btn btn-primary" type="button" onclick="return confirm('Are your sure ?')">In</a> 
-                                          
+                                           
+
 
                                         </td>
                                     </tr> 
-<?php  } $i++; } ?>
+<?php $i++; } ?>
                                 </tbody> 
                   </table>
                 </div>
@@ -73,3 +72,4 @@ if($car_detail->visitor != '1'){
         </div> <!-- /page tabs --> 
 
 <?php include(dirname(__DIR__).'/footer.php'); ?>
+

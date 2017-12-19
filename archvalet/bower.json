@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "ngCordova": "^0.1.27-alpha",
-    "ion-datetime-picker": "^0.5.2"
+    "ion-datetime-picker": "^0.5.2",
+    "angularjs-datepicker": "^2.1.23"
   }
 }

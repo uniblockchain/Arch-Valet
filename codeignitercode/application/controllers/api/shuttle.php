@@ -71,12 +71,22 @@ class Shuttle extends CI_Controller {
             $data['unite_no'] = $_POST['unite_no'];
             $data['status'] = 0;
 
-            $request = $this->db->select('*')->from('tbl_shuttle')->where(array('status' => 0))->get()->result();
-            
+            $time = strtotime($data['timereserved']);
+            $startTime = date("H:i", strtotime('-30 minutes', $time));
+            $endTime = date("H:i", strtotime('+30 minutes', $time));
 
 
-            $this->db->insert('tbl_shuttle', $data);
-            $response['success'] = true;
+            $requests = $this->db->select('*')->from('tbl_shuttle')->where(array('status' => 0, 'reservedate'=>$data['reservedate'], 'timereserved >='=> $startTime, 'timereserved <='=>$endTime))->get()->result();
+
+            // echo json_encode($this->db->last_query());
+
+            if(!empty($requests)){
+               $response['reserveError'] = "Shuttle Service for this timing already exists."; //.count($requests) ;
+            } else {
+                $this->db->insert('tbl_shuttle', $data);
+                $response['success'] = true;
+            }
+
             echo json_encode($response);
         }
     }
