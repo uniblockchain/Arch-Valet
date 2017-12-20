@@ -59,6 +59,7 @@ if (isset($car)) {
 							   <option value="van" data-icon="Shape_1_9_" <?php if(isset($car)){ if($car->type == "van"){ echo "selected"; } }  ?>>MINI VAN</option>
 							   <option value="sydain" data-icon="Shape_1_5_" <?php if(isset($car)){ if($car->type == "sydain"){ echo "selected"; } }  ?>>SEDAN</option>
 							   <option value="suv" data-icon="Shape_1_7_" <?php if(isset($car)){ if($car->type == "suv"){ echo "selected"; } }  ?>>SUV</option>
+                 <option value="coupe" data-icon="Shape_1_9_" <?php if(isset($car)){ if($car->type == "coupe"){ echo "selected"; } }  ?>>Coupe</option>
 						   </select> 
                       </div> 
 					  <div class="col-md-4 car_icon">
@@ -148,6 +149,7 @@ $(function(){
 	$('#Shape_1_7_').hide();	// SUV
 	$('#Shape_1_8_').hide();   //TRUCK
 	$('#Shape_1_9_').hide();	// VAN
+  $('#Shape_1_9_').hide();  // COUPE
 	
 	$('#'+shapeId).show();  // show selected shape In EDIT selected else In ADD TRUCK default selected
 	$('.car_icon').find('svg').find('path').attr('fill','#'+($('.car_color_change').val() == undefined ? '333333' : $('.car_color_change').val())); // fill color to svg path tag fill attribute if color then color else default color #333
@@ -162,6 +164,7 @@ $(function(){
 		$('#Shape_1_7_').hide();	// SUV
 		$('#Shape_1_8_').hide();   //TRUCK
 		$('#Shape_1_9_').hide();	// VAN
+    $('#Shape_1_9_').hide();  // COUPE
 		
 		$('#'+shapeId).show();  // show selected shape
 	});
