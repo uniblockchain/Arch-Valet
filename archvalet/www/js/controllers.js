@@ -2,6 +2,7 @@
 .controller('DashCtrl', function($scope,$ionicModal,$ionicPopup,$ionicHistory,$http,$location,$rootScope,$interval,$ionicNavBarDelegate,$ionicSlideBoxDelegate,$ionicLoading, $state) {
      $scope.dateValue = formatDate(new Date());
        $scope.timeValue = formatTime(new Date());
+       $scope.todaydt = formatDate(new Date());
  $scope.selected_tab = "1";
 
 
@@ -152,7 +153,7 @@ $scope.loadCarsGuest();
 
       //check whether the app user admin available for shuttle service 
 
-
+  
 
         var unite_no = window.localStorage.getItem('unite_no');
          $http({
