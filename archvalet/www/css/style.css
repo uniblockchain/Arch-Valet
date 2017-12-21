@@ -215,9 +215,9 @@ a:link{
 }
 
 .ion-chevron-down{
-    position: absolute;
+   /* position: absolute;
     right: 8px;
-    top:8px;
+    top:8px;*/
 }
 .item-info-col > p{
     padding-top: 6px;
@@ -250,11 +250,11 @@ a:link{
 }
 
 .ion-chevron-up{
-    position: absolute;
+    /*position: absolute;
     bottom: 20px;
     right: 29px;
     font-size: 20px;
-    display:none;
+    display:none;*/
 }
 
 .itemdetails{

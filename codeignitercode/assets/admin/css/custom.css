@@ -50,6 +50,9 @@
 .m-t-30{
   margin-top: 30px;
 }
+svg{
+  width: 50px;
+}
 @media (min-width: 1200px){
   nav.side-navbar {
     width: 220px;
