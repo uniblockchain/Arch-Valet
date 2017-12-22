@@ -30,6 +30,7 @@ class Message extends Admin_Controller {
 
     function save() {
 
+        // $this->form_validation->set_rules('unite', 'Unit No', 'trim|required|xss_clean');
         $this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
         $this->form_validation->set_rules('message', 'Message', 'trim|required|xss_clean|');
         

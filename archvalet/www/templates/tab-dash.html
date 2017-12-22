@@ -152,7 +152,7 @@
                                 <button class="requested button button-dark" ng-if="car.statuss == 1">Requested</button>
                                 <button class="button button-assertive" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</button>
                                 <button class="button button-positive" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
-                                <button class="button button-dark" ng-if="car.statuss == 2">Car Out</button>
+                                <button class="button button-dark" ng-if="car.statuss == 5">Car Out</button>
                         </div>
                     </div>
 				</ion-slide>
@@ -270,7 +270,7 @@
                             <button class="requested button button-dark" ng-if="car.statuss == 1">Requested</button>
                             <button class="button button-assertive" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</button>
                             <button class="button button-positive" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
-                            <button class="button button-dark" ng-if="car.statuss == 2">Car Out</button>
+                            <button class="button button-dark" ng-if="car.statuss == 5">Car Out</button>
                         </div>
                     </div>
 				</ion-slide>
@@ -281,7 +281,7 @@
                             <div class="datepickerbox">
                                 <i class = "ion-calendar"></i>
                                 <datepicker date-format="yyyy-MM-dd" date-min-limit="{{todaydt}}" date-disabled-weekdays="{{disabledays}}"  class="date_picker">
-                                    <input ng-model="dateValue" type="text" id="reservedate" class="datepickerinput"/>
+                                    <input readonly ng-model="dateValue" type="text" id="reservedate" class="datepickerinput"/>
                                 </datepicker>
                             </div>
                             <!-- </label>

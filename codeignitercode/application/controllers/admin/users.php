@@ -37,6 +37,7 @@ class Users extends Admin_Controller {
 		$data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'0','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 		
         $data['user'] = $this->db->get_where('tbl_users', array('id' => $id))->row();
+        $data['user']->add_edit = "edit";
         $data['title'] = 'Edit Unite';
         $this->load->view('admin/user/form', $data);
     }
@@ -59,55 +60,87 @@ class Users extends Admin_Controller {
 
     function save() {
 //debug($_POST); exit;
+        $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('unite_no', 'Unit No', 'required|trim');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        $this->form_validation->set_rules('repeat_password', 'Repeat Password', 'required|trim');
+        if ($this->form_validation->run() != FALSE) {
+            if ($this->input->post('password') != $this->input->post('repeat_password')) {
+                $this->session->set_flashdata('message', 'Password and repeated password did not match');
+                redirect(admin_url('users/add_new'));
+            }
 
+    		$data['created_by'] = $this->session->userdata('admin_user_id');
+            $data['name'] = $this->input->post('name');
+            $data['email'] = $this->input->post('email');
+            $data['unite_no'] = $this->input->post('unite_no');
+            $data['contact_no'] = $this->input->post('contact_no');
+            $password = md5(config_item('salt') . $this->input->post('password'));
+            $data['password'] = $password;
+            $data['status'] = '1';
+            $data['created_date'] = time();
+            $this->db->insert('tbl_users', $data);
 
-
-        if ($this->input->post('password') != $this->input->post('repeat_password')) {
-            $this->session->set_flashdata('message', 'Password and repeated password did not match');
-            redirect(admin_url('users/add_new'));
+            $this->session->set_flashdata('message', 'Unite added successfully!');
+            redirect(admin_url('users'));
+        } else {
+            @$data['user']->add_edit = "add";
+            $data['user']->name = $this->input->post('name');
+            $data['user']->email = $this->input->post('email');
+            $data['user']->unite_no = $this->input->post('unite_no');
+            $data['user']->contact_no = $this->input->post('contact_no');
+            $this->session->set_flashdata('message', 'Please fill all required fields.');
+            $data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'0','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
+        
+            $data['title'] = 'Add Unite';
+            $this->load->view('admin/user/form', $data);
         }
-
-		$data['created_by'] = $this->session->userdata('admin_user_id');
-        $data['name'] = $this->input->post('name');
-        $data['email'] = $this->input->post('email');
-        $data['unite_no'] = $this->input->post('unite_no');
-        $data['contact_no'] = $this->input->post('contact_no');
-        $password = md5(config_item('salt') . $this->input->post('password'));
-        $data['password'] = $password;
-        $data['status'] = '1';
-        $data['created_date'] = time();
-        $this->db->insert('tbl_users', $data);
-
-        $this->session->set_flashdata('message', 'Unite added successfully!');
-        redirect(admin_url('users'));
     }
 
     function update($id) {
-        if ($this->input->post('password') != "" && $this->input->post('password') != $this->input->post('repeat_password')) {
-            $this->session->set_flashdata(
-                    'message', 'New password should match to repeat password to change password');
-            redirect(admin_url('users/edit/' . $id));
-        }
+        $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('unite_no', 'Unit No', 'required|trim');
+        if ($this->form_validation->run() != FALSE) {
+            if ($this->input->post('password') != "" && $this->input->post('password') != $this->input->post('repeat_password')) {
+                $this->session->set_flashdata(
+                        'message', 'New password should match to repeat password to change password');
+                redirect(admin_url('users/edit/' . $id));
+            }
 
 
-        if ($this->input->post('password') != "") {
-            $password = md5(config_item('salt') . $this->input->post('password'));
-            $data['password'] = $password;
-        }
+            if ($this->input->post('password') != "") {
+                $password = md5(config_item('salt') . $this->input->post('password'));
+                $data['password'] = $password;
+            }
 
 
-        $data['name'] = $this->input->post('name');
-        $data['email'] = $this->input->post('email');
-        $data['unite_no'] = $this->input->post('unite_no');
-        $data['contact_no'] = $this->input->post('contact_no');
+            $data['name'] = $this->input->post('name');
+            $data['email'] = $this->input->post('email');
+            $data['unite_no'] = $this->input->post('unite_no');
+            $data['contact_no'] = $this->input->post('contact_no');
+            
+           
+            $this->db->where('id', $id);
+            $this->db->update('tbl_users', $data);
+
+
+            $this->session->set_flashdata('message', 'Unite updated successfully!');
+            redirect(admin_url('users'));
+        } else {
+            @$data['user']->add_edit = "edit";
+            $data['user']->id = $id;
+            $data['user']->name = $this->input->post('name');
+            $data['user']->email = $this->input->post('email');
+            $data['user']->unite_no = $this->input->post('unite_no');
+            $data['user']->contact_no = $this->input->post('contact_no');
+            $this->session->set_flashdata('message', 'Please fill all required fields.');
+            $data['all_requests'] = $this->db->select('*')->from('tbl_requests')->join('tbl_cars', 'tbl_cars.id = tbl_requests.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->where(array('tbl_requests.status'=>'0','tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
         
-       
-        $this->db->where('id', $id);
-        $this->db->update('tbl_users', $data);
-
-
-        $this->session->set_flashdata('message', 'Unite updated successfully!');
-        redirect(admin_url('users'));
+            $data['title'] = 'Edit Unite';
+            $this->load->view('admin/user/form', $data);
+        }
     }
 
     function delete($id) {

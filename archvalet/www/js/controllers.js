@@ -285,7 +285,7 @@ $scope.loadCarsGuest();
       var unite_no = window.localStorage.getItem('unite_no');
 
       var data = {
-            date: $('#reservedate').text(),
+            date: $('#reservedate').val(),
             time: $('#reservetime').text(),
             location: $('#reservelocation').val(),
             unite_no: window.localStorage.getItem('unite_no')

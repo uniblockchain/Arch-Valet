@@ -37,7 +37,7 @@
 
                            <li class="<?php if($this->uri->segment('2')=='out'){ echo "active"; } ?>"><a href="<?php echo admin_url('out'); ?>"><i class="fa fa-file-text"></i><span>Car Out</span> </a></li>
 
-                           <li class="<?php if($this->uri->segment('2')=='report'){ echo "active"; } ?>"><a href="<?php echo admin_url('report'); ?>"><i class="fa fa-file-text"></i><span>Report</span> </a></li>
+                           <li class="<?php if($this->uri->segment('2')=='report'){ echo "active"; } ?>"><a href="<?php echo admin_url('report'); ?>"><i class="fa fa-file-text"></i><span>Reports</span> </a></li>
 
 
 <li class="<?php if($this->uri->segment('2')=='message'){ echo "active"; } ?>"><a href="<?php echo admin_url('message'); ?>"><i class="fa fa-comments"></i><span>Message</span> </a></li>

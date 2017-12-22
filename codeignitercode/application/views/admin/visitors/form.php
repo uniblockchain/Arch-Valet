@@ -1,6 +1,6 @@
 <?php include(dirname(__DIR__).'/header.php'); ?>
 <?php
-if (isset($car)) {
+if (isset($car->add_edit) && $car->add_edit == "edit") {
     $path = admin_url('visitors/update/' . $car->id);
 } else {
     $path = admin_url('visitors/save');
@@ -36,14 +36,14 @@ svg {
                   <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo admin_url(); ?>">Home</a></li>
                     <li class="breadcrumb-item"><a href="<?php echo admin_url('visitors'); ?>">Guest Vehicle</a></li>
-                    <li class="breadcrumb-item active"><?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?></li>
+                    <li class="breadcrumb-item active"><?php if(isset($car->add_edit) && $car->add_edit == "edit"){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?></li>
                   </ul>
                 </div>
             </div>
 
             <div class="container-fluid">
                 <div class="page-title"> 
-                    <h1 class="h3 display"><?php if(isset($car)){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?></h1>
+                    <h1 class="h3 display"><?php if(isset($car->add_edit) && $car->add_edit == "edit"){ echo "Edit Guest Vehicle"; }else{  echo "Add Guest Vehicle"; }  ?></h1>
                 </div>
 
        <form action="<?= $path; ?>" method="post" enctype="multipart/form-data" role="form"> 
@@ -55,19 +55,21 @@ svg {
 							<label>Choose Unit No.</label>
 							<select data-placeholder="Choose unit no." class="my_select_opt select-search" tabindex="2" name="unite_no"> 
 							  <?php foreach($unites as $u){  ?> 
-							   <option value="<?php echo $u->unite_no; ?>" <?php if(isset($car)){ if($car->unite_no == $u->unite_no){ echo "selected"; } }  ?>><?php  echo $u->unite_no; ?></option>
+							   <option value="<?php echo $u->unite_no; ?>" <?php if(isset($car->add_edit) && $car->add_edit == "edit"){ if($car->unite_no == $u->unite_no){ echo "selected"; } }  ?>><?php  echo $u->unite_no; ?></option>
 							  <?php } ?>
 							</select> 
+              <span class="validation-error"><?php echo form_error('unite_no'); ?></span>
 						</div>
 						<div class="col-md-4">
                <label>Vehicle Type</label>
 						   <select data-placeholder="Choose Vehicle Type" class="my_select_opt select-search car_type_change" tabindex="2" name="type"> 
-							   <option value="truck" data-icon="Shape_1_8_" <?php if(isset($car)){ if($car->type == "truck"){ echo "selected"; } }  ?>>TRUCK</option>
-							   <option value="van" data-icon="Shape_1_9_" <?php if(isset($car)){ if($car->type == "van"){ echo "selected"; } }  ?>>MINI VAN</option>
-							   <option value="sydain" data-icon="Shape_1_5_" <?php if(isset($car)){ if($car->type == "sydain"){ echo "selected"; } }  ?>>SEDAN</option>
-							   <option value="suv" data-icon="Shape_1_7_" <?php if(isset($car)){ if($car->type == "suv"){ echo "selected"; } }  ?>>SUV</option>
-                 <option value="coupe" data-icon="Shape_1_6_" <?php if(isset($car)){ if($car->type == "coupe"){ echo "selected"; } }  ?>>Coupe</option>
+							   <option value="truck" data-icon="Shape_1_8_" <?php if(isset($car->add_edit) && $car->add_edit == "edit"){ if($car->type == "truck"){ echo "selected"; } }  ?>>TRUCK</option>
+							   <option value="van" data-icon="Shape_1_9_" <?php if(isset($car->add_edit) && $car->add_edit == "edit"){ if($car->type == "van"){ echo "selected"; } }  ?>>MINI VAN</option>
+							   <option value="sydain" data-icon="Shape_1_5_" <?php if(isset($car->add_edit) && $car->add_edit == "edit"){ if($car->type == "sydain"){ echo "selected"; } }  ?>>SEDAN</option>
+							   <option value="suv" data-icon="Shape_1_7_" <?php if(isset($car->add_edit) && $car->add_edit == "edit"){ if($car->type == "suv"){ echo "selected"; } }  ?>>SUV</option>
+                 <option value="coupe" data-icon="Shape_1_6_" <?php if(isset($car->add_edit) && $car->add_edit == "edit"){ if($car->type == "coupe"){ echo "selected"; } }  ?>>COUPE</option>
 						   </select> 
+               <span class="validation-error"><?php echo form_error('type'); ?></span>
            </div> 
 					  <div class="col-md-2 car_icon">
 
@@ -184,6 +186,7 @@ svg {
                         <div class="col-md-4">
                                <label>Ticket No</label> 
                                <input type="text" name="ticket_no" class="form-control" value="<?php if(isset($car->ticket_no)){echo $car->ticket_no;}?>">
+                               <span class="validation-error"><?php echo form_error('ticket_no'); ?></span>
                                
                         </div> 
                     </div>
@@ -195,21 +198,21 @@ svg {
                            <div class="col-md-4">
                                <label>Make</label> 
                                <input type="text" name="made" class="form-control" value="<?php if(isset($car->made)){echo $car->made;}?>">
-                               <?php echo form_error('made'); ?>
+                               <span class="validation-error"><?php echo form_error('made'); ?></span>
                            </div> 
-
+                            <div class="col-md-4">
+                               <label>Model</label> 
+                               <input type="text" name="model" class="form-control" value="<?php if(isset($car->model)){echo $car->model;}?>">
+                               <span class="validation-error"><?php echo form_error('model'); ?></span>
+                           </div>  
 
                            <div class="col-md-4">
                                <label>Color</label> 
                                <input type="text" readonly name="color" class="form-control jscolor car_color_change" value="<?php if(isset($car->color)){echo $car->color;}?>">
-                               <?php echo form_error('color'); ?>
+                               <span class="validation-error"><?php echo form_error('color'); ?></span>
                            </div> 
 
-                           <div class="col-md-4">
-                               <label>Model</label> 
-                               <input type="text" name="model" class="form-control" value="<?php if(isset($car->model)){echo $car->model;}?>">
-                               <?php echo form_error('model'); ?>
-                           </div>                                                    
+                                                                            
                        </div>
                    </div>
 
@@ -220,6 +223,7 @@ svg {
                            <div class="col-md-4">
                                <label>Plate No.</label> 
                                <input type="text" name="plate_number" class="form-control" value="<?php if(isset($car->plate_number)){echo $car->plate_number;}?>">
+                               <span class="validation-error"><?php echo form_error('plate_number'); ?></span>
                            </div>  
 
 
@@ -240,7 +244,7 @@ svg {
 
               <div class="form-group">
                    <div class="form-actions text-right"> 
-                        <input type="submit" value="<?php if(isset($car)){ echo "Update Vehicle"; }else{  echo "Add Vehicle"; }  ?>" class="btn btn-primary"> 
+                        <input type="submit" value="<?php if(isset($car->add_edit) && $car->add_edit == "edit"){ echo "Update Vehicle"; }else{  echo "Add Vehicle"; }  ?>" class="btn btn-primary"> 
                        <a href="<?php echo admin_url('cars'); ?>" class="btn btn-danger">Cancel</a> 
                        
                    </div>

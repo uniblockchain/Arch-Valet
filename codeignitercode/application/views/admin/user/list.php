@@ -23,9 +23,7 @@
 
                 <!-- Page tabs -->
               <div class="card tabbable page-tabs">
-                <div class="card-header d-flex align-items-center">
-                  <h2 class="h5 display"><i class="icon-users"></i> Residents</h2>
-                </div>
+               
                 <div class="card-body datatable-add-row">
                   <table class="table table-striped table-hover">
                     <thead> 

@@ -9,14 +9,14 @@
                 <div class="container-fluid">
                   <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo admin_url(); ?>">Home</a></li>
-                    <li class="breadcrumb-item active">Report</li>
+                    <li class="breadcrumb-item active">Reports</li>
                   </ul>
                 </div>
             </div>
 
             <div class="container-fluid">
                 <div class="page-title"> 
-                    <h1 class="h3 display">Requests Report</h1>
+                    <h1 class="h3 display">Reports</h1>
                 </div>
 
 <!-- Page tabs --> 
@@ -24,9 +24,6 @@
 
 <!-- Datatable with custom column filtering --> 
                     <div class="card card-default report">
-                        <div class="card-header d-flex align-items-center">
-                            <h2 class="h5 display"><i class="icon-users"></i> Requests Report</h2>
-                        </div> 
                         <div class="card-body datatable-add-row">
                            <div class="form-group col-lg-10 pull-left">
                             <form action="<?php echo admin_url('report/report_by_date');?>" method="post" class="form-inline">
@@ -62,8 +59,7 @@
                                         <th>Date Requested</th>
                                         <th>Time Requested</th>
                                         <th>Ready Time</th>
-                                        <th>Can In Date</th>
-                                        <th>Car In Time</th>
+                                        <th>Car In Date and Time</th>
                                         <th>Status</th>
                                     </tr> 
                                 </thead>
@@ -96,12 +92,7 @@
 										</td>
                                         <td>
                                         <?php if(!empty($u->car_in_timestamp)){ 
-                                          echo date('M j, Y', $u->car_in_timestamp); 
-                                        } ?>    
-                                        </td> 
-                                        <td>
-                                        <?php if(!empty($u->car_in_timestamp)){ 
-                                            echo date('h:i A', $u->car_in_timestamp); 
+                                          echo date('M j, Y', $u->car_in_timestamp)."&nbsp; &nbsp;".date('h:i A', $u->car_in_timestamp); 
                                         } ?>   
                                         </td> 
 										<td>
@@ -112,9 +103,9 @@
 										<?php }if($u->reqstatus == '3'){ ?>    
 											<span class="label label-danger">Cancelled</span>
 										<?php }if($u->reqstatus == '4'){ ?>
-											<span class="label label-primary">Car In</span>
+											<span class="label label-primary">Car Ready</span>
 										<?php } if($u->reqstatus == '5'){ ?>
-                                            <span class="label label-primary">Car Out</span>
+                                            <span class="label label-primary">Car Ready</span>
                                         <?php } ?>   
 										</td>
 

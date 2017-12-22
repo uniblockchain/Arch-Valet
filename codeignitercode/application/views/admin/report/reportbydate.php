@@ -24,9 +24,6 @@
 
 <!-- Datatable with custom column filtering --> 
                     <div class="card card-default report"> 
-                      <div class="card-header d-flex align-items-center">
-                        <h2 class="h5 display"><i class="icon-users"></i> Request Report</h2>
-                      </div>
 
                         <div class="card-body datatable-add-row">
                            <div class="form-group col-lg-10 pull-left">
