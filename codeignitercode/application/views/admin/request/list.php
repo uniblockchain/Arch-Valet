@@ -21,9 +21,6 @@
 
                 <!-- Page tabs -->
               <div class="card tabbable page-tabs">
-                <div class="card-header d-flex align-items-center">
-                  <h2 class="h5 display"><i class="icon-users"></i> Vehicle Requests</h2>
-                </div>
                 <div class="card-body datatable-add-row">
                   <table class="table table-striped table-hover">
                                 <thead> 
@@ -31,7 +28,7 @@
                                         <th>#</th> 
                                         <th>Unit No.</th> 
                                         <th>Parking Spot</th> 
-                                        <th>Made</th> 
+                                        <th>Make</th> 
                                         <th>Model</th> 
                                         <th>Plate No.</th> 
                                         <th>Date</th>
@@ -53,7 +50,7 @@ $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
                                         <td><?php echo $car_detail->made; ?></td> 
                                         <td><?php echo $car_detail->model; ?></td> 
                                         <td><?php echo $car_detail->plate_number; ?></td>
-                                        <td><?php echo date('l M j', $u->request_timestamp); ?></td> 
+                                        <td><?php echo date('M j, Y', $u->request_timestamp); ?></td> 
                                         <td><?php echo date('h:i A', $u->request_timestamp); ?></td> 
                                         <td>
                                         <?php if($u->status == '1'){ ?>

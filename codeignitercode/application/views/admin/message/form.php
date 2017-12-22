@@ -45,7 +45,8 @@
                                             <option name="unite[]" value="<?php echo $u->unite_no; ?>"><?php echo $u->unite_no; ?></option>
                                       <?php } ?>        
                                         </optgroup>
-                                 </select>
+                                 </select><br/>
+                                 <span class="validation-error"><?php echo form_error('unite'); ?></span>
                             </div>
                           </div>
                       </div>
@@ -58,7 +59,7 @@
                                  <div class="col-md-6">
                                      <label>Title:</label> 
                                      <input type="text" name="title" class="form-control">
-                                     <?php echo form_error('title'); ?>
+                                     <span class="validation-error"><?php echo form_error('title'); ?></span>
                                  </div> 
                              </div>
 
@@ -70,7 +71,7 @@
                               <textarea rows="5" name="message" placeholder="Your message here..." class="form-control"></textarea>
                                 
                               
-                              <?php echo form_error('message'); ?>
+                              <span class="validation-error"><?php echo form_error('message'); ?></span>
                           </div>
 
 

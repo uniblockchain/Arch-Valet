@@ -113,3 +113,16 @@ nav.side-navbar.show-sm a,nav.side-navbar.shrink a{
     margin-bottom: 5px;
   }
 }
+
+section.statistics .income .number {
+  font-size: 1.5em !important;
+}
+
+.card-header {
+     min-height: 50px;
+     height:auto; 
+}
+.validation-error *{
+  color:red;
+/*  font-weight:bold;*/
+}

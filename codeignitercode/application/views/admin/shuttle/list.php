@@ -25,10 +25,10 @@
                         } ?>
                          <div class="form-group">
                              <div class="row">
-                                 <div class="col-md-1">
+                                 <div class="col-sm-2">
                                     <input type="checkbox" <?php echo (!empty($shuttlesettings) && $shuttlesettings->enabled == 1) ? 'checked' : '' ?> name="enabled" data-size="small" data-toggle="toggle" data-on="Enabled" data-onstyle="primary" data-offstyle="secondary" data-off="Disabled" >
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-3 ">
                                     <select multiple="multiple" name="weekdays[]" class="form-control" style="width:370px">
                                         <optgroup label="Week days">
                                         <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('sunday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?> value="sunday">Sunday</option>
@@ -41,13 +41,13 @@
                                         </optgroup>
                                     </select>
                                 </div>
-                                <div class="col-md-3">
-                                     <input type="text" name="from" class="form-control" value="<?php echo !empty($shuttlesettings) ? $shuttlesettings->from : '' ; ?>" placeholder="Shuttle service start time">
+                                <div class="col-sm-2">
+                                     <input type="text" name="from" class="form-control" value="<?php echo !empty($shuttlesettings) ? $shuttlesettings->from : '' ; ?>" placeholder="Start time">
                                  </div> 
-                                 <div class="col-md-3">
-                                     <input type="text" name="to" value="<?php echo !empty($shuttlesettings) ? $shuttlesettings->to : '' ; ?>" class="form-control" placeholder="Shuttle service end time">
+                                 <div class="col-sm-2">
+                                     <input type="text" name="to" value="<?php echo !empty($shuttlesettings) ? $shuttlesettings->to : '' ; ?>" class="form-control" placeholder="End time">
                                  </div>
-                                 <div class="form-actions text-right"> 
+                                 <div class="col-sm-3 form-actions text-right"> 
                                      <input type="submit" value="<?php echo !empty($shuttlesettings) ? 'Update' : 'Save' ; ?>" class="btn btn-primary">
                                  </div>                                                 
                              </div>
@@ -63,19 +63,17 @@
 <!-- Datatable with custom column filtering --> 
                     <div class="card card-default report"> 
                         <div class="card-header">
-                           <div class="form-group col-sm-8 pull-left">
+                          <div class="form-group col-lg-10 pull-left">
                             <form action="<?php echo admin_url('shuttle/shuttle_by_date');?>" method="post" class="form-inline">
                               <div class="form-group">
                                 <input type="text" name="from" placeholder="Choose From Date" class="mx-sm-3 form-control datepicker-reportdates">
                                 <input type="text" name="to" placeholder="Choose To Date" class="mx-sm-3 form-control datepicker-reportdates">
-                              </div>
-                              <div class="form-group">
                                 <input type="submit" value="View shuttle report" class="mx-sm-3 btn btn-primary">
                               </div>
                             </form>
                           </div>
 
-                          <div class="form-group col-sm-4 pull-left">
+                          <div class="form-group col-lg-2 pull-left">
                             <div class="dropdown pull-right"> 
                               <a href="#" class="dropdown-toggle card-icon" data-toggle="dropdown">
                                 <i class="fa fa-cog"></i> <b class="caret"></b>

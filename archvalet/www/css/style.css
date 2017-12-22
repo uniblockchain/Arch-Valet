@@ -734,3 +734,7 @@ ion-slide{background: #fff; }
 }
 
 .datepickerinput{background:#eee !important;width:90%;display: inline!important; padding-top: 0px !important;}
+
+.item-input-inset .item-input-wrapper input {
+    background: #eee !important;
+}

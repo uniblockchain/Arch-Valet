@@ -21,20 +21,15 @@
 
                 <!-- Page tabs -->
               <div class="card tabbable page-tabs">
-                <div class="card-header d-flex align-items-center">
-                  <h2 class="h5 display"><i class="icon-users"></i> Cars Out</h2>
-                </div>
                 <div class="card-body datatable-add-row">
                   <table class="table table-striped table-hover">
                                 <thead> 
                                     <tr> 
                                         <th>#</th> 
                                         <th>Unit No.</th> 
-                                        <th>Made</th> 
+                                        <th>Make</th> 
                                         <th>Model</th> 
                                         <th>Plate No.</th> 
-                                        <th>Ready Date</th>
-                                        <th>Ready Time</th>
                                         <th>Action</th>
                                     </tr> 
                                 </thead>
@@ -51,8 +46,6 @@ $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
                                         <td><?php echo $car_detail->made; ?></td> 
                                         <td><?php echo $car_detail->model; ?></td> 
                                         <td><?php echo $car_detail->plate_number; ?></td>
-                                        <td><?php echo date('M j, Y', $u->updated_date_time); ?></td> 
-                                        <td><?php echo date('h:i A', $u->updated_date_time); ?></td> 
                                         <td>
                                         <?php if($u->reqstatus == '5'){ ?>
                                            <a href="<?php echo admin_url('out/in/'.$u->id); ?>" class="btn btn-primary" type="button" >Car In</a>
