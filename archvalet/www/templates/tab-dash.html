@@ -4,17 +4,18 @@
         <!--  <div class="buttons">
               <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
           </div>-->
-        <h1 class="title"><img class="header-logo" src="img/logo.png"></h1>
+        <h1 class="title col col-100 pull-left" ><img class="header-logo" src="img/logo.png"> </h1>
+        <a class="button button-positive refresh-icon pull-right" ng-click="loadCars()" > <i style="font-size:2em;" class="ion-loop"></i></a>
         <!--  <div class="buttons">
             <button ng-click="opensearch()" class="button button-icon button-clear ion-search">
                 </button>
           </div>-->
     </ion-header-bar>
 	
-    <ion-content overflow-scroll="false">       
-		<ion-refresher pulling-text="Pull to Refresh" on-refresh="loadCars()"></ion-refresher>
-		<tab-slide-box>
-			<div class="tsb-icons">
+    <ion-content>       
+		<!-- <ion-refresher pulling-text="Pull to Refresh" on-refresh="loadCars()"></ion-refresher> -->
+		<!-- <tab-slide-box> -->
+			<!-- <div class="tsb-icons">
 				<div class="tsb-ic-wrp">
                     <div class="row slideTop" ng-if="shuttleAvail == 0" >
                         <div  class="col col-50 slideTop-col" data-ng-class="{ 'vehi': selected_tab == '1'}">
@@ -36,9 +37,11 @@
                         </div>
                     </div>
 				</div>
-			</div>
-			<ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
-				<ion-slide>
+			</div> -->
+            <ion-slides slider="slider" ion-slides-tabs slide-tabs-scrollable="false">
+                <ion-slide-page ion-slide-tab-label="My Vehicles">
+			<!-- <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+				<ion-slide> -->
 					<div class="car-list list" ng-if="car.visitor == 0" ng-repeat="(key,car) in cars" class="card cardetails">
                         <div class="item item-thumbnail-left">
                             <div class="thumbnail">
@@ -155,8 +158,8 @@
                                 <button class="button button-dark" ng-if="car.statuss == 9">Car Out</button>
                         </div>
                     </div>
-				</ion-slide>
-				<ion-slide>
+				</ion-slide-page>
+                <ion-slide-page ion-slide-tab-label="Guest">
                     <div class="car-list list" ng-if="car.visitor == 1" ng-repeat="(key,car) in cars" class="card cardetails" >
                         <div class="item item-thumbnail-left">
                             <div class="thumbnail">
@@ -273,8 +276,8 @@
                             <button class="button button-dark" ng-if="car.statuss == 5">Car Out</button>
                         </div>
                     </div>
-				</ion-slide>
-                <ion-slide>
+				</ion-slide-page>
+                <ion-slide-page ion-slide-tab-label="Shuttle Service">
                     <div class = "list" ng-if = "shuttleReserve == 1">
                         <div class="datepickerbox">
                             <i class = "ion-calendar"></i>
@@ -334,9 +337,13 @@
                             </button>
                        </div>
                     </div>
+                </ion-slide-page>
+            </ion-slides>
+
+                    <!-- 
                 </ion-slide>
 			</ion-slide-box>
-		</tab-slide-box>
+		</tab-slide-box> -->
 		   
 <!--
 

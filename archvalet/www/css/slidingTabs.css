@@ -13,6 +13,8 @@ ion-slide {
 .slidingTabs {
     height: 48px;
     z-index: 10;
+    position:fixed;
+    width:100%;
 }
 
 .platform-browser .slidingTabs.scroll-view.scroll-x {
@@ -38,7 +40,7 @@ ion-slide {
 
 .slidingTabs ul li {
     height: 48px;
-    width: 50% !important;
+    width: 33.33% !important;
     line-height: 48px;
     text-align: center;
     float: left;
@@ -90,4 +92,11 @@ ion-slide {
         opacity: 0;
         transform: scale(2.5);
     }
+}
+
+.swiper-slide{
+    margin-top:50px !important;
+    overflow-y: scroll;    
+    overflow-x: hidden;
+    height:auto !important;
 }

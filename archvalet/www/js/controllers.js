@@ -22,7 +22,7 @@ $scope.loadCars();
 
   $scope.loadCars = function(){
       
-      //alert(neil);
+      // alert("neil");
   var unit = window.localStorage.getItem('unite_no');
   $http({
       url: base_url+ 'api/cars/fetch_cars/'+unit,
@@ -31,7 +31,7 @@ $scope.loadCars();
   }).success(function (data){
       // $scope.notifications = data;
 	  $scope.cars = data;
-      $scope.$broadcast('scroll.refreshComplete')
+      // $scope.$broadcast('scroll.refreshComplete')
   })
 }
 
