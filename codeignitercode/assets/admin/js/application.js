@@ -694,7 +694,7 @@ $(function() {
 	var maxDate =  new Date(); // this month
 
     $( ".datepicker-restricted" ).datepicker({ minDate: -20, maxDate: "+1M +10D", showOtherMonths: true });
-	$( ".datepicker-reportdates" ).datepicker({ minDate: minDate , maxDate: maxDate, showOtherMonths: true });
+	$( ".datepicker-reportdates" ).datepicker({ minDate: minDate , maxDate: maxDate, showOtherMonths: true,dateFormat:'dd-mm-yy' });
 
 
 

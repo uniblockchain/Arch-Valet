@@ -24,13 +24,14 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
         <link rel="stylesheet" href="<?php echo admin_css('style.red.css'); ?>" id="theme-stylesheet">
         <link rel="stylesheet" href="<?php echo admin_css('custom.css'); ?>">
+        <link rel="stylesheet" href="<?php echo admin_css('wickedpicker.css'); ?>">
 
 
         <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css"> -->
 		
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <!--   <script type="text/javascript" src="<?php echo admin_js('jquery.min.js'); ?>"></script> -->
+        <!-- <script type="text/javascript" src="<?php echo admin_js('jquery.min.js'); ?>"></script> -->
         <script type="text/javascript" src="<?php echo admin_js('jquery-ui.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('jscolor.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('plugins/charts/sparkline.min.js'); ?>"></script>
@@ -74,13 +75,18 @@
         <script src="<?php echo admin_js('charts-home.js'); ?>"></script>
         <script src="<?php echo admin_js('front.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo admin_js('application.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo admin_js('wickedpicker.js'); ?>"></script>
         <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
         <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
-<script type="text/javascript">
-    var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
-</script>
-
+        <script type="text/javascript">
+            var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+        </script>
+        <style>
+            .ui-timepicker-table td a {
+                padding: 0.2em 1.3em 0.2em 0.5em !important;
+            }
+        </style>
 
 
     </head>

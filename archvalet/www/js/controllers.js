@@ -1,9 +1,9 @@
  var app = angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope,$ionicModal,$ionicPopup,$ionicHistory,$http,$location,$rootScope,$interval,$ionicNavBarDelegate,$ionicSlideBoxDelegate,$ionicLoading, $state) {
-     $scope.dateValue = formatDate(new Date());
+       $scope.dateValue = formatDate(new Date());
        $scope.timeValue = formatTime(new Date());
-       $scope.todaydt = formatDate(new Date());
- $scope.selected_tab = "1";
+       $scope.todaydt = formatTodayDate(new Date());
+       $scope.selected_tab = "1";
 
 
 
@@ -125,12 +125,7 @@ $scope.loadCarsGuest();
     })
     }, 5000);
 
-
-    
-    
-    
-    
-    function formatDate(date) {
+ function formatTodayDate(date) {
     
     var day = date.getDate();
     var monthIndex = date.getMonth();
@@ -139,13 +134,33 @@ $scope.loadCarsGuest();
     return year+ '-' + (monthIndex+1) + '-' + day;
   }
 
+    
+    function formatDate(date) {
+    
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    return day+ '-' + (monthIndex+1) + '-' + year;
+  }
+
    function formatTime(date) {
     
     var hour = date.getHours();
     var min = date.getMinutes();
     // var sec = date.getSeconds();
+    if (hour > 12) {
+        hour -= 12;
+        var a = "PM";
+    } else if (hour === 0) {
+        hour = 12;
+        var a = "AM";
+    } else {
+      hour = hour;
+      var a = "AM";
+    }
 
-    return hour+ ':' + ((min < 10)? '0'+min : min)  ;  /*  + ':' + sec; */
+    return hour+ ':' + ((min < 10)? '0'+min : min) + ' ' +a ;  /*  + ':' + sec; */
   }
 
  
@@ -275,7 +290,7 @@ $scope.loadCarsGuest();
     }
 
 
-    $scope.reserveShuttle = function(){
+    $scope.reserveShuttle = function(toDo = 'check'){
          $ionicLoading.show({
             template: '<ion-spinner icon="spiral"></ion-spinner>'
           }).then(function(){
@@ -288,7 +303,8 @@ $scope.loadCarsGuest();
             date: $('#reservedate').val(),
             time: $('#reservetime').text(),
             location: $('#reservelocation').val(),
-            unite_no: window.localStorage.getItem('unite_no')
+            unite_no: window.localStorage.getItem('unite_no'),
+            toDo: toDo
         }
         
         
@@ -323,7 +339,7 @@ $scope.loadCarsGuest();
 
             if(data.reserveError){
                 var alertPopup = $ionicPopup.alert({
-                  title: 'Reservation Failed',
+                  title: 'Shuttle timing availability',
                   template: '<span style="display:block;">'+data.reserveError+'</span>'
                 });
                 alertPopup.then(function(res) {      

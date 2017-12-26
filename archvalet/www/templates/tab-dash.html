@@ -151,8 +151,8 @@
                                 <h2>Model: {{car.model}}</h2>
                                 <button class="requested button button-dark" ng-if="car.statuss == 1">Requested</button>
                                 <button class="button button-assertive" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</button>
-                                <button class="button button-positive" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
-                                <button class="button button-dark" ng-if="car.statuss == 5">Car Out</button>
+                                <button class="button button-positive" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 || car.statuss == 5 " ng-click="request(key,car.id)">Request</button>
+                                <button class="button button-dark" ng-if="car.statuss == 9">Car Out</button>
                         </div>
                     </div>
 				</ion-slide>
@@ -269,29 +269,23 @@
                             <h2>Ticket No.: {{car.ticket_no}}</h2>
                             <button class="requested button button-dark" ng-if="car.statuss == 1">Requested</button>
                             <button class="button button-assertive" ng-if="car.statuss == 1"  class="cancle" ng-click="cancle_request(key,car.id)">Cancel</button>
-                            <button class="button button-positive" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 " ng-click="request(key,car.id)">Request</button>
+                            <button class="button button-positive" ng-if="car.statuss == 3 || car.statuss == '' || car.statuss == 4 || car.statuss == 5 " ng-click="request(key,car.id)">Request</button>
                             <button class="button button-dark" ng-if="car.statuss == 5">Car Out</button>
                         </div>
                     </div>
 				</ion-slide>
                 <ion-slide>
-                    <div class = "list" ng-if = "shuttleReserve == 1"><!-- 
-                        <div class = "item item-input-inset">
-                            <label class = "item item-input-wrapper"> -->
-                            <div class="datepickerbox">
-                                <i class = "ion-calendar"></i>
-                                <datepicker date-format="yyyy-MM-dd" date-min-limit="{{todaydt}}" date-disabled-weekdays="{{disabledays}}"  class="date_picker">
-                                    <input readonly ng-model="dateValue" type="text" id="reservedate" class="datepickerinput"/>
-                                </datepicker>
-                            </div>
-                            <!-- </label>
-                       </div> -->
-                       <!-- <input type = "text" placeholder = " Select Shuttle Date"  ion-datetime-picker date ng-model="dateValue" id="reservedate" value="{{dateValue}}"/> 
-                        <input type = "text" placeholder = " Select Shuttle Time" ion-datetime-picker time ng-model="timeValue" id="reservetime" value="{{timeValue}}"/>-->
-                       <!--  <div class='item' ion-datetime-picker  date ng-model="dateValue" >    <span  >{{dateValue| date: "yyyy-MM-dd"}} </span></div> -->
+                    <div class = "list" ng-if = "shuttleReserve == 1">
+                        <div class="datepickerbox">
+                            <i class = "ion-calendar"></i>
+                            <datepicker date-format="dd-MM-yyyy"  date-min-limit="{{todaydt}}" date-disabled-weekdays="{{disabledays}}"  class="date_picker">
+                                <input readonly ng-model="dateValue" type="text" id="reservedate" class="datepickerinput"/>
+                            </datepicker>
+                        </div>
+                            
 
-                        <div class='item item-input-inset' ion-datetime-picker  time ng-model="timeValue"  >    
-                          <label class = "item item-input-wrapper"><i class = "ion-clock"></i> <span id="reservetime" style="padding-left:4px;"> {{timeValue| date: "H:mm"}} </span> </div>
+                        <div class='item item-input-inset' ion-datetime-picker  time am-pm ng-model="timeValue"  >    
+                          <label class = "item item-input-wrapper"><i class = "ion-clock"></i> <span id="reservetime" style="padding-left:4px;"> {{timeValue| date: "h:mm a"}} </span> </div>
                        
                       
                        <div class = "item item-input-inset">
@@ -301,7 +295,10 @@
                           </label>
                        </div>
                        <div class = "item item-input">
-                          <button class="button button-positive" ng-click = "reserveShuttle()" >
+                            <button class="button button-dark" ng-click = "reserveShuttle('check')" >
+                              Check Availability
+                            </button>&nbsp;&nbsp;
+                            <button class="button button-positive" ng-click = "reserveShuttle('reserve')" >
                               Reserve
                             </button>
                        </div>
