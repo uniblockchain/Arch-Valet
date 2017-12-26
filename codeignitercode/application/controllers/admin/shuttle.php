@@ -183,9 +183,10 @@ class Shuttle extends Admin_Controller {
 
     function complete_user_shuttle() {
 
-       // $request = $this->db->where(array('status' => 0, 'reservedate<='=>DATE(NOW()), 'timereserved <='=>DATE_SUB(NOW(),INTERVAL 30 MINUTE)))->update('tbl_shuttle',array('status' => 2));
+      $query = $this->db->query("UPDATE tbl_shuttle SET `status` = 2 WHERE `status` = 0 and reservedate <= DATE(NOW()) and timereserved <= DATE_SUB(NOW(),INTERVAL 30 MINUTE)");
 
        // echo $this->db->last_query();
+       // exit;
        // redirect(admin_url('shuttle'));
     }
 
