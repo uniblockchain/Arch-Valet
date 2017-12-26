@@ -119,10 +119,12 @@ class Report extends Admin_Controller {
 
         $from = $_POST['from'];
         $to = $_POST['to'];
-        $fromdate = str_replace('/', '-', $from);
-        $todate = str_replace('/', '-', $to);
+        // $fromdate = str_replace('/', '-', $from);
+        // $todate = str_replace('/', '-', $to);
+        $fromdate = date('m-d-Y',strtotime($from));
+        $todate = date('m-d-Y',strtotime($to));
 
-        if(!$from || ! $to){
+        if(!$from || !$to){
             redirect(admin_url('report'));
         }
         // $data['all_requests'] = $this->db->get_where('tbl_requests', array('status'=>'1'))->result();
@@ -132,8 +134,8 @@ class Report extends Admin_Controller {
 		$data['report'] =  $this->db->select('*,tbl_requests.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->join('tbl_requests', 'tbl_requests.id = tbl_request_report.request_id')->where(array('requested_date >='=>$fromdate,'requested_date <='=>$todate,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->group_by('tbl_requests.id')->order_by('tbl_request_report.id','DESC')->get()->result();
 		
 		
-        $data['printfromdate'] = $fromdate;
-        $data['printtodate'] = $todate;
+        $data['printfromdate'] = $from;
+        $data['printtodate'] = $to;
         $data['title'] = 'Vehicle Report';
         $this->load->view('admin/report/reportbydate', $data); 
     }
