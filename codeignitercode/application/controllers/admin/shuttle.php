@@ -35,6 +35,13 @@ class Shuttle extends Admin_Controller {
         } else {
             $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus,tbl_shuttle.id as shuttleid')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('MONTH(reservedate)'=> (date('m')-1),'YEAR(reservedate)'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
         }
+
+        $data['shuttlesettings'] = $this->db->select('*')->from('tbl_shuttle_settings')->where(array('admin_id'=>$this->session->userdata('admin_user_id')))->get()->row();
+
+        if(!empty($data['shuttlesettings']->weekdays)){
+         $data['shuttlesettings']->weekdays = json_decode($data['shuttlesettings']->weekdays);
+        }
+
         
         //load the view and saved it into $html variable
         $html=$this->load->view('admin/shuttlereportpage', $data, true);
@@ -81,7 +88,12 @@ class Shuttle extends Admin_Controller {
         
         $data['shuttle'] =  $this->db->select('*,tbl_shuttle.status as shuttlestatus,tbl_shuttle.id as shuttleid')->from('tbl_shuttle')->join('tbl_users', 'tbl_shuttle.unite_no = tbl_users.unite_no')->where(array('reservedate >='=> $fromdate,'reservedate <='=> $todate,'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->get()->result();
 
-        
+        $data['shuttlesettings'] = $this->db->select('*')->from('tbl_shuttle_settings')->where(array('admin_id'=>$this->session->userdata('admin_user_id')))->get()->row();
+
+        if(!empty($data['shuttlesettings']->weekdays)){
+         $data['shuttlesettings']->weekdays = json_decode($data['shuttlesettings']->weekdays);
+        }
+
         $data['printfromdate'] = $fromdate;
         $data['printtodate'] = $todate;
         $data['title'] = 'Vehicle Report';
@@ -97,6 +109,13 @@ class Shuttle extends Admin_Controller {
         }else{
             $data['shuttle'] = array('error:'=>'Nodate'); 
         }
+
+        $data['shuttlesettings'] = $this->db->select('*')->from('tbl_shuttle_settings')->where(array('admin_id'=>$this->session->userdata('admin_user_id')))->get()->row();
+
+        if(!empty($data['shuttlesettings']->weekdays)){
+         $data['shuttlesettings']->weekdays = json_decode($data['shuttlesettings']->weekdays);
+        }
+
 
         //load the view and saved it into $html variable
         $html=$this->load->view('admin/shuttlereportpage', $data, true);
@@ -134,10 +153,17 @@ class Shuttle extends Admin_Controller {
     function savesettings(){
         $data['admin_id'] = $this->session->userdata('admin_user_id');
         $data['enabled'] = $this->input->post('enabled') == "on" ? 1 : 0;
-        $data['weekdays'] = json_encode($this->input->post('weekdays'));
-        $data['from'] = $this->input->post('from');
-        $data['to'] = $this->input->post('to');
 
+        if($data['enabled'] == 1){
+            $data['weekdays'] = json_encode($this->input->post('weekdays'));
+            $data['from'] = date("H:i", strtotime($this->input->post('from')));
+            $data['to'] = date("H:i", strtotime($this->input->post('to')));
+        } else {
+            $data['weekdays'] = json_encode(array());
+            $data['from'] = '';
+            $data['to'] = '';
+        }
+        // print_r($data); print_r($this->input->post()); die();
         $shuttlesettings = $this->db->select('*')->from('tbl_shuttle_settings')->where(array('admin_id'=>$this->session->userdata('admin_user_id')))->get()->row();
         if(empty($shuttlesettings)){
             $this->db->insert('tbl_shuttle_settings', $data);
@@ -150,13 +176,18 @@ class Shuttle extends Admin_Controller {
         redirect(admin_url('shuttle'));
     }
 
-     function cancel_user_shuttle($shuttleID) {
-
+    function cancel_user_shuttle($shuttleID) {
        $request = $this->db->where(array('id' => $shuttleID))->update('tbl_shuttle',array('status' => 1));
-
        redirect(admin_url('shuttle'));
     }
 
+    function complete_user_shuttle() {
+
+       // $request = $this->db->where(array('status' => 0, 'reservedate<='=>DATE(NOW()), 'timereserved <='=>DATE_SUB(NOW(),INTERVAL 30 MINUTE)))->update('tbl_shuttle',array('status' => 2));
+
+       // echo $this->db->last_query();
+       // redirect(admin_url('shuttle'));
+    }
 
 }
 

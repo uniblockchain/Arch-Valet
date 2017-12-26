@@ -20,7 +20,7 @@
                 </div>
 
 <!-- Page tabs --> 
-                <div class="tabbable page-tabs" id="printable"> 
+                <div class="tabbable page-tabs" > 
 
 <!-- Datatable with custom column filtering --> 
                     <div class="card card-default report">
@@ -42,14 +42,19 @@
                               </a>
 
                               <ul class="dropdown-menu icons-right dropdown-menu-right">
-                                 <li><a href="<?php echo admin_url('report/generatepdf/current'); ?>"><i class="fa fa-file-pdf-o"></i> Download .pdf</a></li>
-                                 <li><a href="<?php echo admin_url('report/generatepdf/previous'); ?>"><i class="fa fa-file-pdf-o"></i> Download .pdf for previous month</a></li>
+                                  <li class="dd-list-heading">GENERAL REPORTS</li>
+                                 <li><a href="<?php echo admin_url('report/generatepdf/current/general'); ?>"><i class="fa fa-file-pdf-o"></i> Download .pdf</a></li>
+                                 <li><a href="<?php echo admin_url('report/generatepdf/previous/general'); ?>"><i class="fa fa-file-pdf-o"></i> Download .pdf for previous month</a></li>
                                   <li><a href="javascript:void(0);" onclick="printContent('printable');"><i class="fa fa-print"></i> Print report</a></li>
+                                   <li class="dd-list-heading">CAR IN REPORTS</li>
+                                  <li><a href="<?php echo admin_url('report/generatepdf/current/carin'); ?>"><i class="fa fa-file-pdf-o"></i> Download .pdf</a></li>
+                                 <li><a href="<?php echo admin_url('report/generatepdf/previous/carin'); ?>"><i class="fa fa-file-pdf-o"></i> Download .pdf for previous month</a></li>
+                                  <li><a href="javascript:void(0);" onclick="printCarInContent('printcarin');"><i class="fa fa-print"></i> Print report</a></li>
                               </ul> 
                             </div>
                           </div>
 
-                          <table class="table table-striped table-hover">
+                          <table class="table table-striped table-hover" >
                                 <thead> 
                                     <tr> 
                                         <th>#</th> 
@@ -65,57 +70,58 @@
                                 </thead>
 
                                 <tbody> 
-									<?php
-									$i=1; foreach($report as $u){ 
-									$car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
-									?>
+                                    <?php
+                                    $i=1; foreach($report as $u){ 
+                                    $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
+                                    ?>
 
-									<tr> 
-										<td><?php echo $i; ?></td> 
-										<td><?php echo $car_detail->unite_no; ?></td>
-										<td><?php echo $car_detail->made; ?></td> 
-										<td><?php echo $car_detail->model; ?></td> 
+                                    <tr> 
+                                        <td><?php echo $i; ?></td> 
+                                        <td><?php echo $car_detail->unite_no; ?></td>
+                                        <td><?php echo $car_detail->made; ?></td> 
+                                        <td><?php echo $car_detail->model; ?></td> 
                                         <td>
                                         <?php if(!empty($u->requested_timestamp)){ 
                                           echo date('M j, Y', $u->requested_timestamp); 
                                         } ?>    
                                         </td> 
-										<td>
-										<?php if(!empty($u->requested_timestamp)){ 
-											echo date('h:i A', $u->requested_timestamp); 
-										} ?>   
-										</td> 
-										<td>
-										<?php if(!empty($u->updated_date_time)){ 
-											echo date('h:i A', $u->updated_date_time); 
-										} ?>   
-										</td>
+                                        <td>
+                                        <?php if(!empty($u->requested_timestamp)){ 
+                                            echo date('h:i A', $u->requested_timestamp); 
+                                        } ?>   
+                                        </td> 
+                                        <td>
+                                        <?php if(!empty($u->updated_date_time)){ 
+                                            echo date('h:i A', $u->updated_date_time); 
+                                        } ?>   
+                                        </td>
                                         <td>
                                         <?php if(!empty($u->car_in_timestamp)){ 
                                           echo date('M j, Y', $u->car_in_timestamp)."&nbsp; &nbsp;".date('h:i A', $u->car_in_timestamp); 
                                         } ?>   
                                         </td> 
-										<td>
-										<?php if($u->reqstatus == '1'){ ?>
-											<span class="label label-info">Requested</span>
-										<?php }if($u->reqstatus == '2'){ ?>
-											<span class="label label-success">Request accepted</span>
-										<?php }if($u->reqstatus == '3'){ ?>    
-											<span class="label label-danger">Cancelled</span>
-										<?php }if($u->reqstatus == '4'){ ?>
-											<span class="label label-primary">Car Ready</span>
-										<?php } if($u->reqstatus == '5'){ ?>
+                                        <td>
+                                        <?php if($u->reqstatus == '1'){ ?>
+                                            <span class="label label-info">Requested</span>
+                                        <?php }if($u->reqstatus == '2'){ ?>
+                                            <span class="label label-success">Request accepted</span>
+                                        <?php }if($u->reqstatus == '3'){ ?>    
+                                            <span class="label label-danger">Cancelled</span>
+                                        <?php }if($u->reqstatus == '4'){ ?>
+                                            <span class="label label-primary">Car Ready</span>
+                                        <?php } if($u->reqstatus == '5'){ ?>
                                             <span class="label label-primary">Car Ready</span>
                                         <?php } ?>   
-										</td>
+                                        </td>
 
 
-									</tr> 
+                                    </tr> 
                                   
 <?php $i++; } ?>
 
                                 </tbody> 
                             </table> 
+
                         </div> 
                     </div> <!-- /datatable with custom column filtering --> 
 
@@ -123,15 +129,128 @@
 </div> 
 </div> <!-- /page tabs --> 
 
+
+                          <div id="printable" style="display:none">
+                          <table class="table table-striped table-hover" >
+                                <thead> 
+                                    <tr> 
+                                        <th>#</th> 
+                                        <th>Unit No.</th> 
+                                        <th>Make</th> 
+                                        <th>Model</th> 
+                                        <th>Date Requested</th>
+                                        <th>Time Requested</th>
+                                        <th>Ready Time</th>
+                                        <th>Status</th>
+                                    </tr> 
+                                </thead>
+
+                                <tbody> 
+                                    <?php
+                                    $i=1; foreach($report as $u){ 
+                                    $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
+                                    ?>
+
+                                    <tr> 
+                                        <td><?php echo $i; ?></td> 
+                                        <td><?php echo $car_detail->unite_no; ?></td>
+                                        <td><?php echo $car_detail->made; ?></td> 
+                                        <td><?php echo $car_detail->model; ?></td> 
+                                        <td>
+                                        <?php if(!empty($u->requested_timestamp)){ 
+                                          echo date('M j, Y', $u->requested_timestamp); 
+                                        } ?>    
+                                        </td> 
+                                        <td>
+                                        <?php if(!empty($u->requested_timestamp)){ 
+                                            echo date('h:i A', $u->requested_timestamp); 
+                                        } ?>   
+                                        </td> 
+                                        <td>
+                                        <?php if(!empty($u->updated_date_time)){ 
+                                            echo date('h:i A', $u->updated_date_time); 
+                                        } ?>   
+                                        </td>
+                                        <td>
+                                        <?php if($u->reqstatus == '1'){ ?>
+                                            <span class="label label-info">Requested</span>
+                                        <?php }if($u->reqstatus == '2'){ ?>
+                                            <span class="label label-success">Request accepted</span>
+                                        <?php }if($u->reqstatus == '3'){ ?>    
+                                            <span class="label label-danger">Cancelled</span>
+                                        <?php }if($u->reqstatus == '4'){ ?>
+                                            <span class="label label-primary">Car Ready</span>
+                                        <?php } if($u->reqstatus == '5'){ ?>
+                                            <span class="label label-primary">Car Ready</span>
+                                        <?php } ?>   
+                                        </td>
+
+
+                                    </tr> 
+                                  
+<?php $i++; } ?>
+
+                                </tbody> 
+                            </table> 
+                        </div>
+
+                            <div id="printcarin" style="display:none">
+                             <table class="table table-striped table-hover" >
+                                <thead> 
+                                    <tr> 
+                                        <th>#</th> 
+                                        <th>Unit No.</th> 
+                                        <th>Make</th> 
+                                        <th>Model</th> 
+                                        <th>Car In Date and Time</th>
+                                    </tr> 
+                                </thead>
+
+                                <tbody> 
+                                    <?php
+                                    $i=1; foreach($report as $u){ 
+                                    $car_detail = $this->db->get_where('tbl_cars', array('id'=>$u->car_id))->row();
+                                    ?>
+
+                                    <tr> 
+                                        <td><?php echo $i; ?></td> 
+                                        <td><?php echo $car_detail->unite_no; ?></td>
+                                        <td><?php echo $car_detail->made; ?></td> 
+                                        <td><?php echo $car_detail->model; ?></td> 
+                                        <td>
+                                        <?php if(!empty($u->car_in_timestamp)){ 
+                                          echo date('M j, Y', $u->car_in_timestamp)."&nbsp; &nbsp;".date('h:i A', $u->car_in_timestamp); 
+                                        } ?>   
+                                        </td> 
+
+
+                                    </tr> 
+                                  
+<?php $i++; } ?>
+
+                                </tbody> 
+                            </table> 
+                        </div>
+
+
+
+
 <?php include(dirname(__DIR__).'/footer.php'); ?>
 
 <script>
 function printContent(el){
-    var restorepage = $('#printable').html();
-    var printcontent = $('#' + el).clone();
-    $('#printable').empty().html(printcontent);
+    var printcontent = $('#printable').html();
+    var restorepage = $('body').html();
+    $('body').empty().html("<html><head><title></title></head><body>" +printcontent+ "</body>");
     window.print();
-    $('#printable').html(restorepage);
+    $('body').html(restorepage);
+}
+function printCarInContent(el){
+    var printcontent = $('#printcarin').html();
+    var restorepage = $('body').html();
+    $('body').empty().html("<html><head><title></title></head><body>" +printcontent+ "</body>");
+    window.print();
+    $('body').html(restorepage);
 }
 </script>
 

@@ -22,7 +22,7 @@ class Shuttle extends CI_Controller {
         if (!empty($request)) {
             $data = $request;
         } else {
-            $data = $request;;
+            $data = $request;
         }
 
         echo json_encode($data);
@@ -35,10 +35,13 @@ class Shuttle extends CI_Controller {
        // echo $this->db->last_query(); 
         if (!empty($request)) {
             $data = $request;
+            $data->reservedate = date("d-m-Y", strtotime($data->reservedate));
+            $time = strtotime($data->timereserved);
+            $data->timereserved = date("g:i A", $time);
         } else {
-            $data = $request;;
+            $data = $request;
         }
-
+        // print_r($data);
         echo json_encode($data);
     }
     
@@ -65,28 +68,36 @@ class Shuttle extends CI_Controller {
             $response['timeError'] = strip_tags(form_error('time'));
             echo json_encode($response);
         } else {
-            $data['reservedate'] = $_POST['date'];
+            $data['reservedate'] = date("Y-m-d", strtotime($_POST['date']));
             $data['timereserved'] = $_POST['time'];
             $data['location'] = $_POST['location'];
             $data['unite_no'] = $_POST['unite_no'];
             $data['status'] = 0;
 
             $time = strtotime($data['timereserved']);
+            $data['timereserved'] = date("H:i", $time);
             $startTime = date("H:i", strtotime('-30 minutes', $time));
             $endTime = date("H:i", strtotime('+30 minutes', $time));
 
-
+            // print_r($data); echo $data['timereserved']; echo $startTime; echo $endTime; echo $_POST['toDo'];
+            
             $requests = $this->db->select('*')->from('tbl_shuttle')->where(array('status' => 0, 'reservedate'=>$data['reservedate'], 'timereserved >='=> $startTime, 'timereserved <='=>$endTime))->get()->result();
 
             // echo json_encode($this->db->last_query());
-
-            if(!empty($requests)){
-               $response['reserveError'] = "Shuttle Service for this timing already exists."; //.count($requests) ;
-            } else {
-                $this->db->insert('tbl_shuttle', $data);
-                $response['success'] = true;
+            if($_POST['toDo'] == "check") {
+                if(!empty($requests)){
+                   $response['reserveError'] = "Shuttle service timing not available."; //.count($requests) ;
+                } else {
+                    $response['reserveError'] = "Shuttle service timing available."; //.count($requests) ;
+                }
+            } else if($_POST['toDo'] == "reserve") {
+                if(!empty($requests)){
+                   $response['reserveError'] = "Shuttle Service for this timing already exists."; //.count($requests) ;
+                } else {
+                    $this->db->insert('tbl_shuttle', $data);
+                    $response['success'] = true;
+                }
             }
-
             echo json_encode($response);
         }
     }

@@ -69,7 +69,7 @@ class Report extends Admin_Controller {
 
  
 
-    public function generatepdf($month="current")
+    public function generatepdf($month="current",$reporttype="general")
     {
 
         // $data['report'] = $this->db->order_by('id','desc')->get_where('tbl_request_report', array('MONTH(FROM_UNIXTIME(requested_timestamp))'=> date('m')-1,'YEAR(FROM_UNIXTIME(requested_timestamp))'=> date('Y')))->result();
@@ -80,9 +80,15 @@ class Report extends Admin_Controller {
 			$data['report'] =  $this->db->select('*,tbl_requests.status as reqstatus')->from('tbl_request_report')->join('tbl_cars', 'tbl_cars.id = tbl_request_report.car_id')->join('tbl_users', 'tbl_cars.unite_no = tbl_users.unite_no')->join('tbl_requests', 'tbl_requests.id = tbl_request_report.request_id')->where(array('MONTH(FROM_UNIXTIME(tbl_request_report.requested_timestamp))'=> (date('m')-1),'YEAR(FROM_UNIXTIME(tbl_request_report.requested_timestamp))'=> date('Y'),'tbl_users.created_by'=>$this->session->userdata('admin_user_id')))->group_by('tbl_requests.id')->order_by('tbl_request_report.id','DESC')->get()->result();
 		}
 		
-        //load the view and saved it into $html variable
-        $html=$this->load->view('admin/reportpage', $data, true);
- 
+        if($reporttype == "general") {
+            //load the view and saved it into $html variable
+            $html=$this->load->view('admin/reportpage', $data, true);
+        } else {
+            //load the view and saved it into $html variable
+            $html=$this->load->view('admin/carinreportpage', $data, true);            
+        }
+
+
         $current = time();
         $today = gmdate("Y-m-d-H-i-s", $current);
         
@@ -134,7 +140,7 @@ class Report extends Admin_Controller {
 
 
 
-    function generet_report_by_date($fromdate,$todate) {
+    function generet_report_by_date($reporttype = 'general',$fromdate,$todate) {
         //echo $date; exit;
         if($fromdate && $todate){
         // $data['report'] = $this->db->order_by('id','desc')->get_where('tbl_request_report', array('requested_date'=>$date))->result();
@@ -143,8 +149,13 @@ class Report extends Admin_Controller {
             $data['report'] = array('error:'=>'Nodate'); 
         }
 
-        //load the view and saved it into $html variable
-        $html=$this->load->view('admin/reportpage', $data, true);
+        if($reporttype == "general") {
+            //load the view and saved it into $html variable
+            $html=$this->load->view('admin/reportpage', $data, true);
+        } else {
+            //load the view and saved it into $html variable
+            $html=$this->load->view('admin/carinreportpage', $data, true);            
+        }
  //       debug($html); exit;
  
         $current = time();

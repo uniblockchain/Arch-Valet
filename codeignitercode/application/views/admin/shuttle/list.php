@@ -14,40 +14,45 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="page-title"> 
-                    <h1 class="h3 display">Shuttle Service </h1>
-                </div>
                 <form action="<?php echo admin_url('shuttle/savesettings'); ?>" method="post" enctype="multipart/form-data" role="form"> 
+                  <div class="page-title"> 
+                    <h1 class="h3 display">
+                      <input type="checkbox" <?php echo (!empty($shuttlesettings) && $shuttlesettings->enabled == 1) ? 'checked' : '' ?> name="enabled" data-size="small" data-toggle="toggle" data-on="Enabled" data-onstyle="primary" data-offstyle="secondary" data-off="Disabled" > 
+                      Shuttle Service Settings
+                    </h1>
+                  </div>
+                
                  <div class="card card-default"> 
                      <div class="card-body">
                         <?php if($this->session->flashdata('message')){
                             echo "<div class='alert alert-success'>".$this->session->flashdata('message')."</div>";
                         } ?>
                          <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                  Select Days
+                                </div>
+                                <div class="col-sm-8">
+                                  Select Time
+                                </div>
+                            </div>
                              <div class="row">
-                                 <div class="col-sm-2">
-                                    <input type="checkbox" <?php echo (!empty($shuttlesettings) && $shuttlesettings->enabled == 1) ? 'checked' : '' ?> name="enabled" data-size="small" data-toggle="toggle" data-on="Enabled" data-onstyle="primary" data-offstyle="secondary" data-off="Disabled" >
+                                <div class="col-sm-4 weekdays">                                 
+                                  <span><input type="checkbox" name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('sunday',$shuttlesettings->weekdays)) ? 'checked = "true"' : '' ; ?> value="sunday"/>Sun</span>
+                                  <span><input type="checkbox"  name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('monday',$shuttlesettings->weekdays)) ? 'checked = "true"' : '' ; ?>  value="monday"/>Mon</span>
+                                  <span><input type="checkbox"  name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('tuesday',$shuttlesettings->weekdays)) ? 'checked = "true"' : '' ; ?>  value="tuesday"/>Tues</span>
+                                  <span><input type="checkbox"  name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('wednesday',$shuttlesettings->weekdays)) ? 'checked = "true"' : '' ; ?>  value="wednesday"/>Wed</span>
+                                  <span><input type="checkbox"  name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('thursday',$shuttlesettings->weekdays)) ? 'checked = "true"' : '' ; ?>  value="thursday"/>Thur</span>
+                                  <span><input type="checkbox"  name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('friday',$shuttlesettings->weekdays)) ? 'checked = "true"' : '' ; ?>  value="friday"/>Fri</span>
+                                  <span><input type="checkbox"  name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('saturday',$shuttlesettings->weekdays)) ? 'checked = "true"' : '' ; ?>  value="saturday"/>Sat</span>
                                 </div>
-                                <div class="col-sm-3 ">
-                                    <select multiple="multiple" name="weekdays[]" class="form-control" style="width:370px">
-                                        <optgroup label="Week days">
-                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('sunday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?> value="sunday">Sunday</option>
-                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('monday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="monday">Monday</option>
-                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('tuesday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="tuesday">Tuesday</option>
-                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('wednesday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="wednesday">Wednesday</option>
-                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('thursday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="thursday">Thursday</option>
-                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('friday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="friday">Friday</option>
-                                        <option name="weekdays[]" <?php echo (!empty($shuttlesettings) && in_array('saturday',$shuttlesettings->weekdays)) ? 'selected = "true"' : '' ; ?>  value="saturday">Saturday</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                                <div class="col-sm-2">
-                                     <input type="text" name="from" class="form-control" value="<?php echo !empty($shuttlesettings) ? $shuttlesettings->from : '' ; ?>" placeholder="Start time">
+                                <div class="col-sm-3">
+                                     <input type="text" name="from" id="starttimepicker" class=" form-control" value="<?php echo !empty($shuttlesettings) ? date('h:i A', strtotime($shuttlesettings->from)) : '' ; ?>" placeholder="Start time">
                                  </div> 
-                                 <div class="col-sm-2">
-                                     <input type="text" name="to" value="<?php echo !empty($shuttlesettings) ? $shuttlesettings->to : '' ; ?>" class="form-control" placeholder="End time">
+                                 <div class="col-sm-3">
+                                     <input type="text" name="to" id="endtimepicker"  value="<?php echo !empty($shuttlesettings) ? date('h:i A', strtotime($shuttlesettings->to)) : '' ; ?>" class=" form-control" placeholder="End time">
                                  </div>
-                                 <div class="col-sm-3 form-actions text-right"> 
+                                 <div class="col-sm-2 form-actions"> 
                                      <input type="submit" value="<?php echo !empty($shuttlesettings) ? 'Update' : 'Save' ; ?>" class="btn btn-primary">
                                  </div>                                                 
                              </div>
@@ -57,12 +62,12 @@
              </form>
 
 
-<!-- Page tabs --> 
-                <div class="tabbable page-tabs" id="printable" <?php echo (!empty($shuttlesettings) && $shuttlesettings->enabled == 1) ? 'style="display:block"' : 'style="display:none"' ?>> 
-
 <!-- Datatable with custom column filtering --> 
                     <div class="card card-default report"> 
                         <div class="card-header">
+<!-- Page tabs -->          <h1 class="h3 display">Shuttle Service Report</h1>
+                            <div class="tabbable page-tabs" id="printable" <?php echo (!empty($shuttlesettings) && $shuttlesettings->enabled == 1) ? 'style="display:block"' : 'style="display:none"' ?>> 
+
                           <div class="form-group col-lg-10 pull-left">
                             <form action="<?php echo admin_url('shuttle/shuttle_by_date');?>" method="post" class="form-inline">
                               <div class="form-group">
@@ -150,4 +155,11 @@ function printContent(el){
 
 <script type="text/javascript">
 $("select").multiselect().multiselectfilter();
+</script>
+
+<script>
+  $(function(){
+    $('#starttimepicker').wickedpicker({twentyFour: false, title: 'Start Time'});
+    $('#endtimepicker').wickedpicker({twentyFour: false, title: 'End Time'});
+  });
 </script>
